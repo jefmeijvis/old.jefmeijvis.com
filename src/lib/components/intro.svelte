@@ -1,0 +1,72 @@
+<div class="intro">
+    <div class="picture">
+        <img on:keypress="{()=>window.open("/about","_self")}" on:click="{()=>window.open("/about","_self")}" src="/profile-picture.png" alt="profile"/>
+    </div>
+    <div class="text">
+        <h1>Jef Meijvis</h1>
+        <p>Software engineer and consultant at <a rel="noreferrer" target="_blank" href="https://www.dotnetlab.eu">DotNETlab</a>.</p>
+        <p>Blogging about software development using <a rel="noreferrer" target="_blank" href="https://dotnet.microsoft.com/">.NET</a> and <a rel="noreferrer" target="_blank" href="https://azure.microsoft.com/">Azure</a></p>
+    </div>
+</div>
+
+
+<style>
+    p
+    {
+        font-weight:500;
+    }
+
+    img
+    {
+        width : 10rem;
+        border-radius: 7rem;
+        cursor: pointer;
+    }
+
+    img:hover
+    {
+        transform: scale(1.05);
+    }
+    .text
+    {
+        width : 69%;
+        float: left;
+    }
+
+    .picture
+    {
+        width : 20%;
+        float: right;
+        text-align: right;
+        margin-right:2rem
+    }
+
+    a
+    {
+        padding: .25rem;
+        text-decoration: none;
+        border-radius: .5rem;
+        color:blue;
+    }
+
+    a:hover
+    {
+        background-color: rgb(235, 235, 235);
+    }
+
+    @media (max-width: 60rem) 
+    {
+        .text
+        {
+            width : 100%;
+            text-align: center;
+        }
+
+        .picture
+        {
+            width : 100%;
+            text-align: center;
+            margin-right:1rem;
+        }
+    }
+</style>
