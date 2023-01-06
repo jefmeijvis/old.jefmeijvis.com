@@ -4,19 +4,9 @@
 
 <div>
     <p>Table of contents</p>
-    <ul>
     {#each tableOfContents as heading}
-        {#if heading.depth == 2}
-            <li><a href={"#" + heading.text}>{heading.text}</a></li>    
-        {/if}
-        {#if heading.depth == 3}
-            <ul><li><a href={"#" + heading.text}>{heading.text}</a></li></ul>
-        {/if}
-        {#if heading.depth == 4}
-            <ul><ul><li><a href={"#" + heading.text}>{heading.text}</a></li></ul></ul>
-        {/if}
+        <p style="margin-left:{(heading.depth - 2)* 2}rem"><a href={"#" + heading.text}>{heading.text}</a></p>
     {/each}
-    </ul>
 </div>
 
 
@@ -24,5 +14,16 @@
     div
     {
         padding : 1rem;
+    }
+
+    p
+    {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    a
+    {
+        text-decoration: none;
     }
 </style>

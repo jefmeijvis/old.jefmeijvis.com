@@ -1,14 +1,18 @@
 <script lang="ts">
+    import {page} from "$app/stores"
+    import {onMount} from "svelte"
     export let href : string;
     export let target : string = ""
 </script>
 
 
-<div>
-    <a target={target} href={href}>
-        <slot></slot>
-    </a>
-</div>
+{#key $page.url.pathname}
+    <div>
+        <a target={target} style="{href.toLowerCase() == $page.url.pathname.toLowerCase() ? 'border-bottom: 2px white solid;' : ''}"href={href}>
+            <slot></slot>
+        </a>
+    </div>
+{/key}
 
 <style>
     div

@@ -43,7 +43,8 @@ export function GET()
       post.title = attributes.title;
       post.date = attributes.date;
       post.description = attributes.description;
-      post.tags = splitTags(attributes.tags)
+      post.tags = splitTags(attributes.tags);
+      post.id = attributes.id;
       // Generate and extract metadata
     }
 

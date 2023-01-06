@@ -11,6 +11,10 @@
 
 
 <style>
+    .intro
+    {
+        margin-bottom: 2rem;
+    }
     p
     {
         font-weight:500;

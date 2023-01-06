@@ -1,9 +1,9 @@
 ---
 author: Jef Meijvis
-id : 7
-image : /images/post/006/svelte.png
+id : 3
+image : /post/001/svelte.png
 title: Third post
-date: 04/01/2023
+date: 04/03/2023
 description : Sveltekit API endpoints.
 tags : Sveltekit,API,endpoints
 ---
