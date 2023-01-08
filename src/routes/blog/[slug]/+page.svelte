@@ -30,6 +30,9 @@
 
 <h1 id="top">{data.post.title}</h1>
 
+<p>Rendered on {data.timestamp}</p>
+
+
 <TableOfContents tableOfContents={data.post.tableOfContents}></TableOfContents>
 
 <SvelteMarkdown {source} {renderers}/>
