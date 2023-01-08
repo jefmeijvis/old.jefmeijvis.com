@@ -1,5 +1,7 @@
 <script lang="ts">
     export let tableOfContents : any
+    let height : string = "0rem";
+    let open : boolean = true;
 
     function getIndentation(depth : number)
     {
@@ -21,10 +23,27 @@
             }
         }
     }
+
+    function toggle()
+    {
+        open = !open;
+
+        if(open)
+        {
+            height = "auto";
+        }
+
+        if(!open)
+        {
+            height = "0;"
+        }
+    }
+
 </script>
 
-<div>
-    <h3>Table of contents</h3>
+<h3>Table of contents</h3>
+<button on:click={toggle}>{open ? "Hide" : "Show"}</button>
+<div style="display:{open? "" : "none"}">
     <ul>
         {#each tableOfContents as heading}
             <li>
@@ -38,6 +57,10 @@
 
 
 <style>
+    div
+    {
+        overflow: hidden;
+    }
     ul
     {
         margin-left: 1rem;
@@ -60,4 +83,10 @@
     {
         text-decoration: none;
     }
+
+    li:hover
+    {
+        opacity: 50%;
+    }
+
 </style>

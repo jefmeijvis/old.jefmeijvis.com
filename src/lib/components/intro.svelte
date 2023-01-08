@@ -73,7 +73,7 @@
         {
             width : 100%;
             text-align: center;
-            margin-right:1rem;
+            margin:auto;
         }
     }
 </style>
