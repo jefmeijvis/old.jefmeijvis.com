@@ -1,9 +1,9 @@
 ---
 author: Jef Meijvis
-id : 3
-image : /post/001/svelte.png
-title: Third post
-date: 04/03/2023
+id : 5
+image : /post/005/logo.png
+title: Create a barebones chat component with Svelte
+date: 01/10/2022
 description : Sveltekit API endpoints.
 tags : Sveltekit,API,endpoints
 ---

@@ -31,7 +31,6 @@
         width : 3.5rem;
         margin : 1rem;
         margin-right: 2rem;
-        filter:invert();
     }
 
     @media (min-aspect-ratio: 1/1) 

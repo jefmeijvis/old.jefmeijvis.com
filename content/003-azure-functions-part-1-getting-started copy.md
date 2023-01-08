@@ -1,19 +1,19 @@
 ---
 author: Jef Meijvis
-id : 1
-image : /post/001/svelte.png
-title: First post
-date: 04/01/2023
-description : Sveltekit API endpoints.
+id : 3
+image : /post/003/functions-logo.png
+title: Azure functions part 1 - Getting started
+date: 01/23/2022
+description : Let's have a look at what Azure Functions are and how to deploy and integrate them in your cloud application.
 tags : Sveltekit,API,endpoints
 ---
 
-## What?
+## Sveltekit?
 
 Sveltekit routing allows for precise control of the response by creating a “+server.js” file (or .ts). We can export a function for each of the HTTP verbs such as GET, POST, PUT, PATCH, etc.. This way, we’re able to create an API. All our code will run server-side, allowing us to access environment variables, the file system, a database, …
-## Why?
+## Sveltekits?
 Can you create an entire enterprise-grade standalone API using Sveltekit endpoints? Yes! Should you? Probably not. While it’s entirely possible, I feel like a few endpoints bundled together with your front-end code make more sense.
-## Creating the endpoints
+## Sveltekitsssss
 Let’s start by creating a file at src/routes/api/+server.ts For this example I’ll be using typescript, but a JavaScript equivalent is also equally possible.
 ### GET
 First we will export a function called GET. Each of the HTTP verbs is a possible function name that we can export at the endpoint file.

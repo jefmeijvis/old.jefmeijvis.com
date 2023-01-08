@@ -7,7 +7,7 @@
 <div class="background" on:keypress={()=>{callback()}} on:click="{()=>{callback()}}" out:fade="{{duration:500}}">
     <div in:fly="{{ x: -500, duration: 500 }}" out:fly="{{ x: -500, duration: 500 }}" class="menu" on:click="{(e)=>{e.stopPropagation()}}" on:keydown="{(e)=>{e.stopPropagation()}}">
         <button on:click="{()=>callback()}">
-            <img src="close.png" alt="hamburger menu toggle"/>
+            <img src="/close.png" alt="hamburger menu toggle"/>
         </button>
         <h1>Kerstbomen Van Ginhoven</h1>
         <ul>

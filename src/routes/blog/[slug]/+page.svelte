@@ -25,6 +25,7 @@
     <title>{data.post.title} - Jef Meijvis</title>
 </svelte:head>
 
+<div>
 <a href="/blog">Back to overview</a>
 
 <h1 id="top">{data.post.title}</h1>
@@ -34,3 +35,17 @@
 <SvelteMarkdown {source} {renderers}/>
 
 <a href="#top">Back to top</a>
+</div>
+<style>
+    div
+    {
+        width : 100%;
+    }
+
+    a
+    {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display:block;
+    }
+</style>

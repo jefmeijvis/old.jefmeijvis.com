@@ -54,7 +54,13 @@ export function GET()
 
       // Generate htm from markdown
 
+    let sortingFunction = (a : Post,b : Post) => 
+    {
+      return b.id - a.id;
+    } 
+
     // Return an array of objects containing this information
+    postCollection = postCollection.sort(sortingFunction);
 
     return new Response(JSON.stringify(postCollection));
 }

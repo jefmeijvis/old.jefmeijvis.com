@@ -25,8 +25,16 @@
     {
         width: 100%;
         height : 5rem;
-        z-index: 100;
         background-color: #0078d4;
         color:white;
+    }
+
+    @media (max-aspect-ratio: 1/1) 
+    {
+    
+        div 
+        {
+            width : auto;
+        }
     }
 </style>

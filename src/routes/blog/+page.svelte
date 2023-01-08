@@ -6,6 +6,6 @@
 
 <svelte:head><title>Blog - Jef Meijvis</title></svelte:head>
 
-<p>Blog page</p>
+<h1>Blog</h1>
 
 <Blogposts posts={data.posts}></Blogposts>

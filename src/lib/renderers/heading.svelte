@@ -21,7 +21,7 @@
   {/if}
 
   <style>
-    h1,h2,h3
+    h1,h2,h3,h4
     {
         background-color: #0078d4;
         color:white;

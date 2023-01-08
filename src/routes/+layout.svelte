@@ -9,7 +9,7 @@
 <div class="content-wrapper">
     <Navbar></Navbar>
     <div class="content">
-        <slot></slot>
+        <slot/>
     </div>
     <Footer renderTimestamp={""}></Footer>
 </div>
@@ -32,11 +32,12 @@
         {
             width: calc(100% - 5rem);
         }
+
+        .content-wrapper
+        {
+            width: 100%;
+        }
     }
 
-    .content-wrapper
-    {
-        width: 100%;
-        background-color: white;
-    }
+
 </style>

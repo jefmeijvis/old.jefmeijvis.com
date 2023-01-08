@@ -14,6 +14,8 @@
     .intro
     {
         margin-bottom: 2rem;
+        width : 100%;
+        height : 10rem;
     }
     p
     {
@@ -35,6 +37,7 @@
     {
         width : 69%;
         float: left;
+
     }
 
     .picture

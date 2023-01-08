@@ -4,7 +4,7 @@
   </script>
   
 <div>
-    <pre class={lang}><code>{text}</code></pre>
+  <pre><code>{text}</code></pre>
 </div>
   <style>
     div
@@ -13,5 +13,9 @@
         border-radius: .5rem;
         background-color: black;
         color:white;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        white-space: initial;
+        overflow-x: scroll;
     }
   </style>
