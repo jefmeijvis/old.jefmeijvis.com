@@ -13,9 +13,12 @@ const config = {
 		{
 			entries : [
 				"/api/posts", 
-				"/blog/001-first-post", 
-				"/blog/002-second-post",
-				"/blog/003-third-post"
+				"/blog/001-csharp-extension-methods", 
+				"/blog/002-managing-multiple-teams-instances",
+				"/blog/003-azure-functions-part-1-getting-started",
+				"/blog/004-azure-functions-part-2-triggers-and-bindings", 
+				"/blog/005-creating-a-chat-component-with-svelte",
+				"/blog/006-sveltekit-api-endpoints"
 			]
 		}
 	}
