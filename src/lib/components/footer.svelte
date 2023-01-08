@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let renderTimestamp : string = "?";
+	import { page } from "$app/stores";
+	import type { Post } from "src/routes/blog/[slug]/post";
+    let posts : Post[] = $page.data.posts;
+    posts = posts.slice(0,5)
+    let renderTimestamp : string = $page.data.timestamp;
 </script>
 
 
@@ -33,20 +37,31 @@
         </div>
         <div class="block">
             <ul>
-                <li><b>Latest</b></li>
+                <li><b>Recent posts</b></li>
+                {#each posts as post}
                     <li>
-                        <a target="_self" href="/">Link</a>
+                        <a href="blog/{post.filename.replace(".md","")}">{post.title.slice(0,20)}...</a>
                     </li>
+                {/each}
             </ul>
         </div>
     </div>
     <p>© Jef Meijvis {new Date().getFullYear()}</p>
-    <p>Last render on {renderTimestamp}</p>
+    <p>Last render on  {renderTimestamp}</p>
 </footer>
 
 
 <style>
 
+    p
+    {
+        margin-top: .5rem;
+    }
+
+    li
+    {
+        font-size: 1rem;
+    }
 
 
     footer
@@ -56,6 +71,7 @@
         text-align: center;
         width : 100%;
         bottom: 1rem;
+        margin-top: 3rem;
     }
 
     .footer-blocks

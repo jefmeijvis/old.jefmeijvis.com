@@ -11,7 +11,7 @@
     <div class="content">
         <slot/>
     </div>
-    <Footer renderTimestamp={""}></Footer>
+    <Footer></Footer>
 </div>
 
 <style>
