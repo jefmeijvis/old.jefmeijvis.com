@@ -2,7 +2,8 @@
 	import { page } from "$app/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
     let posts : Post[] = $page.data.posts;
-    posts = posts.slice(0,5)
+    if(posts)
+        posts = posts.slice(0,5)
     let renderTimestamp : string = $page.data.timestamp;
 </script>
 
@@ -38,11 +39,13 @@
         <div class="block">
             <ul>
                 <li><b>Recent posts</b></li>
+            {#if posts}
                 {#each posts as post}
                     <li>
                         <a href="blog/{post.filename.replace(".md","")}">{post.title.slice(0,20)}...</a>
                     </li>
                 {/each}
+            {/if}
             </ul>
         </div>
     </div>
