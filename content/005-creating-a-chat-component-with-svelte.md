@@ -8,104 +8,287 @@ description : Sveltekit API endpoints.
 tags : Sveltekit,API,endpoints
 ---
 
-## Sveltekit?
+## Frontend with Svelte?
 
-Sveltekit routing allows for precise control of the response by creating a “+server.js” file (or .ts). We can export a function for each of the HTTP verbs such as GET, POST, PUT, PATCH, etc.. This way, we’re able to create an API. All our code will run server-side, allowing us to access environment variables, the file system, a database, …
-## Sveltekits?
-Can you create an entire enterprise-grade standalone API using Sveltekit endpoints? Yes! Should you? Probably not. While it’s entirely possible, I feel like a few endpoints bundled together with your front-end code make more sense.
-## Sveltekitsssss
-Let’s start by creating a file at src/routes/api/+server.ts For this example I’ll be using typescript, but a JavaScript equivalent is also equally possible.
-### GET
-First we will export a function called GET. Each of the HTTP verbs is a possible function name that we can export at the endpoint file.
+In this article we're going to create a simple chatbox, using Svelte. The design is based on similar chat services, such as Facebook Messenger or WhatsApp. At this point the entire chatbox is local, so no data is going in or out. Below is an image of the finished result:
 
-    import type { RequestEvent } from "./$types";
+![A chat windows created with Svelte components [medium]](/post/005/demo.png)
 
-    export function GET({ url } : RequestEvent) 
-    {
-    let firstName : string = url.searchParams.get('firstName') ?? 'Default firstname';
-    let lastName : string = url.searchParams.get('lastName') ?? 'Default lastname';
-    return new Response("Hello " + firstName + " " + lastName);
-    }
+For a live demo you can visit [the demo page](/demo/005?ref=article)
 
-#### We go deeper
+Use the 'Username' field to choose a username. It's value is taken as is, so when you pick a name, you will have that identity. This means it's possible to pick an existing user. Whenever you change the current user, the styling of the chatwindow will update, showing which messages are your own. Underneath there is space to type a message, and a button to send the message.
 
-#### We go deeper
+### Getting started
+
+Let's start by creating a container div in our main component file (chatbox.svelte). This will be a full page-width div to contain our actual chatbox. Next up, add our actual chatbox div. In here we will create a h1 element to create our title, and another div which we will give the classname message-container. When we apply some styling, we get the following result:
+
+![A chat windows created with Svelte components [medium]](/post/005/demo-1.png)
 
 
-#### We go deeper
+    <div class="container">
+        <div class="chatbox">
+            <h1 class="toptext" >Chatbox</h1>
+            <div class="message-container">
+            </div>
+        </div>
+    </div>
 
 
-The function will take a RequestEvent as input parameter. The type definition can be found at “./$types”. A RequestEvent allows for quering the search parameters, such that a GET call to http://localhost:5173/api?firstName=Jef&lastName=Meijvis will return “Hello Jef Meijvis” as a response.
-
-When we omit the search parameters, we will get the default response “Hello Default firstname Default lastname”.
-### POST
-We can easily create a POST endpoint in the same file, like so:
-    import type { RequestEvent } from "./$types";
-
-    export async function POST({ request } : RequestEvent) 
-    {
-    const dataobject : any = await request.json();
-    let firstName : string = dataobject.firstName;
-    let lastName : string = dataobject.lastName;
-    return new Response("Hello " + firstName + " " + lastName);
-    }
-
-The only difference with our GET request is that instead of getting request info from the search parameters, we get it from the body this time. To get the same response as with the GET request, we can send a POST request to http://localhost:5173/api with the following body:
-
-    {
-        "firstName" : "Jef",
-        "lastName" : "Meijvis"
-    }
-## Headers
-When returning a response from your endpoint, you might want to return customised headers. We can do this by supplying the Response constructor shown above with an additional ResponseInit object. This object has a 'headers' property that we can supply with the required headers in key-value format. For example, when we want to cache the API response for 1 hour (3600 seconds) we can do this by adding the following headers:
-
-        const responseInit : ResponseInit =
+    <style>
+        .message-container
         {
-            headers : 
-                {
-                    'cache-control' : 'public, max-age=3600'
-                }
+            overflow-y: scroll;
+            height : 20rem;
         }
 
-        return new Response(JSON.stringify(responseObject),responseInit);
-
-## Preflight request
-When we call these endpoints from a clientside web application, we will need to serve a response to the OPTIONS preflight request. We can accomplish this by creating a Sveltekit hook at src/hooks.server.ts
-    // Allow the preflight options call to return a 200-ok response
-    // This way our API can function as a backend API
-    import type { Handle } from '@sveltejs/kit';
-    import Blob from 'cross-blob';
-
-    export const handle : Handle = async ({event, resolve}) => 
-    {
-        if (event.request.method !== "OPTIONS") 
-            return await resolve(event)
-
-        return new Response(new Blob(), {status: 200})
-    }
-The code intercepts any request with the OPTIONS verb, and returns a 200 OK response. Any other requests are just handled as before.
-
-## Hosting
-When we host our Sveltekit project on a cloud provider such as Vercel, all our endpoints will become publicly available. To prevent CORS issues, we need to do one final thing. When hosting a Sveltekit project with endpoints on Vercel, we need to create a vercel.json file at the project root with the following configuration:
-
-    {
-        "headers": [
+        .toptext
         {
-            "source": "/(.*)",
-            "headers": [
-            { "key": "Access-Control-Allow-Credentials", "value": "true" },
-            { "key": "Access-Control-Allow-Origin", "value": "*" },
-            { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-            { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" }
-            ]
+            background-color: rgb(250, 144, 23);    
+            color:white;                           
+            text-align: center;                    
+            border-top-left-radius: .5rem;        
+            border-top-right-radius: .5rem;
+            margin-bottom: 0;
         }
+
+        .chatbox
+        {
+            width : 20rem;
+            margin:auto;
+            border-radius: .5rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .container
+        {
+            width : 100%;
+        }
+    </style>
+
+### Chat bubble
+Let's continue on the frontend by creating a subcomponent, which we will call a message bubble (bubble.svelte). Use the script tag to expose a message prop. Create a p element containing the user that is available on the message object, and the timestamp converted to the local datetime format. We assign the info element a class based by comparing the username of the message with the username of the current user. If these match, it's our own message and we make it a right alligned chat bubble. If not, we make it a left alligned bubble.
+
+    <script>
+        export let message; // Message object that contains all information about this specific message
+        export let user;    // Username of the user that is currently using the chatbox
+    </script>
+
+    <p class="{message.user == user ? 'info-right' : 'info-left'}">{message.user} | {message.timestamp.toLocaleString()}</p>
+
+    <div class="{message.user == user ? 'bubble-right' : 'bubble-left'}">                
+        <p class="message">{message.message}</p>
+    </div>
+
+
+    <style>
+        .bubble-left,.bubble-right
+        {
+            width : 80%;
+            margin : .5rem;
+            border-radius: 1rem;
+            padding : .25rem;
+        }
+
+        .info-left
+        {
+            float: left;
+        }
+
+        .info-right
+        {
+            float: right;
+        }
+
+        .info-left,.info-right
+        {
+            font-size: .6rem;
+            margin:0;
+            padding:0;
+            margin-left: .7rem;
+            margin-top: 1rem;
+            opacity: 50%;
+        }
+
+        .bubble-left
+        {
+            background-color: rgb(255, 241, 226);
+            float:left;
+            border-bottom-left-radius: 0;
+        }
+
+        .bubble-right
+        {
+            float:right;
+            background-color: rgb(226, 226, 255);
+            border-bottom-right-radius: 0;
+        }
+
+        .message
+        {
+            font-size: .7rem;
+        }
+    </style>
+
+Before we can continue, we need to create some mockup data to test our chat bubble. Let's create a list of messages, and add these on top of the chatbox.svelte included in a script tag. We also create a field to store the username of the current user.
+
+    <script>
+        let messages : any[] = 
+        [
+            {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!"},
+            {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️"},
+            {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎"},
+            {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋"},
+        ];
+
+        let user : string = "Alice";
+    </script>
+
+
+We further update the chatbox.svelte file by using our newly created bubble.svelte file. We want to render this component for every element in the 'messages' list. While doing so, we also provide the message and user object as props to the component.
+
+
+    <script>
+        import Bubble from "./bubble.svelte";
+    </script>
+
+
+    <div class="chatbox">
+        <h1>Chatbox</h1>
+        <div bind:this={messageContainer} class="message-container">
+            {#each messages as message}
+                <Bubble {message} {user}></Bubble>
+            {/each}
+        </div>
+    </div>
+
+By combining all these changes, we get the following result:
+
+![A chat windows created with Svelte components [medium]](/post/005/demo-2.png)
+
+Looking great so far! We are able to render the message, the user and the timestamp in an interactive chat window. Based on which user we specified in code, we can determine which chat bubbles are ours.
+
+### Control panel
+Let's finish our chatbox by adding a control panel (controls.svelte). As props to this subcomponent we define a user, a send function and a message. We group eveything together in a div with classname controls. The first p element contains a input field that is bound to the 'user' variable. The textarea below is bound to the message variable. Our button contains an on:click event that fires the send method that is provided by the top level chatbox component.
+
+
+    <script>
+        export let user;    // Value of the user input
+        export let send;    // Function that sends the current message
+        export let message; // Value of the message input
+    </script>
+
+    <div class="controls">
+        <p>Username: <input placeholder="Type your username here..." bind:value={user} type=text/></p>
+        <textarea placeholder="Type your message here..." bind:value={message}/>
+        <button on:click="{()=>send()}">Send</button>
+    </div>
+
+
+    <style>
+        input
+        {
+            width : calc(100% - .5rem);
+            border-radius: .25rem;
+        }
+        
+        .controls
+        {
+            padding : .5rem;
+        }
+
+        p
+        {
+            font-size: .75rem;
+        }
+
+
+        button
+        {
+            width : 100%;
+            height : 2rem;
+            background-color: rgb(250, 144, 23);
+            color:white; /**/
+            cursor:pointer;
+            border-radius: .25rem;
+            border:none;
+            transition: all ease .25s;
+        }
+
+        button:hover
+        {
+            background-color: rgb(255, 203, 144);
+        }
+
+        textarea
+        {
+            height : 5rem;
+            width : calc(100% - .5rem);
+            margin:0;
+            padding:0;
+            resize:none;
+            border-radius: .25rem;
+            padding : .25rem;
+        }
+    </style>
+        
+A few more things are needed back in our chatbox.svelte component to integrate the controls:
+
+First let's add an import statement for our controls component. We also need a variable (messageContainer) to bind to the message-container div. We define a send function, which adds the current message to the array of messages. We do include a few checks to only send the message when both a username and message is provided.
+
+> Svelte only re-renders it's components when the variable is changed. This means that when we have a component that uses an array, adding or removing an element from the list will not trigger a re-render. We can solve this be reassigning the variable storing the list to itself: messages = messages;
+
+To improve the user experience, the chatbox will scroll to the bottom when a new message is added. We can achieve this by trigering our custom 'scrollToBottom' function whenever the afterUpdate hook fires.
+
+Finish things of by including the Controls component in our chatbox div, while binding it to the message, user and send props.
+
+
+    <script lang="ts">
+        import { afterUpdate } from "svelte";
+        import Bubble from "./bubble.svelte";
+        import Controls from "./controls.svelte";
+
+        let messageContainer;
+
+        let messages : any[] = 
+        [
+            {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!", likes : 0 },
+            {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️", likes : 0 },
+            {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎", likes : 0 },
+            {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋", likes : 0 },
         ]
-    }
 
-Different adaptors and hosting providers will probably require a different setup or configuration to allow for CORS.
-## Further reading
-- https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
+        let user : string = "Alice";
+        let message : string;
 
+        afterUpdate(() => {scrollToBottom(messageContainer)});
+
+        async function send()
+        {
+            if(!message || message == undefined || message == "" || !user || user == undefined || user == "")
+                return;
+
+            messages.push({timestamp : new Date() , user : user , message : message, likes : 0, id : messages.length+1});
+            message = ""; 
+            messages = messages;
+        }
+
+        const scrollToBottom = async (node : any) => {node.scroll({ top: node.scrollHeight, behavior: 'smooth'});}; 
+    </script>
+
+
+    <div class="container">
+        <div class="chatbox">
+            <h1>Chatbox</h1>
+            <div bind:this={messageContainer} class="message-container">
+                {#each messages as message}
+                    <Bubble {message} {user}></Bubble>
+                {/each}
+            </div>
+            <Controls bind:message={message} bind:user={user} {send}></Controls>
+        </div>
+    </div>
+            
+
+This gives us the following result, as showed at the start of the article:
+
+![A chat windows created with Svelte components [medium]](/post/005/demo.png)

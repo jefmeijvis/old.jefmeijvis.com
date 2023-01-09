@@ -8,12 +8,12 @@ description : An overview on how to create and host an API build with Sveltekit.
 tags : Sveltekit,API,endpoints
 ---
 
-## Sveltekit?
+## What?
 
-Sveltekit routing allows for precise control of the response by creating a “+server.js” file (or .ts). We can export a function for each of the HTTP verbs such as GET, POST, PUT, PATCH, etc.. This way, we’re able to create an API. All our code will run server-side, allowing us to access environment variables, the file system, a database, …
-## Sveltekits?
+Sveltekit routing allows for precise control of the response by creating a “+server.js” file (or .ts). We can export a function for each of the [HTTP verbs such as GET, POST, PUT, PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), etc.. This way, we’re able to create an API. All our code will run server-side, allowing us to access environment variables, the file system, a database, …
+## Why?
 Can you create an entire enterprise-grade standalone API using Sveltekit endpoints? Yes! Should you? Probably not. While it’s entirely possible, I feel like a few endpoints bundled together with your front-end code make more sense.
-## Sveltekitsssss
+## Creating the endpoints
 Let’s start by creating a file at src/routes/api/+server.ts For this example I’ll be using typescript, but a JavaScript equivalent is also equally possible.
 ### GET
 First we will export a function called GET. Each of the HTTP verbs is a possible function name that we can export at the endpoint file.
@@ -27,15 +27,7 @@ First we will export a function called GET. Each of the HTTP verbs is a possible
     return new Response("Hello " + firstName + " " + lastName);
     }
 
-#### We go deeper
-
-#### We go deeper
-
-
-#### We go deeper
-
-
-The function will take a RequestEvent as input parameter. The type definition can be found at “./$types”. A RequestEvent allows for quering the search parameters, such that a GET call to http://localhost:5173/api?firstName=Jef&lastName=Meijvis will return “Hello Jef Meijvis” as a response.
+The function will take a [RequestEvent](https://kit.svelte.dev/docs/types#public-types-requestevent) as input parameter. The type definition can be found at “./$types”. A RequestEvent allows for quering the search parameters, such that a GET call to */api?firstName=Jef&lastName=Meijvis* will return “Hello Jef Meijvis” as a response.
 
 When we omit the search parameters, we will get the default response “Hello Default firstname Default lastname”.
 ### POST
@@ -50,14 +42,14 @@ We can easily create a POST endpoint in the same file, like so:
     return new Response("Hello " + firstName + " " + lastName);
     }
 
-The only difference with our GET request is that instead of getting request info from the search parameters, we get it from the body this time. To get the same response as with the GET request, we can send a POST request to http://localhost:5173/api with the following body:
+The only difference with our GET request is that instead of getting request info from the search parameters, we get it from the body this time. To get the same response as with the GET request, we can send a POST request to */api* with the following body:
 
     {
         "firstName" : "Jef",
         "lastName" : "Meijvis"
     }
 ## Headers
-When returning a response from your endpoint, you might want to return customised headers. We can do this by supplying the Response constructor shown above with an additional ResponseInit object. This object has a 'headers' property that we can supply with the required headers in key-value format. For example, when we want to cache the API response for 1 hour (3600 seconds) we can do this by adding the following headers:
+When returning a response from your endpoint, you might want to return customised headers. We can do this by supplying the [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) constructor shown above with an additional ResponseInit object. This object has a 'headers' property that we can supply with the required headers in key-value format. For example, when we want to cache the API response for 1 hour (3600 seconds) we can do this by adding the following headers:
 
         const responseInit : ResponseInit =
         {

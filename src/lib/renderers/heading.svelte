@@ -21,7 +21,7 @@
   {/if}
 
   <style>
-    h1,h2,h3,h4
+    h1,h2
     {
         background-color: #0078d4;
         color:white;
@@ -29,5 +29,15 @@
         border-radius: .5rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+
+    h3,h4
+    {
+      background-color: #0078d4;
+      color:white;
+      padding : .25rem;
+      border-radius: .5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
   </style>

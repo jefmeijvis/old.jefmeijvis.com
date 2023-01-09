@@ -11,12 +11,30 @@
         text = text.replace("[small]","")
     }
 
+    let medium : boolean = false;
+    if(text.includes("[medium]"))
+    {
+        medium = true;
+        text = text.replace("[medium]","")
+    }
+
     if(!title || title == "")
         title = text;
 
+    function getStyle()
+    {
+        if(small)
+            return "width:25%;display:block;margin:auto;";
+
+        if(medium)
+            return "width:50%;display:block;margin:auto;";
+
+        return "";
+    }
+
   </script>
   
-  <img style="{small? "width:25%;display:block;margin:auto;" : ""}" src={href} {title} alt={text}>
+  <img style="{getStyle()}" src={href} {title} alt={text}>
 
 
   <style>
