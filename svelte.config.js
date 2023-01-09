@@ -13,6 +13,14 @@ const config = {
 		{
 			entries : [
 				"/api/posts", 
+
+				"/post/001-csharp-extension-methods",
+				"/post/002-multiple-teams-instances",
+				"/post/003-azure-functions-getting-started",
+				"/post/004-azure-functions-triggers-and-bindings",
+				"/post/005-chat-application",
+				"/post/006-sveltekit-api-endpoints",
+
 				"/blog/001-csharp-extension-methods", 
 				"/blog/002-managing-multiple-teams-instances",
 				"/blog/003-azure-functions-part-1-getting-started",

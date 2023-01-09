@@ -4,6 +4,17 @@
     function Toggle()
     {
         visible = !visible;
+        //@ts-ignore
+        let bodyStyle = document.getRootNode().body.style;
+    
+        if(visible)
+        {
+            bodyStyle['overflow'] = 'hidden'
+        }
+        else
+        {
+            bodyStyle['overflow'] = ''
+        }
     }
 </script>
 
