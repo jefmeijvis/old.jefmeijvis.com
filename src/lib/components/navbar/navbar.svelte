@@ -37,4 +37,13 @@
             width : auto;
         }
     }
+
+    @media (max-width : 60rem) 
+    {
+    
+        div 
+        {
+            margin-left: 5%;
+        }
+    }
 </style>

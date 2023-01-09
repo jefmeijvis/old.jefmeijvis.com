@@ -43,7 +43,8 @@
         padding : .5rem;
         display:block;
         text-decoration: none;
-        font-size: .8rem;
+        font-size: 1rem;
+        font-weight: bold;
         color:white;
         border-bottom: 2px #0078d4 solid;
     }

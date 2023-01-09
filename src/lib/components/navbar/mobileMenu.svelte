@@ -55,6 +55,11 @@
         margin-left: 3.5rem;
     }
 
+    ul
+    {
+        list-style-type: none;
+    }
+
     .menu
     {
         position: absolute;
@@ -63,6 +68,7 @@
         width : 85%;
         height : 100%;
         background-color: #0078d4;
+        border-right:1px #0066b5 solid;
     }
 
     .background
