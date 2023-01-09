@@ -4,7 +4,7 @@
     export let post : Post;
     export let timestamp : string;
 
-    let open : boolean = true;
+    let open : boolean = false;
 
     function toggle()
     {

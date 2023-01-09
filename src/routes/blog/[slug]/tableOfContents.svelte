@@ -1,7 +1,6 @@
 <script lang="ts">
     export let tableOfContents : any
-    let height : string = "0rem";
-    let open : boolean = true;
+    let open : boolean = false;
 
     function getIndentation(depth : number)
     {
@@ -27,16 +26,6 @@
     function toggle()
     {
         open = !open;
-
-        if(open)
-        {
-            height = "auto";
-        }
-
-        if(!open)
-        {
-            height = "0;"
-        }
     }
 
 </script>
