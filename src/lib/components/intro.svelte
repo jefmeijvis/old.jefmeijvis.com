@@ -5,7 +5,7 @@
     <div class="text">
         <h1>Jef Meijvis</h1>
         <p>Software engineer and consultant at <a rel="noreferrer" target="_blank" href="https://www.dotnetlab.eu">DotNETlab</a>.</p>
-        <p>Blogging about software development using <a rel="noreferrer" target="_blank" href="https://dotnet.microsoft.com/">.NET</a> and <a rel="noreferrer" target="_blank" href="https://azure.microsoft.com/">Azure</a></p>
+        <p>Blogging about software development using <a rel="noreferrer" target="_blank" href="https://dotnet.microsoft.com/">.NET</a>, <a rel="noreferrer" target="_blank" href="https://azure.microsoft.com/">Azure</a> and <a rel="noreferrer" target="_blank" href="https://svelte.dev/">Svelte</a></p>
     </div>
 </div>
 
@@ -20,6 +20,7 @@
     p
     {
         font-weight:500;
+        margin-top: 1rem;
     }
 
     img
