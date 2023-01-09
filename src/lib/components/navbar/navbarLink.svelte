@@ -1,14 +1,29 @@
 <script lang="ts">
     import {page} from "$app/stores"
-    import {onMount} from "svelte"
     export let href : string;
-    export let target : string = ""
+    export let target : string = "";
+
+    function getStyle()
+    {
+        // Return the active style when the current path matches with the href of the current link
+        let styleActive : string = 'border-bottom: 2px white solid;';
+        let styleInactive : string = ''
+        let path : string = $page.url.pathname.toLowerCase();
+
+        if(path == href.toLowerCase())
+            return styleActive;
+
+        if(path.includes(href) && !(href == "/"))
+            return styleActive
+
+        return styleInactive;
+    }
 </script>
 
 
 {#key $page.url.pathname}
     <div>
-        <a target={target} style="{href.toLowerCase() == $page.url.pathname.toLowerCase() ? 'border-bottom: 2px white solid;' : ''}"href={href}>
+        <a target={target} style="{getStyle()}" href={href}>
             <slot></slot>
         </a>
     </div>
