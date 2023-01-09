@@ -49,7 +49,7 @@
             </ul>
         </div>
     </div>
-    <p>© Jef Meijvis {new Date().getFullYear()}</p>
+    <p>© Jef Meijvis 2021 - {new Date().getFullYear()}</p>
     <p>Last render on  {renderTimestamp}</p>
 </footer>
 

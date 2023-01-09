@@ -25,7 +25,7 @@
         }
     }
 
-    let views : number;
+    let views : number = post.views;
     let renderTimestamp : string;
 
     function getLink() : string

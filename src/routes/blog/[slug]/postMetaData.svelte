@@ -38,6 +38,13 @@
             <td>Render timestamp</td>
             <td>{timestamp}</td>
         </tr>
+
+        <tr>
+            <td>Views</td>
+            <td>{post.views}</td>
+            <td></td>
+            <td></td>
+        </tr>
     </table>
 
 
@@ -65,6 +72,10 @@
         <tr>
             <td>Render timestamp</td>
             <td>{timestamp}</td>
+        </tr>
+        <tr>
+            <td>Views</td>
+            <td>{post.views}</td>
         </tr>
     </table>
 </div>

@@ -29,8 +29,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/supabase-js": "^2.2.3",
 		"@sveltejs/adapter-static": "^1.0.0",
 		"@types/marked": "^4.0.8",
+		"dotenv": "^16.0.3",
 		"front-matter": "^4.0.2",
 		"marked": "^4.2.5",
 		"svelte-markdown": "^0.2.3"
