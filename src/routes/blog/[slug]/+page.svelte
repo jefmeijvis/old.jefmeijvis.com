@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
     import SvelteMarkdown from 'svelte-markdown';
 	import type { Post } from './post';
+	import PostMetaData from './postMetaData.svelte';
     import renderers from './renderers';
 	import TableOfContents from './tableOfContents.svelte';
 
@@ -30,9 +31,7 @@
 
 <h1 id="top">{data.post.title}</h1>
 
-<p>Rendered on {data.timestamp}</p>
-
-
+<PostMetaData timestamp={data.timestamp} post={data.post}></PostMetaData>
 <TableOfContents tableOfContents={data.post.tableOfContents}></TableOfContents>
 
 <SvelteMarkdown {source} {renderers}/>

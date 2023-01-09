@@ -41,8 +41,7 @@
 
 </script>
 
-<h3>Table of contents</h3>
-<button on:click={toggle}>{open ? "Hide" : "Show"}</button>
+<h3 on:keydown={toggle} on:click={toggle}>{open ? "▲" : "▼"} Table of contents </h3>
 <div style="display:{open? "" : "none"}">
     <ul>
         {#each tableOfContents as heading}
@@ -87,6 +86,16 @@
     li:hover
     {
         opacity: 50%;
+    }
+
+    h3
+    {
+        cursor:pointer;
+    }
+
+    h3:hover
+    {
+        opacity: 70%;
     }
 
 </style>

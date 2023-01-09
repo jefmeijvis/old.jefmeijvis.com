@@ -13,5 +13,6 @@
   ul,ol
   {
     list-style-position: inside;
+    overflow: hidden;
   }
 </style>

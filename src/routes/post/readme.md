@@ -1,0 +1,1 @@
+The post folder is to redirect legacy urls to the new location

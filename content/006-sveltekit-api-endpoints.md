@@ -105,7 +105,8 @@ When we host our Sveltekit project on a cloud provider such as Vercel, all our e
 Different adaptors and hosting providers will probably require a different setup or configuration to allow for CORS.
 ## Further reading
 - https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
-- https://kit.svelte.dev/docs/routing#server
+- https://vercel.com/docs/project-configuration
+- https://vercel.com/guides/how-to-enable-cors#enabling-cors-using-vercel.json
+- https://www.reddit.com/r/sveltejs/comments/u4wepc/solving_cors_problems_when_using_sveltekitvercel/
+- https://kit.svelte.dev/docs/hooks
 
