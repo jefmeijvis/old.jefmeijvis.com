@@ -1,13 +1,18 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
     import { page } from '$app/stores'; 
-	import { VisitLogger } from '$lib/ts/visitlogger';
 
     afterNavigate(callback);
 
     async function callback(nav : any)
     {
-        await VisitLogger.LogVisit(nav.to.url.href);
+        if(!browser)
+            return;
+            
+        let page : string = nav.to.url.href;
+        let body = { page : page };
+        await fetch('/api/log',{method : 'POST', body : JSON.stringify(body)})
     }
 </script>
 
