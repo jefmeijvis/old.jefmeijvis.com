@@ -33,10 +33,7 @@
 
     h3,h4
     {
-      background-color: #0078d4;
-      color:white;
-      padding : .25rem;
-      border-radius: .5rem;
+      font-size: 1.5rem;
       margin-top: 1rem;
       margin-bottom: 1rem;
     }

@@ -55,7 +55,6 @@
 
 
 <style>
-
     p
     {
         margin-top: .5rem;
@@ -75,6 +74,7 @@
         width : 100%;
         bottom: 1rem;
         margin-top: 3rem;
+        padding-bottom: 1rem;
     }
 
     .footer-blocks
