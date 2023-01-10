@@ -5,6 +5,7 @@ import fm from "front-matter";
 import { Postview } from "$lib/ts/postviews";
 export const prerender = true;
 
+let _cache = new Map<string, number>();
 
 export async function GET() 
 {
@@ -103,14 +104,21 @@ function splitTags(input : string) : string[]
 
 async function GetPageviews(post : Post) : Promise<number>
 {
-  console.log("Getting pageviews for " + post.filename);
 
   let path : string = post.filename.replace(".md","");
+
+  if(_cache.has(path))
+  {
+    console.log('💚 ' + path + " was in cache")
+    return _cache.get(path) ?? 0;
+  }
+
+  console.log("Getting pageviews for " + post.filename);
+
   let link : string = "https://www.jefmeijvis.com/";
 
   let fullPath : string = link + "blog/" + path;
   let views : number = await Postview.GetViews(fullPath);
-  console.log("Views for " + fullPath + " : " + views);
 
   let legacyPath : string = link + "post/" + path;
   let legacyViews : number = await Postview.GetViews(legacyPath);
@@ -121,7 +129,10 @@ async function GetPageviews(post : Post) : Promise<number>
   if(legacyViews == -1)
     legacyViews = 0;
 
+  console.log("Views for " + fullPath + " : " + views);
   console.log("Legacy for " + legacyPath + " : " + legacyViews);
+
+  _cache.set(path,views + legacyViews);
   return views + legacyViews;
 }
 
