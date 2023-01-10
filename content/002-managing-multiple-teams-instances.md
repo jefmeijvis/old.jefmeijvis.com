@@ -5,7 +5,7 @@ image : /post/002/logo-teams.png
 title: Managing multiple Teams instances
 date: 18/12/2021
 description : Managing multiple Teams instances of different companies can be a real hassle. I quickly showcase the solution I ended up using with the help of Ferdi.
-tags : Sveltekit,API,endpoints
+tags : Teams,Ferdi
 ---
 
 ## Teams?

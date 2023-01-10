@@ -5,7 +5,7 @@ image : /post/001/logo-csharp.png
 title: CSharp extension methods
 date: 16/10/2021
 description : As a programmer, extension methods are a great tool to have in your toolbelt! They allow you to extend the functionality of an existing type without having to modify the type.
-tags : Sveltekit,API,endpoints
+tags : CSharp
 ---
 
 ## Extension methods?
