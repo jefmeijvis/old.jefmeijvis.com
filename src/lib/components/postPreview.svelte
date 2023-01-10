@@ -42,9 +42,7 @@
         <h1>{post.title}</h1>
         <p class="info">
             #{post.id} |
-            {#if views}
-                <span transition:fade title="Last updated on {renderTimestamp}.">{views} views </span>|
-            {/if}
+            {views} views |
              {post.date}
         </p>
         <p class="description">{post.description}</p>

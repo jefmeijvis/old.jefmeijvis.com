@@ -5,8 +5,6 @@ import fm from "front-matter";
 import { Postview } from "$lib/ts/postviews";
 export const prerender = true;
 
-let _cache = new Map<string, number>();
-
 export async function GET() 
 {
   const responseInit : ResponseInit =
@@ -106,13 +104,6 @@ async function GetPageviews(post : Post) : Promise<number>
 {
 
   let path : string = post.filename.replace(".md","");
-
-  if(_cache.has(path))
-  {
-    console.log('💚 ' + path + " was in cache")
-    return _cache.get(path) ?? 0;
-  }
-
   console.log("Getting pageviews for " + post.filename);
 
   let link : string = "https://www.jefmeijvis.com/";
@@ -124,10 +115,8 @@ async function GetPageviews(post : Post) : Promise<number>
   if(views == -1)
     views = 0;
 
-
   console.log("Views for " + fullPath + " : " + views);
-
-  _cache.set(path,views);
   return views;
+  // update
 }
 
