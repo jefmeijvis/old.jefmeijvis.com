@@ -1,6 +1,5 @@
 <svelte:head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">  
-  <link rel="stylesheet" href="https://tutsplus.github.io/syntax-highlighter-demos/highlighters/Prism/prism_okaidia.css">    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">  
 </svelte:head>
 
 <script lang="ts">
@@ -9,7 +8,6 @@
   
   export let language : any;
   export let code : any;
-  export let header : any;
   
   onMount(() => {
 
