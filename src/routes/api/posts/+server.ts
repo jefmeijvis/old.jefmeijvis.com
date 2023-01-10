@@ -120,20 +120,14 @@ async function GetPageviews(post : Post) : Promise<number>
   let fullPath : string = link + "blog/" + path;
   let views : number = await Postview.GetViews(fullPath);
 
-  let legacyPath : string = link + "post/" + path;
-  console.log('➡️ ' + legacyPath);
-  let legacyViews : number = await Postview.GetViews(legacyPath);
 
   if(views == -1)
     views = 0;
 
-  if(legacyViews == -1)
-    legacyViews = 0;
 
   console.log("Views for " + fullPath + " : " + views);
-  console.log("Legacy for " + legacyPath + " : " + legacyViews);
 
-  _cache.set(path,views + legacyViews);
-  return views + legacyViews;
+  _cache.set(path,views);
+  return views;
 }
 
