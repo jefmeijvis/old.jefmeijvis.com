@@ -8,7 +8,7 @@ description : Triggers and bindings are core properties of an Azure function. In
 tags : Azure,Functions
 ---
 
-For part one, see [Azure Functions : part 1](/blog/003-azure-functions-part-1-getting-started)
+For part one, see [Azure Functions : part 1](https://www.jefmeijvis.com/blog/003-azure-functions-part-1-getting-started)
 
 ### Triggers and bindings
 
