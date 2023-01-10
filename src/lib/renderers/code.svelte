@@ -4,4 +4,4 @@
     export let text : string;
   </script>
   
-<PrismJs language="{lang}" code="{text}" header="bob"></PrismJs>
+<PrismJs language="{lang}" code="{text}"></PrismJs>

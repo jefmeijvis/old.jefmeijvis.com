@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
+	import Kofi from '$lib/components/kofi.svelte';
     import SvelteMarkdown from 'svelte-markdown';
 	import type { Post } from './post';
 	import PostMetaData from './postMetaData.svelte';
@@ -17,7 +18,6 @@
     function DoAfterNavigate()
     {
         source=data.post.markdown;
-        console.log("loaded " + $page.url.href)
     }
 
 </script>
@@ -37,6 +37,9 @@
 <SvelteMarkdown {source} {renderers}/>
 
 <a href="#top">Back to top</a>
+
+<Kofi></Kofi>
+
 </div>
 <style>
     div
