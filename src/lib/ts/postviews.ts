@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import fs from 'fs';
 
 export class Postview
 {
