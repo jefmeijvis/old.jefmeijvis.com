@@ -121,6 +121,7 @@ async function GetPageviews(post : Post) : Promise<number>
   let views : number = await Postview.GetViews(fullPath);
 
   let legacyPath : string = link + "post/" + path;
+  console.log('➡️ ' + legacyPath);
   let legacyViews : number = await Postview.GetViews(legacyPath);
 
   if(views == -1)
