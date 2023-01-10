@@ -1,5 +1,14 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
     import { page } from '$app/stores'; 
+	import { VisitLogger } from '$lib/ts/visitlogger';
+
+    afterNavigate(callback);
+
+    async function callback(nav : any)
+    {
+        await VisitLogger.LogVisit(nav.to.url.href);
+    }
 </script>
 
 <svelte:head>

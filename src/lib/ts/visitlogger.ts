@@ -9,6 +9,7 @@ export class VisitLogger
 
         if(page.includes("vercel"))
             return;
+        
 
         // Construct the database row
         let row : { page : string} = {page : page};
