@@ -4,7 +4,6 @@
 	import Navbar from "$lib/components/navbar/navbar.svelte";
     export let data : any;
     export const prerender = true;
-    console.dir(data);
 </script>
 
 <Meta/>
