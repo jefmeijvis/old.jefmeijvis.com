@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import { getRenderTimestamp } from "$lib/ts/timeProvider";
+    import { page } from "$app/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
     let posts : Post[] = $page.data.posts;
     if(posts)
-        posts = posts.slice(0,5)
-    let renderTimestamp : string = getRenderTimestamp();
+        posts = posts.slice(0,5);
+
+    export let timestamp : string;
 </script>
 
 
@@ -51,7 +51,7 @@
         </div>
     </div>
     <p>© Jef Meijvis 2021 - {new Date().getFullYear()}</p>
-    <p>Last render on  {renderTimestamp}</p>
+    <p>Last render on {timestamp}</p>
 </footer>
 
 
