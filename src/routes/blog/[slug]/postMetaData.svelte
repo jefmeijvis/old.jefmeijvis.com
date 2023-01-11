@@ -81,11 +81,6 @@
 </div>
 
 <style>
-    p
-    {
-        font-weight: 300;
-        font-size: 1rem;
-    }
     td
     {
         font-weight: 300;

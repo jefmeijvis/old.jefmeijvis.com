@@ -1,5 +1,5 @@
-import { readFileSync } from "fs";
 import type { Post } from "./post";
+import { getRenderTimestamp } from "$lib/ts/timeProvider";
 export const prerender = true;
 
 
@@ -7,7 +7,7 @@ export async function load({params,fetch} : any) {
     return {     
         slug : params.slug,
         post : await getPostForThisPage(params.slug,fetch),
-        timestamp : new Date().toLocaleString("be-nl"),
+        timestamp : getRenderTimestamp(),
     };
   }
 

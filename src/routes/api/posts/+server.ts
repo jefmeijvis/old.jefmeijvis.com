@@ -102,9 +102,7 @@ function splitTags(input : string) : string[]
 
 async function GetPageviews(post : Post) : Promise<number>
 {
-
   let path : string = post.filename.replace(".md","");
-  console.log("Getting pageviews for " + post.filename);
 
   let link : string = "https://www.jefmeijvis.com/";
 
@@ -115,7 +113,6 @@ async function GetPageviews(post : Post) : Promise<number>
   if(views == -1)
     views = 0;
 
-  console.log("Views for " + fullPath + " : " + views);
   return views;
   // update
 }

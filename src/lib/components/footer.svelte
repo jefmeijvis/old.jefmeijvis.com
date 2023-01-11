@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { page } from "$app/stores";
+	import { getRenderTimestamp } from "$lib/ts/timeProvider";
 	import type { Post } from "src/routes/blog/[slug]/post";
     let posts : Post[] = $page.data.posts;
     if(posts)
         posts = posts.slice(0,5)
-    let renderTimestamp : string = $page.data.timestamp;
+    let renderTimestamp : string = getRenderTimestamp();
 </script>
 
 
@@ -58,6 +59,7 @@
     p
     {
         margin-top: .5rem;
+        opacity: 50%;
     }
 
     li

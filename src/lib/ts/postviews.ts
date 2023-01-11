@@ -11,7 +11,7 @@ export class Postview
         {
             let value = fs.readFileSync(filename);
             let num = value.toString();
-            console.log("🟢 Found value in cache: " + num);
+            console.log("🟢 Found viewcount in cache: " + num + ' views. ');
             return num;
         }
         else
