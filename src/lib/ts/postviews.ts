@@ -10,8 +10,9 @@ export class Postview
         if (cacheIsOk(filename))
         {
             let value = fs.readFileSync(filename);
-            console.log("🟢 Found value in cache: " + value);
-            return value;
+            let num = value.toString();
+            console.log("🟢 Found value in cache: " + num);
+            return num;
         }
         else
         {
@@ -38,8 +39,8 @@ function cacheIsOk(path : string) : boolean
     let lastModificationTime : Date = stats.mtime;
     let today = new Date();
     let diff : number = Math.round(Math.abs(today.getTime() - lastModificationTime.getTime()) / 1000); // Cache age in seconds
-    console.log('Cache age is ' + diff)
-    if(diff > 60)
+    console.log('Cache age is ' + diff + 's')
+    if(diff > 3600) // Cache maxage is 1 hour
         return false;
 
     return true;
