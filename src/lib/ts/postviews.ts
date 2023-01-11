@@ -5,7 +5,7 @@ export class Postview
 {
     static async GetViews(page : string) : Promise<any>
     {
-        let filename : string = 'cache/' + hash(page) + '.txt';
+        let filename : string = 'cache/' + hash(page) + '.cache';
 
         if (cacheIsOk(filename))
         {
