@@ -8,6 +8,29 @@ description : An overview on how to create and host an API build with Sveltekit.
 tags : Sveltekit,API,endpoints
 ---
 
+## Azure Application Insights
+
+## OpenTelemetry
+
+## Dashboards
+
+## ASP.NET API's
+https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
+
+## Console Applications
+https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
+
+## Logging sinks
+### Log4net
+https://stackoverflow.com/questions/28800320/log4net-with-application-insights
+### Serilog
+https://github.com/serilog-contrib/serilog-sinks-applicationinsights
+### Nlog
+https://www.nexsoftsys.com/articles/integrating-apps-insights-with-nlog-aspnet-core.html
+https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget
+
+
+
 Azure Application Insights is a powerful performance monitoring and diagnostics tool that enables developers to quickly and easily identify and fix issues in their web applications. With its ability to provide detailed insights into the performance, availability, and usage of web applications, Application Insights is an essential tool for any organization that wants to deliver high-quality, responsive, and reliable web applications.
 
 One of the key benefits of using Application Insights is its ability to provide detailed performance metrics on the availability, responsiveness, and performance of web applications. This includes metrics on request rates, server response times, and failures, as well as the ability to track the performance of specific requests and dependencies. This information can be used to identify and troubleshoot issues, such as slow page load times or errors, and to improve the overall performance and user experience of web applications.
