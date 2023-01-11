@@ -34,7 +34,7 @@
 
         <tr>
             <td>Source</td>
-            <td>{post.filename}</td>
+            <td><a href="https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/001-csharp-extension-methods.md">{post.filename}</a></td>
             <td>Render timestamp</td>
             <td>{timestamp}</td>
         </tr>
@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td>Source</td>
-            <td>{post.filename}</td>
+            <td><a href="https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/001-csharp-extension-methods.md">{post.filename}</a></td>
         </tr>
         <tr>
             <td>Render timestamp</td>
