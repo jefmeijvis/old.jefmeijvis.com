@@ -31,7 +31,7 @@
     {
         .content
         {
-            width: calc(100% - 5rem);
+            width: calc(100% - 2rem);
         }
 
         .content-wrapper
