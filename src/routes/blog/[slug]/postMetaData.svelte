@@ -18,30 +18,30 @@
 <div class:open="{open}" class:close="{!open}">
     <table class="table-desktop">
         <tr>
-            <td>Author</td>
+            <td class="key">Author</td>
             <td>{post.author}</td>
-            <td>Publish date</td>
+            <td class="key">Publish date</td>
             <td>{post.date}</td>
         </tr>
 
         <tr>
-            <td>Title</td>
+            <td class="key">Title</td>
             <td>{post.title}</td>
-            <td>Id</td>
+            <td class="key">Id</td>
             <td>{post.id}</td>
         </tr>
 
         <tr>
-            <td>Source</td>
+            <td class="key">Source</td>
             <td><a href="{'https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/' + post.filename}">{post.filename}</a></td>
-            <td>Render timestamp</td>
+            <td class="key">Render timestamp</td>
             <td>{timestamp}</td>
         </tr>
 
         <tr>
-            <td>Views</td>
+            <td class="key">Views</td>
             <td>{post.views}</td>
-            <td>Tags</td>
+            <td class="key">Tags</td>
             <td>{post.tags.join(", ")}</td>
         </tr>
     </table>
@@ -49,50 +49,56 @@
 
     <table class="table-mobile">
         <tr>
-            <td>Author</td>
+            <td class="key">Author</td>
             <td>{post.author}</td>
         </tr>
         <tr>
-            <td>Publish date</td>
+            <td class="key">Publish date</td>
             <td>{post.date}</td>
         </tr>
         <tr>
-            <td>Title</td>
+            <td class="key">Title</td>
             <td>{post.title}</td>
         </tr>
         <tr>
-            <td>Id</td>
+            <td class="key">Id</td>
             <td>{post.id}</td>
         </tr>
         <tr>
-            <td>Source</td>
+            <td class="key">Source</td>
             <td><a href="https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/001-csharp-extension-methods.md">{post.filename}</a></td>
         </tr>
         <tr>
-            <td>Render timestamp</td>
+            <td class="key">Render timestamp</td>
             <td>{timestamp}</td>
         </tr>
         <tr>
-            <td>Views</td>
+            <td class="key">Views</td>
             <td>{post.views}</td>
         </tr>
         <tr>
-            <td>Tags</td>
+            <td class="key">Tags</td>
             <td>{post.tags.join(", ")}</td>
         </tr>
     </table>
 </div>
 
 <style>
+    .key
+    {
+        font-weight: bold;
+    }
     div
      {
         overflow: hidden;
      }
 
+
     .open
     {
         height : auto;
         transform: ease all .25s;
+        padding : .25rem;
     }
 
     .close
@@ -107,11 +113,10 @@
     .table-desktop,.table-mobile
     {
         width : 100%;
-        padding : .5rem;
         border-radius: .5rem;
         margin-top: .5rem;
         margin-bottom: .5rem;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-collapse: collapse;
     }
     h3
     {

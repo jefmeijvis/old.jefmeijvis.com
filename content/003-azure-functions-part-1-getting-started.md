@@ -62,7 +62,7 @@ We can verify the workings of this function by going to the Azure Portal and vis
 
 ![Logs](/post/003/logs.png)
 
-For part two, see [Azure Functions : part 2](http://localhost:5173/post/004-azure-functions-triggers-and-bindings)
+For part two, see [Azure Functions : part 2](/blog/004-azure-functions-part-2-triggers-and-bindings)
 
 ## Further reading
 - MS Docs, Introduction : https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview

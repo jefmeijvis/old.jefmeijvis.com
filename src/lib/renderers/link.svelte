@@ -1,9 +1,19 @@
 <script lang="ts">
     export let href = ''
     export let title : string = ""
+
+    let target : string = "_blank";
+
+
+    if(href.includes('www.jefmeijvis.com'))
+      target = '_self';
+
+    if(href.startsWith('/'))
+      target = '_self';
+
   </script>
   
-  <a {href} {title}><slot></slot></a>
+  <a {target} {href} {title}><slot></slot></a>
 
   <style>
     a
@@ -12,7 +22,7 @@
         padding : .10rem;
         background-color:white;
         border-radius: .25rem;
-        color:#0078d4
+        color:#0078d4;
     }
 
     a:hover
