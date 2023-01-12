@@ -33,7 +33,7 @@
 
         <tr>
             <td>Source</td>
-            <td><a href="https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/001-csharp-extension-methods.md">{post.filename}</a></td>
+            <td><a href="{'https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/' + post.filename}">{post.filename}</a></td>
             <td>Render timestamp</td>
             <td>{timestamp}</td>
         </tr>
