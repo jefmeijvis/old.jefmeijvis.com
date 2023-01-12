@@ -3,6 +3,9 @@
     export let title : string = ""
     export let text = ''
 
+    if(href.includes("/static"))
+        href.replace("/static","");
+
 
     let small : boolean = false;
     if(text.includes("[small]"))
@@ -35,9 +38,18 @@
   </script>
   
   <img style="{getStyle()}" src={href} {title} alt={text}>
+  <p class="alt-text"><i>Image: {text}</i></p>
 
 
   <style>
+        .alt-text
+        {
+            font-weight: 300;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
         img
         {
             width : 100%;

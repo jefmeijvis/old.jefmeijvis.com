@@ -10,13 +10,12 @@
     {
         open = !open
     }
-
 </script>
 
 
 <h3 on:keydown={toggle} on:click={toggle}>{open ? "▲" : "▼"} Post information </h3>
 
-<div style="display:{open ? '' : 'none'}">
+<div class:open="{open}" class:close="{!open}">
     <table class="table-desktop">
         <tr>
             <td>Author</td>
@@ -42,8 +41,8 @@
         <tr>
             <td>Views</td>
             <td>{post.views}</td>
-            <td></td>
-            <td></td>
+            <td>Tags</td>
+            <td>{post.tags.join(", ")}</td>
         </tr>
     </table>
 
@@ -77,10 +76,29 @@
             <td>Views</td>
             <td>{post.views}</td>
         </tr>
+        <tr>
+            <td>Tags</td>
+            <td>{post.tags.join(", ")}</td>
+        </tr>
     </table>
 </div>
 
 <style>
+    div
+     {
+        overflow: hidden;
+     }
+
+    .open
+    {
+        height : auto;
+        transform: ease all .25s;
+    }
+
+    .close
+    {
+        height : 0rem;
+    }
     td
     {
         font-weight: 300;
@@ -89,11 +107,11 @@
     .table-desktop,.table-mobile
     {
         width : 100%;
-        outline : 1px black solid;
         padding : .5rem;
         border-radius: .5rem;
         margin-top: .5rem;
         margin-bottom: .5rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     h3
     {

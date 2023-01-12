@@ -9,12 +9,17 @@
 </script>
 
 <p>
+    Tags: 
     {#each post.tags as tag}
         <button on:click={click}>{tag}</button>
     {/each}
 </p>
 
 <style>
+    p
+    {
+        font-size: 1rem;
+    }
     button
     {
         background-color: rgb(230, 241, 255);
@@ -30,5 +35,17 @@
     {
         opacity: 75%;
         transform: translate(0,-0.25rem);
+    }
+
+    @media (max-aspect-ratio: 1/1) 
+    {
+        button
+        {
+            background-color: rgb(187, 215, 250);
+        }
+        p
+        {
+            text-align: center;
+        }
     }
 </style>

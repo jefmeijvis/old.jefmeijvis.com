@@ -6,43 +6,117 @@ title: Azure Application Insights
 date: 11/01/2022
 description : An overview on how to create and host an API build with Sveltekit.
 tags : Azure,Logging
-published : false
+published : true
 ---
 
 ## Azure Application Insights
+Application Insights is an Azure service that allows developers to monitor their applications in a centralised way, all the way from development through production. With the available data, software teams are able to proactively understand how their application is being used. In case of an incident, developers are able to reactively review metrics, logs and traces to find the root cause. 
+![Azure Application Insights logo[small]](/post/007/logo.png)
+
+It is an essential tool to develop distributed applicatons and system at scale.
 
 ## OpenTelemetry
+When software teams or organisations manage multiple applications, it might be useful to collect all this data in a single place. Only by doing so we're able to see the entire picture of what's happening across all these systems.
+Doing so requires that logs, traces and metrics are generated in a standardized data format.
+
+![OpenTelemetry Logo [medium]](/post/007/opentelemetry.png)
+
+This is where [OpenTelemetry](https://opentelemetry.io/) comes in. By standardizing the format in which data is collected, software teams can start using different products together without being vendor dependant. 
+
+## Getting started
+
+### Create an Application Insights instance
+Go to the [Azure Portal](https://www.portal.azure.com) and create a new Application Insights resource.
+
+![Creating a new instance through the Azure Portal](/post/007/portal1.png)
+
+After creating the instance, we can go to the Overview tab and copy the connection string
+
+![Copying the connection string from the portal. Do not worry, the credentials shown here are not real](/post/007/portal2.png)
+
+This connection string is always needed to connect to our instance of Application Insights.
+
+> On March 31, 2025, support for instrumentation key ingestion will end. Instrumentation key ingestion will continue to work, but Microsoft will no longer provide updates or support for the feature. Connection strings will be the prefered way of connecting from now on.
+
+
+### Auto instrumentation (agents)
+Auto instrumentation is the easiest way to start collecting data, without even having to make code changes.
+Various target environments, such as Azure Functions and Azure App Service even enable Azure Insights logging by default!
+
+See the [app insights overview](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net#how-do-i-instrument-an-application) for an overview of the multiple auto-instrumentation possibilities for different languages.
+
+## Logging in DotNET
+If you're writing dotnet code, changes are high you're using a logging library.
+Most commenly used logging libraries provide a way to deterimine multiple targets for you logging data.
+E.g. you might want to log to both a file on disk and to Azure Insights.
+
+### Log4net
+[Log4net](https://logging.apache.org/log4net/) has a logging appender which is available through a [NuGet package](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/2.21.0).
+
+After adding the package to the dotnet application, we can update the log4net config file to include the new appender. 
+
+    <log4net>
+    <root>
+        <level value="ALL"/>
+        <appender-ref ref="aiAppender"/>
+    </root>
+    <appender name="aiAppender" type="Microsoft.ApplicationInsights.Log4NetAppender.ApplicationInsightsAppender, Microsoft.ApplicationInsights.Log4NetAppender">
+        <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%message%newline"/>
+        </layout>
+    </appender>
+    </log4net> 
+### Serilog
+
+[Serilog](https://serilog.net/) has a [logging sink](https://www.nuget.org/packages/Serilog.Sinks.ApplicationInsights/) to send the collected logs to Application Insights.
+
+The sink can be configured in code in the following way:
+
+    var log = new LoggerConfiguration()
+        .WriteTo.ApplicationInsights(TelemetryConfiguration.Active, TelemetryConverter.Traces)
+        .CreateLogger();
+
+### Nlog
+[Nlog](https://nlog-project.org/) has a [logging target package](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/2.21.0) which can be used to direct the logs to Application Insights.
+
+The following configuration can be used to set up the logging target with the correct instrumentation key or connection string:
+
+    <nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <extensions>
+            <add assembly="Microsoft.ApplicationInsights.NLogTarget" />
+        </extensions>
+        <targets>
+            <target xsi:type="ApplicationInsightsTarget" name="aiTarget">
+                <instrumentationKey>Your_Resource_Key</instrumentationKey>	<!-- Only required if not using ApplicationInsights.config -->
+                <contextproperty name="threadid" layout="${threadid}" />	<!-- Can be repeated with more context -->
+            </target>
+        </targets>
+        <rules>
+            <logger name="*" minlevel="Trace" writeTo="aiTarget" />
+        </rules>
+    </nlog>
+
+
+
+
+
+### SDK  
+## ASP.NET API's
+## Console Applications
+
+
+
 
 ## Dashboards
 
-## ASP.NET API's
-https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
-
-## Console Applications
-https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
-
-## Logging sinks
-### Log4net
-https://stackoverflow.com/questions/28800320/log4net-with-application-insights
-### Serilog
-https://github.com/serilog-contrib/serilog-sinks-applicationinsights
-### Nlog
-https://www.nexsoftsys.com/articles/integrating-apps-insights-with-nlog-aspnet-core.html
-https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget
+## Further reading
+- https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
+- https://stackoverflow.com/questions/28800320/log4net-with-application-insights
+- https://github.com/serilog-contrib/serilog-sinks-applicationinsights
+- https://www.nexsoftsys.com/articles/integrating-apps-insights-with-nlog-aspnet-core.html
+- https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget
 
 
 
-Azure Application Insights is a powerful performance monitoring and diagnostics tool that enables developers to quickly and easily identify and fix issues in their web applications. With its ability to provide detailed insights into the performance, availability, and usage of web applications, Application Insights is an essential tool for any organization that wants to deliver high-quality, responsive, and reliable web applications.
 
-One of the key benefits of using Application Insights is its ability to provide detailed performance metrics on the availability, responsiveness, and performance of web applications. This includes metrics on request rates, server response times, and failures, as well as the ability to track the performance of specific requests and dependencies. This information can be used to identify and troubleshoot issues, such as slow page load times or errors, and to improve the overall performance and user experience of web applications.
-
-Another benefit of using Application Insights is its ability to provide detailed usage analytics. This includes metrics on the number of users, session duration, and page views, as well as information on user demographics and device usage. This information can be used to understand how web applications are being used and to identify areas for improvement, such as areas of the application that are not being used as much as expected or features that are causing confusion.
-
-Additionally, Application Insights can be used to diagnose and fix issues in your application by providing the ability to search, correlate and analyze traces, exceptions, and other telemetry from your application and dependency. This makes it easy to identify and diagnose errors, and to understand the root cause of issues and performance bottlenecks.
-
-Another feature that can be used is the availability testing to check the availability of your application by simulating requests, you can setup and schedule tests to run periodically and get alerts in case of failures.
-
-Finally, Application Insights can also be used to monitor and improve the overall health and availability of web applications by providing detailed information on the resources and dependencies that web applications rely on, such as databases, web services, and other external systems. This can be used to identify and troubleshoot issues and to improve the overall performance and availability of web applications.
-
-Overall, Azure Application Insights is a powerful and versatile tool that provides a wide range of benefits for developers and organizations. Its ability to provide detailed performance and usage metrics, as well as its ability to diagnose and fix issues, makes it an essential tool for any organization that wants to deliver high-quality, responsive, and reliable web applications.
 
