@@ -47,21 +47,11 @@ export async function GET()
       post.description = attributes.description;
       post.tags = splitTags(attributes.tags);
       post.id = attributes.id;
-      // Generate and extract metadata
+      post.published = attributes.published;
 
-      console.dir(attributes.published)
-
-      if(attributes.published)
+      if(post.published)
         postCollection.push(post);
     }
-
-
-
-
-
-
-
-      // Generate htm from markdown
 
     let sortingFunction = (a : Post,b : Post) => 
     {

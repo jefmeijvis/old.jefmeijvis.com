@@ -3,6 +3,7 @@
 	import { goto } from "$app/navigation";
 	import type { Post } from "src/routes/blog/[slug]/post";
 	import { fade } from "svelte/transition";
+	import PostTags from "./postTags.svelte";
     export let post : Post
 
     async function GetPageViews()
@@ -45,6 +46,7 @@
             {views} views |
              {post.date}
         </p>
+        <PostTags {post}></PostTags>
         <p class="description">{post.description}</p>
         <p class="link">Read more..</p>
     </div>

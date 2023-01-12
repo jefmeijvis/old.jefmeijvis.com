@@ -13,5 +13,6 @@ export type Post =
     description : string,
     tags : string[],
     views : number,
+    published : boolean,
 
 }

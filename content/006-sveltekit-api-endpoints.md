@@ -5,7 +5,7 @@ image : /post/006/svelte.png
 title: Sveltekit API endpoints
 date: 13/12/2022
 description : An overview on how to create and host an API build with Sveltekit.
-tags : Sveltekit,API,endpoints
+tags : Sveltekit,API
 published : true
 ---
 

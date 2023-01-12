@@ -5,7 +5,7 @@ image : /post/007/logo.png
 title: Azure Application Insights
 date: 11/01/2022
 description : An overview on how to create and host an API build with Sveltekit.
-tags : Sveltekit,API,endpoints
+tags : Azure,Logging
 published : false
 ---
 
