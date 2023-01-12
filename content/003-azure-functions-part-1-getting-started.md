@@ -6,6 +6,7 @@ title: Azure functions part 1 - Getting started
 date: 01/23/2022
 description : Let's have a look at what Azure Functions are and how to deploy and integrate them in your cloud application.
 tags : Azure,Functions
+published : true
 ---
 
 ## What are Azure Functions?

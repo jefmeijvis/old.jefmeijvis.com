@@ -6,6 +6,7 @@ title: Managing multiple Teams instances
 date: 18/12/2021
 description : Managing multiple Teams instances of different companies can be a real hassle. I quickly showcase the solution I ended up using with the help of Ferdi.
 tags : Teams,Ferdi
+published : true
 ---
 
 ## Teams?

@@ -31,15 +31,8 @@ export async function GET()
       let post : Post = {} as Post;
       post.rawMarkdown = markdown;
       post.filename = filename;
-      postCollection.push(post);
       post.views = await GetPageviews(post);
-    }
 
-
-    for(let i = 0 ; i < postCollection.length ; i++)
-    {
-      // For each file
-      let post : Post = postCollection[i]
       // Generate table of content;
       let splitMarkdown = fm(post.rawMarkdown);
       post.markdown = splitMarkdown.body;
@@ -55,7 +48,14 @@ export async function GET()
       post.tags = splitTags(attributes.tags);
       post.id = attributes.id;
       // Generate and extract metadata
+
+      console.dir(attributes.published)
+
+      if(attributes.published)
+        postCollection.push(post);
     }
+
+
 
 
 

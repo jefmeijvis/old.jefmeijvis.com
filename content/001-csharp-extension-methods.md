@@ -6,6 +6,7 @@ title: CSharp extension methods
 date: 16/10/2021
 description : As a programmer, extension methods are a great tool to have in your toolbelt! They allow you to extend the functionality of an existing type without having to modify the type.
 tags : CSharp
+published : true
 ---
 
 ## Extension methods?

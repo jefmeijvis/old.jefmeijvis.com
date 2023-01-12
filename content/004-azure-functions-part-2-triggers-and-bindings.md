@@ -6,6 +6,7 @@ title: Azure functions part 2 - Triggers and bindings
 date: 12/03/2022
 description : Triggers and bindings are core properties of an Azure function. In this blogpost we will have a deeper look ...
 tags : Azure,Functions
+published : true
 ---
 
 For part one, see [Azure Functions : part 1](/blog/003-azure-functions-part-1-getting-started)

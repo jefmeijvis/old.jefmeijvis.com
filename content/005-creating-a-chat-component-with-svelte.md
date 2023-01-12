@@ -6,6 +6,7 @@ title: Create a barebones chat component with Svelte
 date: 01/10/2022
 description : Sveltekit API endpoints.
 tags : Chat,Component,Svelte,Sveltekit
+published : true
 ---
 
 ## Frontend with Svelte?
