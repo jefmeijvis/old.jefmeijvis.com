@@ -1,4 +1,8 @@
 <svelte:head><title>About - Jef Meijvis</title></svelte:head>
+
+<img loading="lazy" src="/profile-picture.png" alt="profile"/>
+
+
 <h1>About</h1>
 <p>
     My name is Jef. I'm a software engineer, focusing mostly on the C# / Dotnet / Azure ecosystem. 
@@ -20,5 +24,13 @@
       p
       {
           font-weight: 300;
+      }
+
+      img
+      {
+        display: block;
+        margin:auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
       }
   </style>
