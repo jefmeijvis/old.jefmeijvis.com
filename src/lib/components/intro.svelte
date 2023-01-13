@@ -28,11 +28,13 @@
         width : 10rem;
         border-radius: 7rem;
         cursor: pointer;
+        transition: all ease .25s
     }
 
     img:hover
     {
         transform: scale(1.05);
+        opacity: 80%;
     }
     .text
     {

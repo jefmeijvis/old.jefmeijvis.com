@@ -13,6 +13,6 @@ export function getRenderTimestamp() : string
 
     let locale : string = "en-us"
     let rval : string = (new Date()).toLocaleString(locale, options) + ' (GMT+1)';
-    console.log('🕓 Got render timestamp :' + rval)
+    console.log('🕓 Got render timestamp: ' + rval)
     return rval;
 }

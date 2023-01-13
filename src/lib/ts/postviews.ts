@@ -3,9 +3,11 @@ import fs from 'fs';
 
 export class Postview
 {
+    // Return the amount pageviews of any specific page
+    // @param page : filename such as https://www.jefmeijvis.com/blog/
     static async GetViews(page : string) : Promise<any>
     {
-        let filename : string = 'cache/' + hash(page) + '.cache';
+        let filename : string = generateFilename(page);
 
         if (cacheIsOk(filename))
         {
@@ -28,6 +30,12 @@ export class Postview
     }
 }
 
+function generateFilename(input : string) : string
+{
+    let id = input.replace("https://www.jefmeijvis.com/blog/","").slice(0,3);
+    return 'cache/supabase-' + id + "-" + hash(input) + '.cache';
+}
+
 function cacheIsOk(path : string) : boolean
 {
     let fileExists : boolean = fs.existsSync(path);
@@ -36,14 +44,18 @@ function cacheIsOk(path : string) : boolean
         return false;
 
     let stats = fs.statSync(path);
-    let lastModificationTime : Date = stats.mtime;
-    let today = new Date();
-    let diff : number = Math.round(Math.abs(today.getTime() - lastModificationTime.getTime()) / 1000); // Cache age in seconds
+    let diff : number =  getSecondsAge(stats.mtime)// Cache age in seconds
     console.log('Cache age is ' + diff + 's')
     if(diff > 3600) // Cache maxage is 1 hour
         return false;
 
     return true;
+}
+
+function getSecondsAge(input : Date) : number
+{
+    let today = new Date();
+    return Math.round(Math.abs(today.getTime() - input.getTime()) / 1000);
 }
 
 function hash(str : string)
@@ -53,7 +65,7 @@ function hash(str : string)
     {
         let chr = str.charCodeAt(i);
         hash = (hash << 5) - hash + chr;
-        hash |= 0; // Convert to 32bit integer
+        hash |= 0;
     }
     return Math.abs(hash);
 }

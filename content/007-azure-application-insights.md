@@ -5,7 +5,7 @@ image : /post/007/logo.png
 title: Azure Application Insights
 date: 11/01/2022
 description : An overview on how to create and host an API build with Sveltekit.
-tags : Azure,Logging
+tags : azure,logging,dotnet
 published : true
 ---
 
@@ -32,8 +32,7 @@ Go to the [Azure Portal](https://www.portal.azure.com) and create a new Applicat
 
 After creating the instance, we can go to the Overview tab and copy the connection string
 
-![Copying the connection string from the portal. Do not worry, the credentials shown here are not real](/static
-/post/007/portal2.png)
+![Copying the connection string from the portal. Do not worry, the credentials shown here are not real](/static/post/007/portal2.png)
 
 This connection string is always needed to connect to our instance of Application Insights.
 
@@ -98,12 +97,8 @@ The following configuration can be used to set up the logging target with the co
     </nlog>
 
 
-
-
-
-### SDK  
-## ASP.NET API's
-## Console Applications
+## Manual data collection  
+### Console Applications
 
 
 
