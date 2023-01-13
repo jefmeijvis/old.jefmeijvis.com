@@ -64,7 +64,6 @@
         {
             img
             {
-                outline : 5px red solid;
                 width : 100% !important;
             }
         }
