@@ -1,6 +1,6 @@
 <script lang="ts">
     import PrismJs from '$lib/components/prismJS.svelte';
-    export let lang : string = "json"
+    export let lang : string = "javascript"
     export let text : string;
   </script>
   

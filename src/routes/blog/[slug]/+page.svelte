@@ -11,6 +11,8 @@
     export let data: { id : number, slug : string , post : Post, timestamp : string};
 
     let source = data.post.markdown;
+    let og : string = "/post/" + data.post.filename.slice(0,3) + "/opengraph.png";
+    console.log(og);
 
     // Reload the markdown from the pageload data
     afterNavigate(() => DoAfterNavigate());
@@ -24,7 +26,10 @@
 
 <svelte:head>
     <title>{data.post.title} - Jef Meijvis</title>
+    <meta name="image" property="og:image" content={og}>
+    <meta name="twitter:image" content={og}>
 </svelte:head>
+
 
 <div>
 <a href="/blog">Back to overview</a>

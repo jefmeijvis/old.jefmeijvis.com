@@ -17,9 +17,9 @@
 </script>
 
 <svelte:head>
-    {#if !$page.url.pathname.includes("/post/")}
-        <meta name="image" property="og:image" content="https://www.jefmeijvis.com/images/opengraph.png">
-        <meta name="twitter:image" content="https://www.jefmeijvis.com/images/opengraph.png">
+    {#if !$page.url.pathname.includes("/blog/")}
+        <meta name="image" property="og:image" content="/opengraph.png">
+        <meta name="twitter:image" content="/opengraph.png">
         <meta name="twitter:title" content="Software blogging about Microsoft Azure and .NET">
         <meta name="twitter:description" content="Software blogging about Microsoft Azure and .NET">
     {/if}
