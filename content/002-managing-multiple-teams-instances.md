@@ -17,13 +17,13 @@ As a software consultant, I’m often part of multiple organizations at the same
 
 My initial solution was to use the web version of Teams on multiple browsers. I had a Chrome window, a Chrome incognito window and a Firefox window all up and running at the same time. Each one of those was logged in with a different user account. While this worked, it was cumbersome and had to be set up every time I started my computer. Time to look ahead for another solution.
 
-![Ferdi Logo [small]](/post/002/ferdi-logo.png)
+![Ferdi Logo [small]](/static/post/002/ferdi-logo.png)
 
 
 ## Ferdi?
 Along came Ferdi, an open source desktop app that allows you to use your favorite web applications bundled together in one single desktop app. Examples are WhatsApp, Facebook messenger, Notion, and many others. Ferdi achieves this by running a separate instance of Chromium for each service that you add to the application. On top of that, multiple instances of the same service can be added as well! Just what I needed. I downloaded and installed Ferdi, added my 3 different Teams instances as separate services, and voila! Every time my laptop boots, Ferdi starts up and I’m logged in on all 3 Teams instances without having to do anything.
 
-![Teams interface in Ferdi](/post/002/ferdi-teams.png)
+![Teams interface in Ferdi]((/static//post/002/ferdi-teams.png)
 
 
 ## Setting up the solution

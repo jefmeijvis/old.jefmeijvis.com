@@ -52,7 +52,6 @@ We implement the folowing generic extension method that selects a random element
     Console.WriteLine(fruits.GetRandom())
 
 This was a quick look at extension methods, and how they can make life easier when working with classes where you don't have access to the actual implementation!
-
  
 ## Further reading
 - https://kit.svelte.dev/docs/routing#server

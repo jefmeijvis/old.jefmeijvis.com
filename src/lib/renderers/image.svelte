@@ -4,7 +4,7 @@
     export let text = ''
 
     if(href.includes("/static"))
-        href.replace("/static","");
+        href = href.replace("/static","");
 
 
     let small : boolean = false;
