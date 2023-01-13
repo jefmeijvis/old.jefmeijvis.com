@@ -25,24 +25,24 @@ Let's clarify this with an example. Imagine a blob storage bucket that gets used
 
 **Output binding:** Azure Cosmos Database
 
-![A trigger, input and output binding make up this Azure function](/post/004/overview-trigger-binding-example.png)
+![A trigger, input and output binding make up this Azure function](/static/post/004/overview-trigger-binding-example.png)
 
 ### Available triggers
 The following triggers are currently supported by Azure Functions. They will provide the start signal for your function to begin execution.
 
-![Available triggers in Azure Functions](/post/004/table-1.png)
+![Available triggers in Azure Functions](/static/post/004/table-1.png)
 
 > Every function can be run manually by performing an http request, independently from which kind of trigger is used. This can be usefull for when you want to debug something, or manually kickstart a function. For more information see the Microsoft documentation
 
 ### Available input bindings
 Sometimes we need our function to retrieve data from somewhere else. This is where we need our input bindings. The following input bindings are currently available:
 
-![Available input bindings in Azure Functions](/post/004/table-2.png)
+![Available input bindings in Azure Functions](/static/post/004/table-2.png)
 
 ### Available output bindings
 After your code has executed inside your function, you might want to send the results to another resource. Output bindings allow you to send your function's outcome to another resource.
 
-![Available output bindings in Azure Functions](/post/004/table-3.png)
+![Available output bindings in Azure Functions](/static/post/004/table-3.png)
 
 ## External links
 - MS Docs, bindings and triggers : https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=csharp

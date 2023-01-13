@@ -13,7 +13,7 @@ published : true
 
 In this article we're going to create a simple chatbox, using Svelte. The design is based on similar chat services, such as Facebook Messenger or WhatsApp. At this point the entire chatbox is local, so no data is going in or out. Below is an image of the finished result:
 
-![A chat windows created with Svelte components [medium]](/post/005/demo.png)
+![A chat windows created with Svelte components [medium]](/static/post/005/demo.png)
 
 For a live demo you can visit [the demo page](/demo/005?ref=article)
 
@@ -23,7 +23,7 @@ Use the 'Username' field to choose a username. It's value is taken as is, so whe
 
 Let's start by creating a container div in our main component file (chatbox.svelte). This will be a full page-width div to contain our actual chatbox. Next up, add our actual chatbox div. In here we will create a h1 element to create our title, and another div which we will give the classname message-container. When we apply some styling, we get the following result:
 
-![A chat windows created with Svelte components [medium]](/post/005/demo-1.png)
+![A chat windows created with Svelte components [medium]](/static/post/005/demo-1.png)
 
 
     <div class="container">
