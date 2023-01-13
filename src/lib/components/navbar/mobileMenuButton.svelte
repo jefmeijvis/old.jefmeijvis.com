@@ -18,7 +18,7 @@
     }
 </script>
 
-<button on:click="{Toggle}">
+<button aria-label="Mobile menu toggle button" on:click="{Toggle}">
     <img src="/hamburger-menu.png" alt="hamburger menu toggle"/>
 </button>
 

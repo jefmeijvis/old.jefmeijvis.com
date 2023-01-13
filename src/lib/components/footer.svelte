@@ -59,7 +59,6 @@
     p
     {
         margin-top: .5rem;
-        opacity: 50%;
     }
 
     li

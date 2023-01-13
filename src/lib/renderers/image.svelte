@@ -27,17 +27,17 @@
     function getStyle()
     {
         if(small)
-            return "width:25%;display:block;margin:auto;";
+            return "width:25%;";
 
         if(medium)
-            return "width:50%;display:block;margin:auto;";
+            return "width:50%;";
 
         return "";
     }
 
   </script>
   
-  <img style="{getStyle()}" src={href} {title} alt={text}>
+  <img loading="lazy" style="{getStyle()}" src={href} {title} alt={text}>
   <p class="alt-text"><i>Image: {text}</i></p>
 
 
@@ -56,5 +56,7 @@
             border-radius: .5rem;
             margin-top: 1rem;
             margin-bottom: 1rem;;
+            display: block;
+            margin:auto;
         }
   </style>
