@@ -1,9 +1,14 @@
 <script lang="ts">
+	import { filter } from "$lib/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
     export let post : Post;
 
-    function click(e : any)
+    function click(e : any,tag : string)
     {
+        let s : string = tag + ", "
+        if(!$filter.includes(s))
+            $filter += s;
+
         e.stopPropagation();
     }
 </script>
@@ -11,7 +16,7 @@
 <p>
     Tags: 
     {#each post.tags as tag}
-        <button on:click={click}>{tag}</button>
+        <button on:click={()=>click(event,tag)}>{tag}</button>
     {/each}
 </p>
 

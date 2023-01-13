@@ -4,7 +4,7 @@ id : 7
 image : /post/007/logo.png
 title: Azure Application Insights
 date: 11/01/2022
-description : An overview on how to create and host an API build with Sveltekit.
+description : Collect logging, metrics and traces and store them in Application Insights.
 tags : azure,logging,dotnet
 published : true
 ---
