@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import { filter } from "$lib/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
 	import PostPreview from "./postPreview.svelte";
@@ -7,6 +8,9 @@
 
     function applyFilter(post : Post) : boolean
     {
+        if(!$page.url.href.includes("/blog"))
+            return true;
+
         if($filter == "")
             return true;
 
@@ -35,6 +39,13 @@
 
         if(post.description.toLowerCase().includes(keyword))
             return true;
+
+        for(let i = 0 ; i < post.tags.length ; i++)
+        {
+            let tag = post.tags[i].toLowerCase();
+            if(tag.includes(keyword))
+            return true;
+        }
 
         return false;
     }

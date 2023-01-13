@@ -1,15 +1,20 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import { filter } from "$lib/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
     export let post : Post;
 
     function click(e : any,tag : string)
     {
+        e.stopPropagation();
+
+        if(!$page.url.href.includes("/blog"))
+            return;
+
         let s : string = tag + ", "
         if(!$filter.includes(s))
             $filter += s;
 
-        e.stopPropagation();
     }
 </script>
 
