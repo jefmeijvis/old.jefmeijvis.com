@@ -97,13 +97,91 @@ The following configuration can be used to set up the logging target with the co
     </nlog>
 
 
-## Manual data collection  
-### Console Applications
+## Manual data collection
+Besides using a logging target, we can also 'manually' create a metric, trace or log.
+Microsoft provides [a SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights) through a Nuget package to easily interact with your instance.
+In dotnet we can do this in the following way:
+
+    using Microsoft.ApplicationInsights;
+
+    public void CreateLog(string message,SeverityLevel level, IDictionary<string, string> props)
+    {
+        // Set up the telemetry client - You could cache this / make it static
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.ConnectionString = "my-connection-string";
+        var client = new TelemetryClient(configuration);
+
+        // Create a trace
+        client.TrackTrace(message,level, props);
+    }
+
+The TrackTrace method accepts 3 arguments:
+- Message : The string you want to log
+- Level : The level you want to log. Can be Verbose | Information | Warning | Error | Critical
+- Props: An object that implements IDictionary that can hold multiple key-value pairs.
+
+The dictionary could for example contain the following information:
+
+    properties = new Dictionary<string, string>();
+    properties.add("user-id", 10);
+    properties.add("api-endpoint,"/api/v2/users");
+
+This way we can add our own custom data fields to the logtraces.
+
+## Inspecting the data
+
+We can verify that our data colletion is working by going to the Azure Portal and visiting our instance.
+We can view the logs under *Monitoring > Logs*.
+The poral allows us to query our data using [KQL, the Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
+
+![Inspecting the collected logs using the Azure Portal [medium]](/static/post/007/portal3.png)
 
 
+If we would like to inspect the last 100 traces we generated using the above dotnet code, we could perform the following query:
+
+    traces
+    | take 100
+
+Please make note of the | (pipe) symbol used in KQL. 
+If we would like to see which loglines contain a certain string, we could do this by adding a where clause:
+
+    traces
+    | where message has "jef"
+    | take 100
+
+Query data in the customDimensions field using the following syntax:
+
+    traces
+    | where customDimensions["user-id"] = 10 
+    | take 100
 
 
-## Dashboards
+## Visualising data using dashboards
+
+While it is beyond the scope of this article, you can visualise the collected data by using dashboards.
+
+### Azure Dashboard
+Azure offers a dashboard service on its own.
+This service can also be created through the Azure Poral.
+
+![Azure Dashboard](/static/post/007/portal4.png)
+
+### 3rd party dashboards
+
+But because we collected our data in a vendor independant format, we can integrate Application Insights with many 3rd party dashboard tools, such as [Grafana](https://grafana.com/)
+
+![Many 3rd party options, such as Grafana, exist](/static/post/007/grafana.png)
+
+## Summary
+Application Insights provides various ways to intagrate data logging in our existing or new applications.
+This can be done both by making configuration changes (auto-instrumentation) or by making minor code changes. 
+It allows us to collect metrics, logs and traces in a standard data format, made possible by OpenTelemetry.
+This open data format prevents vendor lock-in, and allows us to integrate our data with many 3rd party tools and systems.
+
+
+Do let me know if you spot any mistakes or inaccuracies.
+All feedback is welcome!
+Jef
 
 ## Further reading
 - https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
@@ -111,6 +189,7 @@ The following configuration can be used to set up the logging target with the co
 - https://github.com/serilog-contrib/serilog-sinks-applicationinsights
 - https://www.nexsoftsys.com/articles/integrating-apps-insights-with-nlog-aspnet-core.html
 - https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget
+- https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/
 
 
 

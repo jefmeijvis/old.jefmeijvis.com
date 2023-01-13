@@ -14,5 +14,6 @@
   {
     list-style-position: inside;
     overflow: hidden;
+    font-weight: 300;
   }
 </style>

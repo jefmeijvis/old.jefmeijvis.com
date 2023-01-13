@@ -59,4 +59,13 @@
             display: block;
             margin:auto;
         }
+
+        @media (max-aspect-ratio: 1/1) 
+        {
+            img
+            {
+                outline : 5px red solid;
+                width : 100% !important;
+            }
+        }
   </style>
