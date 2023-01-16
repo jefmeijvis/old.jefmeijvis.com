@@ -253,11 +253,12 @@ Let's have a look and see how we could calculate the median out of a list of num
     }
 
 Well that's looks like an aweful and unwieldy language.
+But it is a fun experiment to showcase ChatGPT's transformative capabilities nonetheless.
 
 
 ## Conclusion
 
-In conclusion, ChatGPT is an incredibly powerful tool that can help software developers automate repetitive tasks, generate code, and even help with documentation. It can save you a significant amount of time and effort, allowing you to focus on more complex tasks and improve the overall efficiency of your work. With easy integration and access to the model, it is worth giving it a try in your next project.
+In conclusion, ChatGPT is an incredibly powerful tool that can help software developers automate repetitive tasks, generate code, and even help with documentation. It can save you a significant amount of time and effort, allowing you to focus on more complex tasks and improve the overall efficiency of your work. With easy integration and access to the model, it is worth giving it a try in your next project. However keep in mind that AI assisted tools can be wrong, while their response might seem really solid and confident.
 
 ### Alternatives
 A interesting alternative to check out might be [Github Copilot](https://github.com/features/copilot), which can intergrate right in your IDE. It is also developed in part by OpenAI.
