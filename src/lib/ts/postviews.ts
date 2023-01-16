@@ -18,7 +18,8 @@ export class Postview
         }
         else
         {
-            let value = await supabase.from("jefmeijvis_visits").select('*',{count : "exact"}).eq('page',page);
+            // page could be
+            let value = await supabase.from("jefmeijvis_visits").select('*',{count : "exact"}).like('page','%' + page + '%');
             let result = -1;
     
             if(value.count)
