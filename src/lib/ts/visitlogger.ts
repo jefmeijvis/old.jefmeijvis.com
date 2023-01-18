@@ -19,8 +19,8 @@ export class VisitLogger
 
     public static async LogAction(action : Action, element : Element | string, page : string)
     {
-        //if(this.IsLocal(page))
-        //    return;
+        if(this.IsLocal(page))
+            return;
 
         let row : { action : Action, element : Element | string, page : string} = {page : page,action : action, element : element};
 

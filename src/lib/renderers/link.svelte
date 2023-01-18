@@ -22,7 +22,6 @@
         page : $page.url.href
       }
 
-      //@ts-ignore
       navigator.sendBeacon("/api/link",JSON.stringify(body))
     }
 
