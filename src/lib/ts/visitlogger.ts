@@ -17,12 +17,12 @@ export class VisitLogger
         .insert([row]);
     }
 
-    public static async LogAction(action : Action, element : Element, page : string)
+    public static async LogAction(action : Action, element : Element | string, page : string)
     {
         if(this.IsLocal(page))
             return;
 
-        let row : { action : Action, element : Element, page : string} = {page : page,action : action, element : element};
+        let row : { action : Action, element : Element | string, page : string} = {page : page,action : action, element : element};
 
         // Post to Supabase
         await supabase

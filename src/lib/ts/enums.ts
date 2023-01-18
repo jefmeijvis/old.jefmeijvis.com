@@ -2,7 +2,8 @@ export enum Action
 {
     Click = "click",
     Open = "open",
-    Close = "close",    
+    Close = "close",
+    Link = "link"    
 }
 
 export enum Element

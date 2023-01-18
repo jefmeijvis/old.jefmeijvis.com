@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { page } from "$app/stores";
+
+
     export let href = ''
     export let title : string = ""
 
@@ -11,9 +14,21 @@
     if(href.startsWith('/'))
       target = '_self';
 
+    function click()
+    {
+      let body = 
+      {
+        href : href,
+        page : $page.url.href
+      }
+
+      //@ts-ignore
+      navigator.sendBeacon("/api/link",JSON.stringify(body))
+    }
+
   </script>
   
-  <a {target} {href} {title}><slot></slot></a>
+  <a on:click={click} {target} {href} {title}><slot></slot></a>
 
   <style>
     a
