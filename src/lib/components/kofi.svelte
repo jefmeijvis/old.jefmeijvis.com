@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { Action, Element } from '$lib/ts/enums';
     let visible : boolean = false;
     import { fly } from 'svelte/transition';
 
@@ -6,6 +8,11 @@
     function toggle()
     {
         visible = !visible;
+        let p : string = $page.url.href.toString();
+        let element : Element = Element.BlogpostSupportButton;
+        let action : Action = visible ? Action.Open : Action.Close;
+        let body : {page : string, action : Action, element : Element} = {page : p ,element : element ,action : action};
+        fetch('../api/action',{method : 'POST', body : JSON.stringify(body)})
     }
 </script>
 

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
 	import Kofi from '$lib/components/kofi.svelte';
     import SvelteMarkdown from 'svelte-markdown';
 	import type { Post } from './post';
@@ -12,7 +11,6 @@
 
     let source = data.post.markdown;
     let og : string = "/post/" + data.post.filename.slice(0,3) + "/opengraph.png";
-    console.log(og);
 
     // Reload the markdown from the pageload data
     afterNavigate(() => DoAfterNavigate());

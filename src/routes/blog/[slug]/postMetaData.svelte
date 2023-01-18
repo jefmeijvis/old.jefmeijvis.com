@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from "$app/stores";
+	import { Action, Element } from "$lib/ts/enums";
 	import type { Post } from "./post";
 
     export let post : Post;
@@ -8,8 +10,15 @@
 
     function toggle()
     {
-        open = !open
+        open = !open;
+        let p : string = $page.url.href.toString();
+        let element : Element = Element.BlogpostInformation;
+        let action : Action = open ? Action.Open : Action.Close;
+        let body : {page : string, action : Action, element : Element} = {page : p ,element : element ,action : action};
+        fetch('../api/action',{method : 'POST', body : JSON.stringify(body)})
     }
+
+    
 </script>
 
 

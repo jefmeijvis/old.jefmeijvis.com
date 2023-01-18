@@ -1,6 +1,6 @@
 <div class="intro">
     <div class="picture">
-        <img on:keypress="{()=>window.open("/about","_self")}" on:click="{()=>window.open("/about","_self")}" src="/profile-picture.png" alt="profile"/>
+        <img on:keypress="{()=>window.open("/about?ref=profile-picture","_self")}" on:click="{()=>window.open("/about?ref=profile-picture","_self")}" src="/profile-picture.png" alt="profile"/>
     </div>
     <div class="text">
         <h1>Jef Meijvis</h1>
