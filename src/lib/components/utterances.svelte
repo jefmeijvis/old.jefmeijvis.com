@@ -1,8 +1,6 @@
-<p>Comment section</p>
-
 <script lang="ts">
 	import { onMount } from 'svelte';
-	let divElement: HTMLElement;
+	let bindingElement: HTMLElement;
     export let name : string;
 	onMount(() => 
     {
@@ -13,9 +11,9 @@
         scriptTag.setAttribute('label', '🔮 Utterances');
 		scriptTag.setAttribute('crossorigin', 'anonymous');
 		scriptTag.src = 'https://utteranc.es/client.js';
-		divElement.appendChild(scriptTag);
+		bindingElement.appendChild(scriptTag);
 	});
 
 </script>
 
-<div bind:this={divElement} />
+<div bind:this={bindingElement} />
