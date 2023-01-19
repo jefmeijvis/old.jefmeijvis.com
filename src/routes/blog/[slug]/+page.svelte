@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import Kofi from '$lib/components/kofi.svelte';
+	import Utterances from '$lib/components/utterances.svelte';
     import SvelteMarkdown from 'svelte-markdown';
 	import type { Post } from './post';
 	import PostMetaData from './postMetaData.svelte';
@@ -41,6 +42,7 @@
 <a href="#top">Back to top</a>
 
 <Kofi></Kofi>
+<Utterances name={data.post.title}></Utterances>
 
 </div>
 <style>

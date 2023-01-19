@@ -1,0 +1,21 @@
+<p>Comment section</p>
+
+<script lang="ts">
+	import { onMount } from 'svelte';
+	let divElement: HTMLElement;
+    export let name : string;
+	onMount(() => 
+    {
+		let scriptTag = document.createElement('script');
+		scriptTag.setAttribute('repo', 'jefmeijvis/www.jefmeijvis.com');
+		scriptTag.setAttribute('issue-term', name);
+		scriptTag.setAttribute('theme', 'github-light');
+        scriptElm.setAttribute('label', '🔮 Utterances');
+		scriptTag.setAttribute('crossorigin', 'anonymous');
+		scriptTag.src = 'https://utteranc.es/client.js';
+		divElement.appendChild(scriptTag);
+	});
+
+</script>
+
+<div bind:this={divElement} />
