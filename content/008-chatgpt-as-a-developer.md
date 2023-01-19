@@ -265,14 +265,8 @@ A interesting alternative to check out might be [Github Copilot](https://github.
 
 
 ## Further reading
-- https://learn.microsoft.com/en-us/azure/azure-monitor/app/ilogger
-- https://stackoverflow.com/questions/28800320/log4net-with-application-insights
-- https://github.com/serilog-contrib/serilog-sinks-applicationinsights
-- https://www.nexsoftsys.com/articles/integrating-apps-insights-with-nlog-aspnet-core.html
-- https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget
-- https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/
-
-
-
-
+- https://github.com/features/copilot
+- https://openai.com/
+- https://openai.com/blog/chatgpt/
+- https://lablab.ai/t/chatgpt-guide
 
