@@ -19,7 +19,6 @@
     {
         source=data.post.markdown;
     }
-
 </script>
 
 <svelte:head>
