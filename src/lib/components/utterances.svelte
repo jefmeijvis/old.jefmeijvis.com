@@ -10,7 +10,7 @@
 		scriptTag.setAttribute('repo', 'jefmeijvis/www.jefmeijvis.com');
 		scriptTag.setAttribute('issue-term', name);
 		scriptTag.setAttribute('theme', 'github-light');
-        scriptElm.setAttribute('label', '🔮 Utterances');
+        scriptTag.setAttribute('label', '🔮 Utterances');
 		scriptTag.setAttribute('crossorigin', 'anonymous');
 		scriptTag.src = 'https://utteranc.es/client.js';
 		divElement.appendChild(scriptTag);
