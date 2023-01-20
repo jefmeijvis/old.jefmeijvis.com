@@ -41,10 +41,10 @@ While it worked greatly, I wasn't keen on managing yet another external system.
 I moved on to storing my content in +page.svelte files in the routes folder.
 I also kept track of all posts and their metadata in a separate JSON file. 
 This meant that I had to keep two systems in sync, and while this isn't really complex, it's just anoying. 
-This gave me great flexibility, as each page was fully customisable and could have a vastly diffent look, feel, or even embed other svelte components in it. However, this also meant that I had to keep maintaining all these things.
+Storing each blogpost as a sveltekit page gave me great flexibility, as each page was fully customisable and could have a vastly diffent look, feel, or even embed other svelte components in it. However, this also meant that I had to keep maintaining all these things.
 A more general solution that would also work outside of my own environment was needed.
 
-That's when I switched over the markdown files. The [content](https://github.com/jefmeijvis/www.jefmeijvis.com/tree/main/content) folder of my repository now contains a bunch of markdown files.
+That's when I switched over to markdown files. The [content](https://github.com/jefmeijvis/www.jefmeijvis.com/tree/main/content) folder of my repository now contains a bunch of markdown files which get transformed to html.
 
 The filename dictates the route that will be used under the /blog directory.
 So a file called *001-my-first-post.md* will result in a blogpost that can be read at /blog/001-my-first-post.
@@ -56,8 +56,8 @@ I've created an [internal svelte api endpoint](/blog/006-sveltekit-api-endpoints
 The endpoint runs on the server and uses [fs](https://nodejs.org/api/fs.html) to read all the files in the /content directory.
 
 ### Front matter
-When all the files are loaded, I pass them through [Front Matter](https://www.npmjs.com/package/front-matter), which allows you to extract all the metadata from a markdown file.
-This way, I split the file into the metadat and the actual markdown that needs to be rendered. 
+When all the files are loaded, I pass them through [Front Matter](https://www.npmjs.com/package/front-matter), which allows me to extract all the metadata from a markdown file.
+This way, I split the file into the metadata and the actual markdown that needs to be rendered. 
 
 ### Viewcount
 At this point each post already knows his final url, so I can start collecting the viewcount.
@@ -65,16 +65,16 @@ This information is stored in a [Supabase table](https://supabase.com/).
 
 ![Supabase is used to store viewcounts [small]](/static/post/009/supabase.png)
 
-To prevent constantly needing to fetch this data when I'm developing this site, I implemented a cache.
+To prevent constantly needing to fetch this data when I'm developing locally, I implemented a cache.
 Each viewcount fetch first checks if there isn't a local file containg the requested information.
-With a cache maximum age set to 1 hour, this greatly reduces the amount of call I have to make to the supabase database. 
+With a cache maximum age set to 1 hour, this greatly reduces the amount of calls I have to make to the supabase database. 
 
 ### Marked
 Next up is generating a hyperlinked table of contents.
 By using [Marked](https://www.npmjs.com/package/marked) I'm able to iterate over all the tokens that my markdown file contains. Whenever I encounter a heading element I add this to a list, and this can then later on be used to generate the table of contents.
 
 ### Svelte markdown
-To acutally render the markdown to html, I use [Svelte Markdown](https://www.npmjs.com/package/svelte-markdown).
+To acutally render the markdown into html, I use [Svelte Markdown](https://www.npmjs.com/package/svelte-markdown).
 This library provides a component that accepts a string of markdown, and optional extra renderers to convert this markdown.
 
 For example:
@@ -125,7 +125,7 @@ These custom rendering components allow me to pass some extra information via ma
 This *[small]* tag is picked up by the [image renderer](https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/src/lib/renderers/image.svelte) and applies some additional styling.
 
 It's an easy (but hacky) fix to customize images from within the markdown sourcefile.
-In the fashion, I've replaced a quote block with a note element.
+In the same fashion, I've replaced the default quote block with a note element.
 This means that the following markdown
 ```markdown
     > Hi there, I'm writing a note
