@@ -15,5 +15,6 @@
     list-style-position: inside;
     overflow: hidden;
     font-weight: 300;
+    margin-top: 1rem;
   }
 </style>
