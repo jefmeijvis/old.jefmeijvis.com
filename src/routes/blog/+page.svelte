@@ -12,7 +12,7 @@
 <p>
 	I've been writing blogposts here since 2021.
 	So far I have written {data.posts.length} posts.
-	I aim at writing around 1 post each month, but the actual really depends on lots of things.
+	I aim at writing around 1 post each month, but the actual rate really depends on lots of things.
 </p>
 
 <p>
