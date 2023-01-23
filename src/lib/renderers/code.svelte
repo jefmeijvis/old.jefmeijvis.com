@@ -3,5 +3,5 @@
     export let lang : string = "javascript"
     export let text : string;
   </script>
-  
+
 <PrismJs language="{lang}" code="{text}"></PrismJs>
