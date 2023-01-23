@@ -3,7 +3,7 @@ author: Jef Meijvis
 id : 8
 image : /post/008/logo.png
 title: ChatGPT for software developers.
-date: 11/01/2022
+date: 11/01/2023
 description : Make use of the ChatGPT as a software developer. Automate the creation of boilerplate code, unit tests and documentation. 
 tags : openai,chatgpt,dotnet
 published : true

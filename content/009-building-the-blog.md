@@ -3,7 +3,7 @@ author: Jef Meijvis
 id : 9
 image : /post/009/logo.png
 title: Building the blog!
-date: 20/01/2022
+date: 20/01/2023
 description : A rundown of all the different tools and techniques that are used to build this blog.
 tags : svelte,blog
 published : true
