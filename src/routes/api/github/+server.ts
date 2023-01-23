@@ -1,5 +1,6 @@
 import { LocalCache } from "$lib/ts/cache";
 import type { RequestEvent } from "../$types";
+export const prerender = true;
 
 export async function GET({ request } : RequestEvent) 
 {
@@ -28,6 +29,7 @@ export async function GET({ request } : RequestEvent)
     let sha = lastCommit.sha;
     let commitSha = sha.slice(0,7);
     let commitUrl = "https://github.com/jefmeijvis/www.jefmeijvis.com/commit/" + sha;
+    console.log("💜 GET api/github: " + commitSha + " - " + commitUrl)
 
     return new Response(JSON.stringify({commit : commitSha, url : commitUrl}));
 }
