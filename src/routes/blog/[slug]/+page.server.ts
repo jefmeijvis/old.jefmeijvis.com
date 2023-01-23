@@ -8,6 +8,7 @@ export async function load({params,fetch} : any) {
         slug : params.slug,
         post : await getPostForThisPage(params.slug,fetch),
         timestamp : getRenderTimestamp(),
+        commit : await(await fetch('/api/github',{method : 'GET'})).json(),
     };
   }
 

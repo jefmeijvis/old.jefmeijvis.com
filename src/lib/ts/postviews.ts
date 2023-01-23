@@ -70,3 +70,4 @@ function hash(str : string)
     }
     return Math.abs(hash);
 }
+

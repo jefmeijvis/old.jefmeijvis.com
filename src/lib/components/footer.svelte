@@ -2,6 +2,8 @@
     import { page } from "$app/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
     let posts : Post[] = $page.data.posts;
+    let commit = $page.data.commit;
+    console.dir(commit)
     if(posts)
         posts = posts.slice(0,5);
 
@@ -51,7 +53,8 @@
         </div>
     </div>
     <p>© Jef Meijvis 2021 - {new Date().getFullYear()}</p>
-    <p>Last render on {timestamp}</p>
+    <p>Build on {timestamp}</p>
+    <p><a href={commit.url}>{commit.commit} on Github</a></p>
 </footer>
 
 
@@ -117,7 +120,7 @@
         text-decoration: underline;
     }
 
-    p
+    p,a
     {
         font-size: .75rem;
         font-weight: 300;
