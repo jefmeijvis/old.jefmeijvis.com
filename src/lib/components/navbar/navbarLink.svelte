@@ -1,36 +1,72 @@
 <script lang="ts">
     import {page} from "$app/stores"
+	import { onMount } from "svelte";
     export let href : string;
     export let target : string = "";
+    export let hover : boolean = false;
 
-    function getStyle()
+    onMount(()=>console.log("navbar render " + Math.random()))
+
+    function isActive() : boolean
     {
-        // Return the active style when the current path matches with the href of the current link
-        let styleActive : string = 'border-bottom: 2px white solid;';
-        let styleInactive : string = ''
         let path : string = $page.url.pathname.toLowerCase();
+        return (path == href.toLowerCase()) || ((path.includes(href) && !(href == "/")))
+    }
 
-        if(path == href.toLowerCase())
-            return styleActive;
+    function mouseEnter()
+    {
+        hover = true;
+    }
 
-        if(path.includes(href) && !(href == "/"))
-            return styleActive
+    function mouseLeave()
+    {
+        hover = false;
+    }
 
-        return styleInactive;
+    function customTransition(node : any, {delay = 0, duration = 150 }) 
+    {
+        const o = +getComputedStyle(node).opacity;
+
+        return {
+            delay,
+            duration,
+            css: (t : number) => 
+            {
+                return `
+                opacity: ${t * o};
+                width: ${t * 100}%;
+                height: ${t * 0.2}rem;
+                `
+            }
+        };
     }
 </script>
 
 
-{#key $page.url.pathname}
-    <div>
-        <a target={target} style="{getStyle()}" href={href}>
+
+
+    <div class="element" on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
+        <a target={target} href={href}>
             <slot></slot>
         </a>
+        {#key $page.url.href}
+            {#if hover || isActive()}
+                <div class="selection" in:customTransition="{{}}" out:customTransition="{{}}"/>
+            {/if}
+        {/key}
     </div>
-{/key}
 
 <style>
-    div
+    .selection
+    {
+        margin:auto;
+        width : 100%;
+        height : .2rem;
+        border-radius: .1rem;
+        background-color: white;
+    }
+
+    .element
     {
         margin-top: 1.5rem;
         float : left;
@@ -52,7 +88,6 @@
     a:hover
     {   
         color:white;
-        border-bottom: 2px white solid;
         opacity: 60%;
     }
 
