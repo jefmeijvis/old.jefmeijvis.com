@@ -3,7 +3,6 @@
     import Meta from "$lib/components/meta.svelte";
 	import Navbar from "$lib/components/navbar/navbar.svelte";
     export let data : any;
-    export const prerender = true;
 </script>
 
 <Meta/>
