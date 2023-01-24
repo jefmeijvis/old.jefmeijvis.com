@@ -1,13 +1,37 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { Action, Element } from "$lib/ts/enums";
-
+	import { onMount } from "svelte";
 
     let light : boolean = true;
+
+    onMount(()=>doOnMount())
+
+    function doOnMount()
+    {
+      light = (localStorage.getItem("light") === 'true') ?? true;
+      setTheme();
+    }
 
     function toggle()
     {
       light = !light;
+      localStorage.setItem("light",light + '')
+      setTheme();
+
+
+      let postBody = 
+      {
+        action : Action.Click,
+        element : Element.ThemeButton,
+        page  : $page.url.href,
+      }
+
+      fetch('../api/action',{method : 'POST', body : JSON.stringify(postBody)})
+    }
+
+    function setTheme()
+    {
       let body = document.body;
 
       if(light)
@@ -24,34 +48,37 @@
         body.classList.remove("light")
         body.classList.add("dark")
       }
-
-      let postBody = 
-      {
-        action : Action.Click,
-        element : Element.ThemeButton,
-        page  : $page.url.href,
-      }
-      
-      fetch('../api/action',{method : 'POST', body : JSON.stringify(postBody)})
     }
+
 
 </script>
 
 <button on:keydown={toggle} on:click={toggle}>
-  {#if !light}
-    <img alt="switch to light mode" src="/light.png">
-  {/if}
-
-  {#if light}
-  <img alt="switch to dark mode" src="/dark.png">
-  {/if}
+  <img class:active="{light}" class:inactive="{!light}"  alt="switch to light mode" src="/light.png">
+  <img class:actvie="{!light}" class:inactive="{light}" alt="switch to dark mode" src="/dark.png">
 </button>
 
 <style>
+  .active
+  {
+    opacity: 100%;
+    transform: translate(-1rem,0) scale(1);
+  }
+
+  .inactive
+  {
+    opacity: 0%;
+    transform: translate(-1rem,0) scale(0);
+  }
+
   img
   {
     width : 1.8rem;
     filter: invert();
+    position: absolute;
+    transform: translate(-1rem,0);
+    transition: all ease .25s;
+    transform-origin: center;
   }
 
   button

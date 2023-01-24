@@ -1,11 +1,8 @@
 <script lang="ts">
     import {page} from "$app/stores"
-	import { onMount } from "svelte";
     export let href : string;
     export let target : string = "";
     export let hover : boolean = false;
-
-    onMount(()=>console.log("navbar render " + Math.random()))
 
     function isActive() : boolean
     {
