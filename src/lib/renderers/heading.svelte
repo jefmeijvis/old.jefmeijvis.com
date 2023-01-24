@@ -23,8 +23,8 @@
   <style>
     h1,h2
     {
-        background-color: #0078d4;
-        color:white;
+        background-color: var(--color-accent);
+        color:var(--color-text-secondary);
         padding : .5rem;
         border-radius: .5rem;
         margin-top: 1rem;

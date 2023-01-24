@@ -27,7 +27,7 @@
     {
         width: 100%;
         height : 5rem;
-        background-color: #0078d4;
+        background-color: var(--color-accent);
         color:white;
     }
 

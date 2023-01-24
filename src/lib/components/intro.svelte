@@ -56,12 +56,14 @@
         padding: .25rem;
         text-decoration: none;
         border-radius: .5rem;
-        color:blue;
+        color:var(--color-text-primary);
+        background-color: var(--color-background);
     }
 
     a:hover
     {
-        background-color: rgb(235, 235, 235);
+        opacity: 70%;
+        text-decoration: underline;
     }
 
     @media (max-width: 60rem) 

@@ -34,9 +34,9 @@
     {
         text-decoration: none;
         padding : .10rem;
-        background-color:white;
+        background-color:var(--color-background);
         border-radius: .25rem;
-        color:#0078d4;
+        color:var(--color-text-secondary);
     }
 
     a:hover

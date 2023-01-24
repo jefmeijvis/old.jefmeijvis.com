@@ -67,8 +67,8 @@
         top : 0;
         width : 85%;
         height : 100%;
-        background-color: #0078d4;
-        border-right:1px #0066b5 solid;
+        background-color: var(--color-accent);
+        border-right:1px var(--color-accent) solid;
     }
 
     .background

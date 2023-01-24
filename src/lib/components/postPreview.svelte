@@ -48,7 +48,7 @@
         </p>
         <PostTags {post}></PostTags>
         <p class="description">{post.description}</p>
-        <p class="link">Read more..</p>
+        <p class="link">Read more ></p>
     </div>
 </article>
 
@@ -76,11 +76,13 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         margin-bottom: 2rem;
         cursor:pointer;
+        background-color: var(--color-card-background);
     }
 
     .link
     {
-        color:blue;
+        margin-top: 1rem;
+        color:var(--color-text-primary);
         font-size: 1rem;
     }
 
@@ -118,7 +120,6 @@
             margin:auto;
             width : 100%;
             padding : 0;
-            background-color: rgb(239, 239, 255);
         }
 
         h1

@@ -6,13 +6,38 @@
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover">
+	<body class="light" data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
 
 <style>
 
+  .light
+  {
+    --color-background: white;
+    --color-accent: #0078d4;
+    --color-text-primary: black;
+    --color-text-secondary: white;
+    --color-note-background: rgb(255, 251, 213);
+    --color-note-border: rgb(229, 201, 78);
+
+    /* References */
+    --color-card-background: var(--color-background);
+  }
+
+  .dark
+  {
+    --color-background: #171717;
+    --color-accent: #2d2d2d;
+    --color-text-primary: #d6d6d6;
+    --color-text-secondary: #ffffff;
+    --color-note-background: rgb(99, 89, 0);
+    --color-note-border: rgb(171, 140, 0);
+
+    /* References */
+    --color-card-background: var(--color-accent);
+  }
 
 	*
 	{
@@ -20,6 +45,7 @@
 		margin : 0;
 		font-family: 'Roboto';
     scroll-behavior: smooth;
+    color:var(--color-text-primary);
 	}
 
   p, li

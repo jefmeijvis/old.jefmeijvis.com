@@ -63,7 +63,7 @@
         width : 100%;
         height : .2rem;
         border-radius: .1rem;
-        background-color: white;
+        background-color: var(--color-text-secondary);
     }
 
     .element
@@ -81,13 +81,12 @@
         text-decoration: none;
         font-size: 1rem;
         font-weight: bold;
-        color:white;
-        border-bottom: 2px #0078d4 solid;
+        color:var(--color-text-secondary);
+        border-bottom: 2px var(--color-accent) solid;
     }
 
     a:hover
     {   
-        color:white;
         opacity: 60%;
     }
 

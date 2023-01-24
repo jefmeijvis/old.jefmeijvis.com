@@ -46,9 +46,9 @@
 
     button
     {
-        color:white;
+        color:var(--color-text-secondary);
         font-size: 1.5rem;
-        background-color: #0078d4;
+        background-color: var(--color-accent);
         border-radius: 2rem;
         border:none;
         padding : .5rem;

@@ -15,6 +15,10 @@
 </div>
 
 <style>
+    .content-wrapper
+    {
+        background-color: var(--color-background);
+    }
     .content
     {
         padding : 1rem;

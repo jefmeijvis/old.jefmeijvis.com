@@ -32,7 +32,8 @@
     }
     button
     {
-        background-color: rgb(230, 241, 255);
+        background-color: var(--color-accent);
+        color: var(--color-text-secondary);
         padding : .25rem;
         border-radius: .25rem;
         margin : .25rem;
@@ -49,10 +50,6 @@
 
     @media (max-aspect-ratio: 1/1) 
     {
-        button
-        {
-            background-color: rgb(187, 215, 250);
-        }
         p
         {
             text-align: center;

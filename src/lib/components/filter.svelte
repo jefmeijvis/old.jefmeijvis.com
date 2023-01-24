@@ -15,6 +15,7 @@
     {
         width : 100%;
         font-size: 1.2rem;
+        background-color: var(--color-background);
     }
 
     img

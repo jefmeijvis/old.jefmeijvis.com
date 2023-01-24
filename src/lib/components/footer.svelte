@@ -13,7 +13,7 @@
     <div class="footer-blocks">
         <div class="block">
             <ul>
-                <li><b>Sitemap</b></li>
+                <li><h3>Sitemap</h3></li>
                 <li><a href="/">Home</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/resources">Resources</a></li>
@@ -23,7 +23,7 @@
         </div>
         <div class="block">
             <ul>
-                <li><b>External</b></li>
+                <li><h3>External</h3></li>
                 <li><a rel="noreferrer" target="_blank" href="https://twitter.com/JefMeijvis">Twitter</a></li>
                 <li><a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/jef-meijvis/">LinkedIn</a></li>
                 <li><a rel="noreferrer" target="_blank" href="https://github.com/jefmeijvis">Github</a></li>
@@ -32,13 +32,13 @@
         </div>
         <div class="block">
             <ul>
-                <li><b>Projects</b></li>
+                <li><h3>Projects</h3></li>
                 <li><a href="https://colour.jefmeijvis.com">Colour</a></li>
             </ul>
         </div>
         <div class="block">
             <ul>
-                <li><b>Recent posts</b></li>
+                <li><h3>Recent posts</h3></li>
             {#if posts}
                 {#each posts as post}
                     <li>
@@ -58,9 +58,14 @@
 
 
 <style>
+    h3
+    {
+        color:var(--color-text-secondary);
+    }
     p
     {
         margin-top: .5rem;
+        color:var(--color-text-secondary);
     }
 
     li
@@ -71,13 +76,14 @@
 
     footer
     {
-        background-color: #0078d4;
-        color:white;
+        background-color: var(--color-accent);
+        color:var(--color-text-secondary);
         text-align: center;
         width : 100%;
         bottom: 1rem;
         margin-top: 3rem;
         padding-bottom: 1rem;
+        padding-top: 1rem;
     }
 
     .footer-blocks
@@ -110,7 +116,7 @@
     a
     {
         text-decoration: none;
-        color: white;
+        color: var(--color-text-secondary);
         font-size: 1rem;
     }
 

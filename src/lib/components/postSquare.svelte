@@ -35,6 +35,7 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 0.1rem 8px;
         border-radius: 1rem;
         cursor:pointer;
+        background-color: var(--color-card-background);
     }
 
     img
