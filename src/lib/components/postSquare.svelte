@@ -47,7 +47,8 @@
 
     div
     {
-        transition: all ease .25s;
+        transition-timing-function: ease;
+        transition: transform .25s, box-shadow .25s;
     }
 
     div:hover

@@ -18,6 +18,7 @@
     .content-wrapper
     {
         background-color: var(--color-background);
+        transition: all ease .25s;
     }
     .content
     {
