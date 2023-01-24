@@ -33,7 +33,7 @@
     {
         border: none;
         background: none;
-        float:right;
+        float:left;
         cursor:pointer;
     }
 
@@ -41,7 +41,7 @@
     {
         width : 3.5rem;
         margin : 1rem;
-        margin-right: 2rem;
+        margin-left: 0;
     }
 
     @media (min-aspect-ratio: 1/1) 

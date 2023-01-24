@@ -1,6 +1,7 @@
 <script lang="ts">
     import NavbarLink from "./navbarLink.svelte";
 	import MobileMenuButton from "./mobileMenuButton.svelte";
+	import ThemeButton from "$lib/components/themeButton.svelte";
 </script>
 
 <nav>
@@ -11,6 +12,7 @@
         <NavbarLink href="/about">ABOUT</NavbarLink>
         <NavbarLink href="/contact">CONTACT</NavbarLink>
         <MobileMenuButton></MobileMenuButton>
+        <ThemeButton></ThemeButton>
     </div>
 </nav>
 

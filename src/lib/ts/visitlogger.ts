@@ -19,7 +19,9 @@ export class VisitLogger
 
     public static async LogAction(action : Action, element : Element | string, page : string)
     {
-        if(this.IsLocal(page))
+        let local : boolean = this.IsLocal(page);
+        console.log("🖱️ LogAction[" + action + ", " + element + ", " + page + "," + (local ? 'local' : 'not local') + "]")
+        if(local)
             return;
 
         let row : { action : Action, element : Element | string, page : string} = {page : page,action : action, element : element};

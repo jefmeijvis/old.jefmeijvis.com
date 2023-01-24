@@ -3,7 +3,7 @@ export enum Action
     Click = "click",
     Open = "open",
     Close = "close",
-    Link = "link"    
+    Link = "link",
 }
 
 export enum Element
@@ -11,5 +11,6 @@ export enum Element
     BlogpostInformation = "blogpost-information",
     BlogpostTableOfContents = "blogpost-table-of-content",
     BlogpostSupportButton = "blogpost-support-button",
+    ThemeButton = "theme-button",
 }
 
