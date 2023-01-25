@@ -43,7 +43,7 @@
                 {#each posts as post,index}
                     {#if index < 6}
                         <li>
-                            <a href="blog/{post.filename.replace(".md","")}">{index} {post.title.slice(0,20)}...</a>
+                            <a href="blog/{post.filename.replace(".md","")}">{post.title.slice(0,20)}...</a>
                         </li>
                     {/if}
                 {/each}

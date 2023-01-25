@@ -1,22 +1,22 @@
 <script lang="ts">
 	import { page } from "$app/stores";
+	import { light } from "$lib/stores";
 	import { Action, Element } from "$lib/ts/enums";
 	import { onMount } from "svelte";
 
-    let light : boolean = true;
 
     onMount(()=>doOnMount())
 
     function doOnMount()
     {
-      light = (localStorage.getItem("light") === 'true') ?? true;
+      $light = (localStorage.getItem("light") === 'true') ?? true;
       setTheme();
     }
 
     function toggle()
     {
-      light = !light;
-      localStorage.setItem("light",light + '')
+      $light = !$light;
+      localStorage.setItem("light",$light + '')
       setTheme();
 
 
@@ -34,7 +34,7 @@
     {
       let body = document.body;
 
-      if(light)
+      if($light)
       {
         console.log('☀️ switching to light mode')
         body.classList.remove("dark")
@@ -42,7 +42,7 @@
 
       }
 
-      if(!light)
+      if(!$light)
       {
         console.log('🌙 switching to dark mode')
         body.classList.remove("light")
@@ -54,8 +54,8 @@
 </script>
 
 <button on:keydown={toggle} on:click={toggle}>
-  <img class:active="{light}" class:inactive="{!light}"  alt="switch to light mode" src="/light.png">
-  <img class:actvie="{!light}" class:inactive="{light}" alt="switch to dark mode" src="/dark.png">
+  <img class:active="{$light}" class:inactive="{!$light}"  alt="switch to light mode" src="/light.png">
+  <img class:actvie="{!$light}" class:inactive="{$light}" alt="switch to dark mode" src="/dark.png">
 </button>
 
 <style>
@@ -97,6 +97,15 @@
     opacity: 70%;
     border-radius: .25rem;
     transform: scale(1.10);
+  }
+
+  @media (max-aspect-ratio: 1/1) 
+  {
+    button:hover
+    {
+      transform: none;
+      opacity: 100%;
+    }
   }
 
 </style>
