@@ -1,14 +1,5 @@
 <script lang="ts">
-	import { filter } from "$lib/stores";
-	import { onMount } from "svelte";
-
-    onMount(()=>doOnMount())
-    let light = true;
-    function doOnMount()
-    {
-        light = (localStorage.getItem("light") === 'true') ?? true;
-        console.log(light)
-    }
+	import { filter, light } from "$lib/stores";
 
     function clearFilter()
     {
@@ -18,8 +9,8 @@
 
 <p>Filter</p>
 <input placeholder="Enter searchwords" bind:value={$filter} type="text"/>
-{#key light}
-    <img style="filter:{light? 'invert()' : 'none'}" on:click={clearFilter} on:keydown={clearFilter} alt="Clear filter button" title="Clear filter" src="/close.png"/>
+{#key $light}
+    <img style="filter:{$light? 'invert()' : 'none'}" on:click={clearFilter} on:keydown={clearFilter} alt="Clear filter button" title="Clear filter" src="/close.png"/>
 {/key}
 <style>
     input

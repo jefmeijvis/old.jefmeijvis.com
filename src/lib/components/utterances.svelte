@@ -6,7 +6,6 @@
 
 	function deleteCommentSection()
 	{
-		console.log("deleteCommentSection");
 		let utterancesScript = document.getElementsByClassName("utterances-script")[0] ?? undefined;
 		if(utterancesScript)
 			utterancesScript.remove();
@@ -18,7 +17,6 @@
 
 	function createCommentSection()
 	{
-		console.log("createCommentSection");
 		let scriptTag = document.createElement('script');
 		scriptTag.classList.add("utterances-script")
 		scriptTag.setAttribute('id','comment-section')
