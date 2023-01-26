@@ -32,7 +32,6 @@
   <style>
     a
     {
-        text-decoration: none;
         padding : .10rem;
         background-color:var(--color-background);
         border-radius: .25rem;
@@ -41,6 +40,6 @@
 
     a:hover
     {
-        text-decoration: underline;
+        opacity: 50%;
     }
   </style>

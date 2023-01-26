@@ -79,7 +79,7 @@ This library provides a component that accepts a string of markdown, and optiona
 
 For example:
 
-```javascript
+```svelte
     <script lang="ts">
         import SvelteMarkdown from 'svelte-markdown'
         import Heading from '$lib/renderers/heading.svelte';

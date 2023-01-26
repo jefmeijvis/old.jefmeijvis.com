@@ -54,8 +54,8 @@ E.g. you might want to log to both a file on disk and to Azure Insights.
 [Log4net](https://logging.apache.org/log4net/) has a logging appender which is available through a [NuGet package](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/2.21.0).
 
 After adding the package to the dotnet application, we can update the log4net config file to include the new appender. 
-
-    <log4net>
+```xml
+<log4net>
     <root>
         <level value="ALL"/>
         <appender-ref ref="aiAppender"/>
@@ -65,55 +65,59 @@ After adding the package to the dotnet application, we can update the log4net co
         <conversionPattern value="%message%newline"/>
         </layout>
     </appender>
-    </log4net> 
+</log4net> 
+```
 ### Serilog
 
 [Serilog](https://serilog.net/) has a [logging sink](https://www.nuget.org/packages/Serilog.Sinks.ApplicationInsights/) to send the collected logs to Application Insights.
 
 The sink can be configured in code in the following way:
 
-    var log = new LoggerConfiguration()
-        .WriteTo.ApplicationInsights(TelemetryConfiguration.Active, TelemetryConverter.Traces)
-        .CreateLogger();
+```csharp
+var log = new LoggerConfiguration()
+    .WriteTo.ApplicationInsights(TelemetryConfiguration.Active, TelemetryConverter.Traces)
+    .CreateLogger();
+```
 
 ### Nlog
 [Nlog](https://nlog-project.org/) has a [logging target package](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/2.21.0) which can be used to direct the logs to Application Insights.
 
 The following configuration can be used to set up the logging target with the correct instrumentation key or connection string:
-
-    <nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <extensions>
-            <add assembly="Microsoft.ApplicationInsights.NLogTarget" />
-        </extensions>
-        <targets>
-            <target xsi:type="ApplicationInsightsTarget" name="aiTarget">
-                <instrumentationKey>Your_Resource_Key</instrumentationKey>	<!-- Only required if not using ApplicationInsights.config -->
-                <contextproperty name="threadid" layout="${threadid}" />	<!-- Can be repeated with more context -->
-            </target>
-        </targets>
-        <rules>
-            <logger name="*" minlevel="Trace" writeTo="aiTarget" />
-        </rules>
-    </nlog>
-
+```xml
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <extensions>
+        <add assembly="Microsoft.ApplicationInsights.NLogTarget" />
+    </extensions>
+    <targets>
+        <target xsi:type="ApplicationInsightsTarget" name="aiTarget">
+            <instrumentationKey>Your_Resource_Key</instrumentationKey>	<!-- Only required if not using ApplicationInsights.config -->
+            <contextproperty name="threadid" layout="${threadid}" />	<!-- Can be repeated with more context -->
+        </target>
+    </targets>
+    <rules>
+        <logger name="*" minlevel="Trace" writeTo="aiTarget" />
+    </rules>
+</nlog>
+```
 
 ## Manual data collection
 Besides using a logging target, we can also 'manually' create a metric, trace or log.
 Microsoft provides [a SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights) through a Nuget package to easily interact with your instance.
 In dotnet we can do this in the following way:
+```csharp
+using Microsoft.ApplicationInsights;
 
-    using Microsoft.ApplicationInsights;
+public void CreateLog(string message,SeverityLevel level, IDictionary<string, string> props)
+{
+    // Set up the telemetry client - You could cache this / make it static
+    TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+    configuration.ConnectionString = "my-connection-string";
+    var client = new TelemetryClient(configuration);
 
-    public void CreateLog(string message,SeverityLevel level, IDictionary<string, string> props)
-    {
-        // Set up the telemetry client - You could cache this / make it static
-        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
-        configuration.ConnectionString = "my-connection-string";
-        var client = new TelemetryClient(configuration);
-
-        // Create a trace
-        client.TrackTrace(message,level, props);
-    }
+    // Create a trace
+    client.TrackTrace(message,level, props);
+}
+```
 
 The TrackTrace method accepts 3 arguments:
 - Message : The string you want to log
@@ -122,9 +126,11 @@ The TrackTrace method accepts 3 arguments:
 
 The dictionary could for example contain the following information:
 
-    properties = new Dictionary<string, string>();
-    properties.add("user-id", 10);
-    properties.add("api-endpoint,"/api/v2/users");
+```csharp
+properties = new Dictionary<string, string>();
+properties.add("user-id", 10);
+properties.add("api-endpoint,"/api/v2/users");
+```
 
 This way we can add our own custom data fields to the logtraces.
 
@@ -138,23 +144,27 @@ The poral allows us to query our data using [KQL, the Kusto Query Language](http
 
 
 If we would like to inspect the last 100 traces we generated using the above dotnet code, we could perform the following query:
-
-    traces
-    | take 100
+```kql
+traces
+| take 100
+```
 
 Please make note of the | (pipe) symbol used in KQL. 
 If we would like to see which loglines contain a certain string, we could do this by adding a where clause:
 
-    traces
-    | where message has "jef"
-    | take 100
+```kql
+traces
+| where message has "jef"
+| take 100
+```
 
 Query data in the customDimensions field using the following syntax:
 
-    traces
-    | where customDimensions["user-id"] = 10 
-    | take 100
-
+```kql
+traces
+| where customDimensions["user-id"] = 10 
+| take 100
+```
 
 ## Visualising data using dashboards
 

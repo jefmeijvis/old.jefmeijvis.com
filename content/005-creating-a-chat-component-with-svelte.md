@@ -25,142 +25,147 @@ Let's start by creating a container div in our main component file (chatbox.svel
 
 ![A chat windows created with Svelte components [medium]](/static/post/005/demo-1.png)
 
-
-    <div class="container">
-        <div class="chatbox">
-            <h1 class="toptext" >Chatbox</h1>
-            <div class="message-container">
-            </div>
+```svelte
+<div class="container">
+    <div class="chatbox">
+        <h1 class="toptext" >Chatbox</h1>
+        <div class="message-container">
         </div>
     </div>
+</div>
 
+<style>
+    .message-container
+    {
+        overflow-y: scroll;
+        height : 20rem;
+    }
 
-    <style>
-        .message-container
-        {
-            overflow-y: scroll;
-            height : 20rem;
-        }
+    .toptext
+    {
+        background-color: rgb(250, 144, 23);    
+        color:white;                           
+        text-align: center;                    
+        border-top-left-radius: .5rem;        
+        border-top-right-radius: .5rem;
+        margin-bottom: 0;
+    }
 
-        .toptext
-        {
-            background-color: rgb(250, 144, 23);    
-            color:white;                           
-            text-align: center;                    
-            border-top-left-radius: .5rem;        
-            border-top-right-radius: .5rem;
-            margin-bottom: 0;
-        }
+    .chatbox
+    {
+        width : 20rem;
+        margin:auto;
+        border-radius: .5rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
 
-        .chatbox
-        {
-            width : 20rem;
-            margin:auto;
-            border-radius: .5rem;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-
-        .container
-        {
-            width : 100%;
-        }
-    </style>
+    .container
+    {
+        width : 100%;
+    }
+</style>
+```
 
 ### Chat bubble
 Let's continue on the frontend by creating a subcomponent, which we will call a message bubble (bubble.svelte). Use the script tag to expose a message prop. Create a p element containing the user that is available on the message object, and the timestamp converted to the local datetime format. We assign the info element a class based by comparing the username of the message with the username of the current user. If these match, it's our own message and we make it a right alligned chat bubble. If not, we make it a left alligned bubble.
 
-    <script>
-        export let message; // Message object that contains all information about this specific message
-        export let user;    // Username of the user that is currently using the chatbox
-    </script>
+```svelte
+<script>
+    export let message; // Message object that contains all information about this specific message
+    export let user;    // Username of the user that is currently using the chatbox
+</script>
 
-    <p class="{message.user == user ? 'info-right' : 'info-left'}">{message.user} | {message.timestamp.toLocaleString()}</p>
+<p class="{message.user == user ? 'info-right' : 'info-left'}">{message.user} | {message.timestamp.toLocaleString()}</p>
 
-    <div class="{message.user == user ? 'bubble-right' : 'bubble-left'}">                
-        <p class="message">{message.message}</p>
-    </div>
+<div class="{message.user == user ? 'bubble-right' : 'bubble-left'}">                
+    <p class="message">{message.message}</p>
+</div>
 
 
-    <style>
-        .bubble-left,.bubble-right
-        {
-            width : 80%;
-            margin : .5rem;
-            border-radius: 1rem;
-            padding : .25rem;
-        }
+<style>
+    .bubble-left,.bubble-right
+    {
+        width : 80%;
+        margin : .5rem;
+        border-radius: 1rem;
+        padding : .25rem;
+    }
 
-        .info-left
-        {
-            float: left;
-        }
+    .info-left
+    {
+        float: left;
+    }
 
-        .info-right
-        {
-            float: right;
-        }
+    .info-right
+    {
+        float: right;
+    }
 
-        .info-left,.info-right
-        {
-            font-size: .6rem;
-            margin:0;
-            padding:0;
-            margin-left: .7rem;
-            margin-top: 1rem;
-            opacity: 50%;
-        }
+    .info-left,.info-right
+    {
+        font-size: .6rem;
+        margin:0;
+        padding:0;
+        margin-left: .7rem;
+        margin-top: 1rem;
+        opacity: 50%;
+    }
 
-        .bubble-left
-        {
-            background-color: rgb(255, 241, 226);
-            float:left;
-            border-bottom-left-radius: 0;
-        }
+    .bubble-left
+    {
+        background-color: rgb(255, 241, 226);
+        float:left;
+        border-bottom-left-radius: 0;
+    }
 
-        .bubble-right
-        {
-            float:right;
-            background-color: rgb(226, 226, 255);
-            border-bottom-right-radius: 0;
-        }
+    .bubble-right
+    {
+        float:right;
+        background-color: rgb(226, 226, 255);
+        border-bottom-right-radius: 0;
+    }
 
-        .message
-        {
-            font-size: .7rem;
-        }
-    </style>
+    .message
+    {
+        font-size: .7rem;
+    }
+</style>
+```
 
 Before we can continue, we need to create some mockup data to test our chat bubble. Let's create a list of messages, and add these on top of the chatbox.svelte included in a script tag. We also create a field to store the username of the current user.
 
-    <script>
-        let messages : any[] = 
-        [
-            {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!"},
-            {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️"},
-            {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎"},
-            {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋"},
-        ];
+```svelte
+<script>
+    let messages : any[] = 
+    [
+        {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!"},
+        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️"},
+        {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎"},
+        {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋"},
+    ];
 
-        let user : string = "Alice";
-    </script>
+    let user : string = "Alice";
+</script>
 
+```
 
 We further update the chatbox.svelte file by using our newly created bubble.svelte file. We want to render this component for every element in the 'messages' list. While doing so, we also provide the message and user object as props to the component.
 
+```svelte
+<script>
+    import Bubble from "./bubble.svelte";
+</script>
 
-    <script>
-        import Bubble from "./bubble.svelte";
-    </script>
 
-
-    <div class="chatbox">
-        <h1>Chatbox</h1>
-        <div bind:this={messageContainer} class="message-container">
-            {#each messages as message}
-                <Bubble {message} {user}></Bubble>
-            {/each}
-        </div>
+<div class="chatbox">
+    <h1>Chatbox</h1>
+    <div bind:this={messageContainer} class="message-container">
+        {#each messages as message}
+            <Bubble {message} {user}></Bubble>
+        {/each}
     </div>
+</div>
+```
 
 By combining all these changes, we get the following result:
 
@@ -171,67 +176,68 @@ Looking great so far! We are able to render the message, the user and the timest
 ### Control panel
 Let's finish our chatbox by adding a control panel (controls.svelte). As props to this subcomponent we define a user, a send function and a message. We group eveything together in a div with classname controls. The first p element contains a input field that is bound to the 'user' variable. The textarea below is bound to the message variable. Our button contains an on:click event that fires the send method that is provided by the top level chatbox component.
 
+```svelte
+<script>
+    export let user;    // Value of the user input
+    export let send;    // Function that sends the current message
+    export let message; // Value of the message input
+</script>
 
-    <script>
-        export let user;    // Value of the user input
-        export let send;    // Function that sends the current message
-        export let message; // Value of the message input
-    </script>
-
-    <div class="controls">
-        <p>Username: <input placeholder="Type your username here..." bind:value={user} type=text/></p>
-        <textarea placeholder="Type your message here..." bind:value={message}/>
-        <button on:click="{()=>send()}">Send</button>
-    </div>
-
-
-    <style>
-        input
-        {
-            width : calc(100% - .5rem);
-            border-radius: .25rem;
-        }
-        
-        .controls
-        {
-            padding : .5rem;
-        }
-
-        p
-        {
-            font-size: .75rem;
-        }
+<div class="controls">
+    <p>Username: <input placeholder="Type your username here..." bind:value={user} type=text/></p>
+    <textarea placeholder="Type your message here..." bind:value={message}/>
+    <button on:click="{()=>send()}">Send</button>
+</div>
 
 
-        button
-        {
-            width : 100%;
-            height : 2rem;
-            background-color: rgb(250, 144, 23);
-            color:white; /**/
-            cursor:pointer;
-            border-radius: .25rem;
-            border:none;
-            transition: all ease .25s;
-        }
+<style>
+    input
+    {
+        width : calc(100% - .5rem);
+        border-radius: .25rem;
+    }
+    
+    .controls
+    {
+        padding : .5rem;
+    }
 
-        button:hover
-        {
-            background-color: rgb(255, 203, 144);
-        }
+    p
+    {
+        font-size: .75rem;
+    }
 
-        textarea
-        {
-            height : 5rem;
-            width : calc(100% - .5rem);
-            margin:0;
-            padding:0;
-            resize:none;
-            border-radius: .25rem;
-            padding : .25rem;
-        }
-    </style>
-        
+
+    button
+    {
+        width : 100%;
+        height : 2rem;
+        background-color: rgb(250, 144, 23);
+        color:white; /**/
+        cursor:pointer;
+        border-radius: .25rem;
+        border:none;
+        transition: all ease .25s;
+    }
+
+    button:hover
+    {
+        background-color: rgb(255, 203, 144);
+    }
+
+    textarea
+    {
+        height : 5rem;
+        width : calc(100% - .5rem);
+        margin:0;
+        padding:0;
+        resize:none;
+        border-radius: .25rem;
+        padding : .25rem;
+    }
+</style>
+```
+
 A few more things are needed back in our chatbox.svelte component to integrate the controls:
 
 First let's add an import statement for our controls component. We also need a variable (messageContainer) to bind to the message-container div. We define a send function, which adds the current message to the array of messages. We do include a few checks to only send the message when both a username and message is provided.
@@ -242,53 +248,53 @@ To improve the user experience, the chatbox will scroll to the bottom when a new
 
 Finish things of by including the Controls component in our chatbox div, while binding it to the message, user and send props.
 
+```svelte
+<script lang="ts">
+    import { afterUpdate } from "svelte";
+    import Bubble from "./bubble.svelte";
+    import Controls from "./controls.svelte";
 
-    <script lang="ts">
-        import { afterUpdate } from "svelte";
-        import Bubble from "./bubble.svelte";
-        import Controls from "./controls.svelte";
+    let messageContainer;
 
-        let messageContainer;
+    let messages : any[] = 
+    [
+        {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!", likes : 0 },
+        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️", likes : 0 },
+        {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎", likes : 0 },
+        {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋", likes : 0 },
+    ]
 
-        let messages : any[] = 
-        [
-            {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!", likes : 0 },
-            {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️", likes : 0 },
-            {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎", likes : 0 },
-            {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋", likes : 0 },
-        ]
+    let user : string = "Alice";
+    let message : string;
 
-        let user : string = "Alice";
-        let message : string;
+    afterUpdate(() => {scrollToBottom(messageContainer)});
 
-        afterUpdate(() => {scrollToBottom(messageContainer)});
+    async function send()
+    {
+        if(!message || message == undefined || message == "" || !user || user == undefined || user == "")
+            return;
 
-        async function send()
-        {
-            if(!message || message == undefined || message == "" || !user || user == undefined || user == "")
-                return;
+        messages.push({timestamp : new Date() , user : user , message : message, likes : 0, id : messages.length+1});
+        message = ""; 
+        messages = messages;
+    }
 
-            messages.push({timestamp : new Date() , user : user , message : message, likes : 0, id : messages.length+1});
-            message = ""; 
-            messages = messages;
-        }
-
-        const scrollToBottom = async (node : any) => {node.scroll({ top: node.scrollHeight, behavior: 'smooth'});}; 
-    </script>
+    const scrollToBottom = async (node : any) => {node.scroll({ top: node.scrollHeight, behavior: 'smooth'});}; 
+</script>
 
 
-    <div class="container">
-        <div class="chatbox">
-            <h1>Chatbox</h1>
-            <div bind:this={messageContainer} class="message-container">
-                {#each messages as message}
-                    <Bubble {message} {user}></Bubble>
-                {/each}
-            </div>
-            <Controls bind:message={message} bind:user={user} {send}></Controls>
+<div class="container">
+    <div class="chatbox">
+        <h1>Chatbox</h1>
+        <div bind:this={messageContainer} class="message-container">
+            {#each messages as message}
+                <Bubble {message} {user}></Bubble>
+            {/each}
         </div>
+        <Controls bind:message={message} bind:user={user} {send}></Controls>
     </div>
-            
+</div>
+```          
 
 This gives us the following result, as showed at the start of the article:
 

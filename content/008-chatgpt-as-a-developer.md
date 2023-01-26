@@ -30,60 +30,62 @@ For example, the query *Write a method in C# that calculates the median price ou
 ## Generating code
 Lets imagine we have a simple *User* class as shown below.
 Each user has a name, and a list of friends, which are also Users.
-
-    class User
-    {
-        public string Name { get; set; }
-        public List<User> Friends { get; set; }
-    }
-
+```csharp
+class User
+{
+    public string Name { get; set; }
+    public List<User> Friends { get; set; }
+}
+```
 If we want to create some kind of utility logging function to log information about a specific user, we can ask ChatGPT to generate this for us after first pasting the class code in the chatbox.
 **Query**: 
 
 *Could you create a method that prints out the summary of this user class for an instance?*
 
 ChatGPT came up with the following method:
-
-    public void PrintUserSummary(User user)
+```csharp
+public void PrintUserSummary(User user)
+{
+    Console.WriteLine($"Name: {user.Name}");
+    Console.WriteLine("Friends:");
+    if (user.Friends == null || !user.Friends.Any())
     {
-        Console.WriteLine($"Name: {user.Name}");
-        Console.WriteLine("Friends:");
-        if (user.Friends == null || !user.Friends.Any())
+        Console.WriteLine("No friends found.");
+    }
+    else
+    {
+        foreach (var friend in user.Friends)
         {
-            Console.WriteLine("No friends found.");
-        }
-        else
-        {
-            foreach (var friend in user.Friends)
-            {
-                Console.WriteLine($"- {friend.Name}");
-            }
+            Console.WriteLine($"- {friend.Name}");
         }
     }
-
+}
+```
 
 ## Converting code
 Let's continue with our User example, and write a method that double links the friends.
-
-    void LinkFriends(User user)
+```csharp
+void LinkFriends(User user)
+{
+    for (int i = 0; i < user.Friends.Count; i++)
     {
-        for (int i = 0; i < user.Friends.Count; i++)
-        {
-            User friend = user.Friends[i];
-            if (!friend.Friends.Contains(user))
-                friend.Friends.Add(user);
-        }
+        User friend = user.Friends[i];
+        if (!friend.Friends.Contains(user))
+            friend.Friends.Add(user);
     }
+}
+```
 
 Perhaps we would like to see this method written in [Linq](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/).
 Query: Could you convert this code to make use of Linq?
 
 And ChatGPT will convert the method just as we asked:
-
-    void LinkFriends(User user)
-    {
-        user.Friends.Where(friend => !friend.Friends.Contains(user)).ToList().ForEach(friend => friend.Friends.Add(user));
-    }
+```csharp
+void LinkFriends(User user)
+{
+    user.Friends.Where(friend => !friend.Friends.Contains(user)).ToList().ForEach(friend => friend.Friends.Add(user));
+}
+```
 
 I won't go into the discussion about whether or not Linq makes is more or les readable, but as you can see it get's properly converted.
 
@@ -91,14 +93,15 @@ I won't go into the discussion about whether or not Linq makes is more or les re
 
 Let's convert the method we initially created to Typescript.
 Query:  could you convert this piece of code to typescript?
-
-    function linkFriends(user: User) {
-        user.friends.forEach(friend => {
-            if (!friend.friends.includes(user)) {
-                friend.friends.push(user);
-            }
-        });
-    }
+```csharp
+function linkFriends(user: User) {
+    user.friends.forEach(friend => {
+        if (!friend.friends.includes(user)) {
+            friend.friends.push(user);
+        }
+    });
+}
+```
 
 
 
@@ -112,75 +115,77 @@ Let's ask ChatGPT:
 Lets imagine the follwing setup.
 We have a User class, a mockable IKeyValueStore interface and a Save and Load method.
 We want to test these two methods.
+```csharp
+void SaveUser(User user, IKeyValueStore store)
+{
+    store.Set(user.Name, user.Age.ToString());
+}
 
-    void SaveUser(User user, IKeyValueStore store)
-    {
-        store.Set(user.Name, user.Age.ToString());
-    }
+User LoadUser(string name,IKeyValueStore store)
+{
+    int age = int.Parse(store.Get(name));
+    User u = new User();
+    u.Age = age;
+    u.Name = name;
+    return u;
+}
 
-    User LoadUser(string name,IKeyValueStore store)
-    {
-        int age = int.Parse(store.Get(name));
-        User u = new User();
-        u.Age = age;
-        u.Name = name;
-        return u;
-    }
+interface IKeyValueStore
+{
+    void Set(string key, string value);
+    string Get(string key);
+}
 
-    interface IKeyValueStore
-    {
-        void Set(string key, string value);
-        string Get(string key);
-    }
-
-    class User
-    {
-        public string Name { get; set; }    
-        public int Age { get; set; }
-    }
+class User
+{
+    public string Name { get; set; }    
+    public int Age { get; set; }
+}
+```
 
 Let's ask ChatGPT to generate some unit tests for us.
+```csharp
+[Test]
+public void SaveUser_ValidInput_SavesUserInStore()
+{
+    // Arrange
+    var store = new MemoryKeyValueStore();
+    var user = new User { Name = "John", Age = 30 };
 
-    [Test]
-    public void SaveUser_ValidInput_SavesUserInStore()
-    {
-        // Arrange
-        var store = new MemoryKeyValueStore();
-        var user = new User { Name = "John", Age = 30 };
+    // Act
+    SaveUser(user, store);
 
-        // Act
-        SaveUser(user, store);
+    // Assert
+    Assert.AreEqual(user.Age.ToString(), store.Get(user.Name));
+}
 
-        // Assert
-        Assert.AreEqual(user.Age.ToString(), store.Get(user.Name));
-    }
+[Test]
+public void LoadUser_ValidInput_LoadsUserFromStore()
+{
+    // Arrange
+    var store = new MemoryKeyValueStore();
+    var user = new User { Name = "John", Age = 30 };
+    store.Set(user.Name, user.Age.ToString());
 
-    [Test]
-    public void LoadUser_ValidInput_LoadsUserFromStore()
-    {
-        // Arrange
-        var store = new MemoryKeyValueStore();
-        var user = new User { Name = "John", Age = 30 };
-        store.Set(user.Name, user.Age.ToString());
+    // Act
+    var loadedUser = LoadUser(user.Name, store);
 
-        // Act
-        var loadedUser = LoadUser(user.Name, store);
+    // Assert
+    Assert.AreEqual(user.Age, loadedUser.Age);
+    Assert.AreEqual(user.Name, loadedUser.Name);
+}
 
-        // Assert
-        Assert.AreEqual(user.Age, loadedUser.Age);
-        Assert.AreEqual(user.Name, loadedUser.Name);
-    }
+[Test]
+public void LoadUser_InvalidInput_ThrowsArgumentException()
+{
+    // Arrange
+    var store = new MemoryKeyValueStore();
+    var invalidKey = "InvalidKey";
 
-    [Test]
-    public void LoadUser_InvalidInput_ThrowsArgumentException()
-    {
-        // Arrange
-        var store = new MemoryKeyValueStore();
-        var invalidKey = "InvalidKey";
-
-        // Act and Assert
-        Assert.Throws<ArgumentException>(() => LoadUser(invalidKey, store));
-    }
+    // Act and Assert
+    Assert.Throws<ArgumentException>(() => LoadUser(invalidKey, store));
+}
+```
 
 While these aren't perfect, they give us a good indication and baseline to start improving these testcases.
 
@@ -202,55 +207,59 @@ It resembles C#, but there are a few changes:
 Then we can ask it to convert a C# codeblock to this newly invented language.
 Could you convert the following piece of code to JefSpeak?
 
-    void Fibonacci(int len)
+```csharp
+void Fibonacci(int len)
+{
+    int a = 0, b = 1, c = 0;
+    Console.Write("{0} {1}", a, b);
+    for (int i = 2; i < len; i++)
     {
-        int a = 0, b = 1, c = 0;
-        Console.Write("{0} {1}", a, b);
-        for (int i = 2; i < len; i++)
-        {
-            c = a + b;
-            Console.Write(" {0}", c);
-            a = b;
-            b = c;
-        }
+        c = a + b;
+        Console.Write(" {0}", c);
+        a = b;
+        b = c;
     }
+}
+```
 
 And we get the following result:
-
-    method nothing Fibonacci|number len|
-    // This function prints out the first len Fibonacci numbers
+```csharp
+method nothing Fibonacci|number len|
+// This function prints out the first len Fibonacci numbers
+{
+    number a is 0, b is 1, c is 0;
+    say "{0} {1}", a, b;
+    for (number i is 2; i < len; i++)
     {
-        number a is 0, b is 1, c is 0;
-        say "{0} {1}", a, b;
-        for (number i is 2; i < len; i++)
-        {
-            c is a and b;
-            say " {0}", c;
-            a is b;
-            b is c;
-        }
+        c is a and b;
+        say " {0}", c;
+        a is b;
+        b is c;
     }
+}
+```
 
 What's even beter, is that our chat session now has knowledge of the concept of JefSpeak.
 This means that from now on we can start asking questions about this new 'language'.
 Let's have a look and see how we could calculate the median out of a list of numbers in JefSpeak:
-
-    method number Median|list of number numbers|
-    // This function calculates the median of a given list of numbers
+```csharp
+method number Median|list of number numbers|
+// This function calculates the median of a given list of numbers
+{
+    numbers.sort();
+    number len is numbers.length;
+    if(len % 2 == 0)
     {
-        numbers.sort();
-        number len is numbers.length;
-        if(len % 2 == 0)
-        {
-            number median is (numbers[len/2 - 1] and numbers[len/2]) / 2;
-            return median;
-        }
-        else
-        {
-            number median is numbers[(len - 1) / 2];
-            return median;
-        }
+        number median is (numbers[len/2 - 1] and numbers[len/2]) / 2;
+        return median;
     }
+    else
+    {
+        number median is numbers[(len - 1) / 2];
+        return median;
+    }
+}
+```
 
 Well that's looks like an aweful and unwieldy language.
 But it is a fun experiment to showcase ChatGPT's transformative capabilities nonetheless.
@@ -261,7 +270,7 @@ But it is a fun experiment to showcase ChatGPT's transformative capabilities non
 In conclusion, ChatGPT is an incredibly powerful tool that can help software developers automate repetitive tasks, generate code, and even help with documentation. It can save you a significant amount of time and effort, allowing you to focus on more complex tasks and improve the overall efficiency of your work. With easy integration and access to the model, it is worth giving it a try in your next project. However keep in mind that AI assisted tools can be wrong, while their response might seem really solid and confident.
 
 ### Alternatives
-A interesting alternative to check out might be [Github Copilot](https://github.com/features/copilot), which can intergrate right in your IDE. It is also developed in part by OpenAI.
+An interesting alternative to check out might be [Github Copilot](https://github.com/features/copilot), which can intergrate right in your IDE. It is also developed in part by OpenAI.
 
 
 ## Further reading

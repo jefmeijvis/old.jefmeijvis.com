@@ -5,6 +5,13 @@
     import javascript from "svelte-highlight/languages/javascript";
     import csharp from "svelte-highlight/languages/csharp"
     import markdown from "svelte-highlight/languages/markdown"
+    import typescript from "svelte-highlight/languages/typescript"
+    import html from "svelte-highlight/languages/vbscript-html"
+    import json from "svelte-highlight/languages/json"
+    import xml from "svelte-highlight/languages/xml"
+    import sql from "svelte-highlight/languages/sql"
+
+
 
     // Styles
     import darkTheme from "svelte-highlight/styles/stackoverflow-dark";
@@ -46,6 +53,42 @@
             break;
         }
 
+        case 'svelte':
+        {
+            displayLang = 'Svelte'
+            lang = html;
+            break;
+        }
+
+        case 'kql':
+        {
+            displayLang = 'KQL'
+            lang = sql;
+            break;
+        }
+
+        case 'xml':
+        {
+            displayLang = 'XML'
+            lang = xml;
+            break;
+        }
+
+        case 'json':
+        {
+            displayLang = 'JSON'
+            lang = json;
+            break;
+        }
+
+        case 'ts':
+        case 'typescript':
+        {
+            displayLang = 'Typescript'
+            lang = typescript;
+            break;
+        }
+
         default:
         {
             console.log('🗣️ Unable to determine fitting language for ' + language);
@@ -76,16 +119,16 @@
 <div>
     <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
         Code snippet: {displayLang}    
-        <button on:click={copy}>
-            <img src="/copy.png" alt="copy code sample"/>
+        <button title="Copy code snippet" on:click={copy}>
+            <img src="/copy.png" alt="copy code snippet"/>
         </button>
     </p>
     <Highlight language={lang} {code} let:highlighted>
         <LineNumbers highlighted={highlighted}     
         --line-number-color="{$light? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)'}"
         --border-color="rgba(0,0,0,0)"
-        --padding-left={'0'}
-        --padding-right={'0'}/>
+        --padding-left={'.5rem'}
+        --padding-right={'.5rem'}/>
     </Highlight>
 </div>
 
@@ -136,5 +179,6 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        font-family: 'NotoMono' !important;
     }
 </style>
