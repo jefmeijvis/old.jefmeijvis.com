@@ -1,7 +1,7 @@
 <script lang="ts">
-    import PrismJs from '$lib/components/prismJS.svelte';
+    import HightlightJs from '$lib/components/hightlightJS.svelte';
     export let lang : string = "javascript"
     export let text : string;
   </script>
 
-<PrismJs language="{lang}" code="{text}"></PrismJs>
+<HightlightJs language="{lang}" code="{text}"></HightlightJs>

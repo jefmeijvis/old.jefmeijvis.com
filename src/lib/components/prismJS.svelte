@@ -54,9 +54,6 @@
          langJS = true;
          break           
      }
-
-     if (langJS == true) {
-
         lang_script = document.createElement('script');
         //@ts-ignore
         lang_script.src = lang_module
@@ -66,19 +63,15 @@
         lang_script.onload = () => {
         //@ts-ignore
           Prism.highlightAll();
-         }
+  
 
      }
-     else {
-       //@ts-ignore
-       Prism.highlightAll();
-     }
-
    };
   });
 
 </script>
 
+<p>Language: {language}</p>
   <div>
     <pre><code class="language-{language}">{code}</code></pre>
   </div>
