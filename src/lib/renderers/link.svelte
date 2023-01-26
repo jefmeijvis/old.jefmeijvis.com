@@ -36,7 +36,7 @@
         padding : .10rem;
         background-color:var(--color-background);
         border-radius: .25rem;
-        color:var(--color-text-secondary);
+        color:var(--color-text-primary);
     }
 
     a:hover
