@@ -24,7 +24,7 @@
 
 <h3 on:keydown={toggle} on:click={toggle}>{open ? "▲" : "▼"} Post information </h3>
 
-<div class:open="{open}" class:close="{!open}">
+<div class="container" class:open="{open}" class:close="{!open}">
     <table class="table-desktop">
         <tr>
             <td class="key">Author</td>
@@ -122,10 +122,15 @@
     .table-desktop,.table-mobile
     {
         width : 100%;
-        border-radius: .5rem;
         margin-top: .5rem;
         margin-bottom: .5rem;
         border-collapse: collapse;
+        margin-left: .5rem;
+    }
+
+    .container
+    {
+        border-left: .1rem black solid;
     }
     h3
     {

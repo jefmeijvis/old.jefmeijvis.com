@@ -31,4 +31,10 @@
     {
         font-weight: 300;
     }
+
+    h3
+    {
+        margin-top: 1rem;
+    }
+
 </style>

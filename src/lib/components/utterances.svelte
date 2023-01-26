@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { light } from '$lib/stores';
+	import { onMount } from 'svelte';
 	let bindingElement: HTMLElement;
+
     export let name : string;
+
+	onMount(()=> themeChange($light))
 
 	function deleteCommentSection()
 	{

@@ -1,7 +1,7 @@
 <svelte:head><title>Resources - Jef Meijvis</title></svelte:head>
 <h1>Resources</h1>
 <div class="resources">
-    <p>This is an ever expanding list of blogs, articles, ... I found interesting or useful:</p>
+    <h3>Websites</h3>
     <ul>
         <li><a rel=noreferrer target="_blank" href="https://docs.microsoft.com/en-us/dotnet/csharp/">The Microsoft DotNET / C# documentation</a> provides lots of usefull information on the topics </li>
         <li>Nick Chapsas is a <a rel=noreferrer target="_blank" href="https://mvp.microsoft.com/en-us/PublicProfile/5003297?fullName=Nick%20Chapsas">Microsoft MVP. </a>His <a rel=noreferrer target="_blank" href="https://www.youtube.com/c/Elfocrash">Youtube channel</a> and <a rel=noreferrer href="https://twitter.com/nickchapsas">Twitter account</a> cover lots of interesting topics regarding C#, DotNET and relevant devtools.</li>
@@ -14,7 +14,7 @@
         
     </ul>
 
-    <p>The software programs, tools and services I regularly use:</p>
+    <h3>Programs and tools:</h3>
     <ul>
         <li><a rel=noreferrer target="_blank" href="https://code.visualstudio.com/">VS Code</a> is my favourite code editor / IDE at the moment.</li>
         <li><a rel=noreferrer target="_blank" href="https://notepad-plus-plus.org/">Notepad++</a> remains my text editor of choice. Fast, snappy and expendably by using plugins!</li>
@@ -25,7 +25,7 @@
         <li><a rel=noreferrer target="_blank" href="https://k6.io/">K6</a> to load test API's and web application</li>
         <li><a rel=noreferrer target="_blank" href="https://diskanalyzer.com/">WizTree</a> to quickly analyze disk usage on Windows devices</li>
         <li><a rel=noreferrer target="_blank" href="https://www.postman.com/">Postman</a> to mock API calls and set up monitors</li>
-        <li><a rel=noreferrer target="_blank" href="https://www.ohmyposh.dev/">OhMyPosh</a> is a theme engine shell to add some flair to your favourite shell. I like pretty colours.</li>
+        <li><a rel=noreferrer target="_blank" href="https://www.ohmyposh.dev/">OhMyPosh</a> is a theme engine shell to add some flair to your favourite shell.</li>
         <li><a rel=noreferrer target="_blank" href="https://vercel.com/">Vercel</a>  makes deployments so easy!</li>
 
         
@@ -34,12 +34,14 @@
     <style>
         .resources
         {
-            margin-right: 2rem;
+            margin-left: 1rem;
         }
         ul
         {
             font-weight: 300;
             width: 80%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
 
         li

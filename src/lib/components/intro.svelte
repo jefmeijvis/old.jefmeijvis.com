@@ -40,6 +40,7 @@
     {
         width : 69%;
         float: left;
+        padding-bottom: 3rem;
 
     }
 
@@ -57,7 +58,6 @@
         text-decoration: none;
         border-radius: .5rem;
         color:var(--color-text-primary);
-        background-color: var(--color-background);
     }
 
     a:hover
