@@ -9,7 +9,6 @@
 <svelte:head><title>Jef Meijvis</title></svelte:head>
 
 <Intro/>
-
 <h2>Most popular:</h2>
 <MostViewed posts={data.posts}></MostViewed>
 <h2>Most recent blogposts:</h2>

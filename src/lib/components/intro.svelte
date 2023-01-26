@@ -15,7 +15,7 @@
     {
         margin-bottom: 2rem;
         width : 100%;
-        height : 10rem;
+        display: inline-block;
     }
     p
     {
@@ -26,6 +26,7 @@
     img
     {
         width : 10rem;
+        height : 10rem; 
         border-radius: 7rem;
         cursor: pointer;
         transition: all ease .25s
@@ -49,7 +50,7 @@
         width : 20%;
         float: right;
         text-align: right;
-        margin-right:2rem
+        margin-right:2rem;
     }
 
     a
