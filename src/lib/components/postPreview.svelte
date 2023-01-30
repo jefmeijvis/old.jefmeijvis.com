@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import { goto } from "$app/navigation";
-	import type { Post } from "src/routes/blog/[slug]/post";
 	import { fade } from "svelte/transition";
+	import type { Post } from "../../routes/blog/[slug]/post";
 	import PostTags from "./postTags.svelte";
     export let post : Post
 

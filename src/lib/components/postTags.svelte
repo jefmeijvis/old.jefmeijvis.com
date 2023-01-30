@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { filter } from "$lib/stores";
-	import type { Post } from "src/routes/blog/[slug]/post";
+	import type { Post } from "../../routes/blog/[slug]/post";
     export let post : Post;
 
     function click(e : any,tag : string)
@@ -19,7 +19,6 @@
 </script>
 
 <p>
-    Tags: 
     {#each post.tags as tag}
         <button on:click={()=>click(event,tag)}>{tag}</button>
     {/each}
@@ -36,7 +35,7 @@
         color: var(--color-text-secondary);
         padding : .25rem;
         border-radius: .25rem;
-        margin : .25rem;
+        margin-right : .5rem;
         border:none;
         cursor:pointer;
         transition: all ease .25s;

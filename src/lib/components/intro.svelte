@@ -56,7 +56,6 @@
     a
     {
         padding: .25rem;
-        text-decoration: none;
         border-radius: .5rem;
         color:var(--color-text-primary);
     }
