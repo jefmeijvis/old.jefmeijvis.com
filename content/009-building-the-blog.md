@@ -20,7 +20,7 @@ I thought why not share the lessons learned, so others might benefit from this!
 Before we continue, I would like to give credit where credit is due.
 I took a lot of inspiration from two other tech related blogging sites:
 - [www.timdeschryver.dev](https://www.timdeschryver.dev) : Tim is a colleague of mine and a great tech blogger! Took a lot of inspiration tech-wise for the blog.
-- [leerob.io](https://leerob.io/) : Simple but effective webdev blog, took some inspiration from the design.
+- [leerob.io](https://leerob.io/) : Simple but effective webdev blog, took some inspiration from the design. Since writing this blogpost, the design of their site has changed.
 
 ## Frontend framework
 My favourite frontend framework of choice is, as you might have guessed, [Sveltekit](https://kit.svelte.dev/).
