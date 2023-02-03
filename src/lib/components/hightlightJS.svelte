@@ -104,6 +104,8 @@
         navigator.clipboard.writeText(code);
         console.log('✍️ Copied code content to clipboard')
     }
+
+    console.log('🗣️  Done rendering codeblock with language ' + displayLang);
 </script>
 
 <svelte:head>
