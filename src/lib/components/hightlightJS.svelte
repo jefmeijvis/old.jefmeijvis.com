@@ -11,8 +11,6 @@
     import xml from "svelte-highlight/languages/xml"
     import sql from "svelte-highlight/languages/sql"
 
-
-
     // Styles
     import darkTheme from "svelte-highlight/styles/stackoverflow-dark";
     import lightTheme from "svelte-highlight/styles/stackoverflow-light";
@@ -27,6 +25,7 @@
 
     let lang : any;
     let displayLang : string;
+
 
     switch(language)
     {
@@ -95,8 +94,6 @@
             displayLang = 'Javascript'
             lang = javascript;
         }
-
-
     }
 
     function copy()
@@ -104,19 +101,13 @@
         navigator.clipboard.writeText(code);
         console.log('✍️ Copied code content to clipboard')
     }
-
-    console.log('🗣️  Done rendering codeblock with language ' + displayLang);
 </script>
 
-<svelte:head>
 {#if $light}
-  {@html lightTheme}
+    {@html lightTheme}
+{:else}
+    {@html darkTheme}
 {/if}
-
-{#if !$light}
-  {@html darkTheme}
-{/if}
-</svelte:head>
 
 <div>
     <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
@@ -133,6 +124,7 @@
         --padding-right={'.5rem'}/>
     </Highlight>
 </div>
+
 
 <style>
     img
