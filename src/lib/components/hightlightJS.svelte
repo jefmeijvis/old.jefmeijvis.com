@@ -1,12 +1,11 @@
 <script lang="ts">
     // Base library
-    import Highlight from "svelte-highlight";
+    import {Highlight} from "svelte-highlight";
     // Languages
     import javascript from "svelte-highlight/languages/javascript";
     import csharp from "svelte-highlight/languages/csharp"
     import markdown from "svelte-highlight/languages/markdown"
     import typescript from "svelte-highlight/languages/typescript"
-    import html from "svelte-highlight/languages/vbscript-html"
     import json from "svelte-highlight/languages/json"
     import xml from "svelte-highlight/languages/xml"
     import sql from "svelte-highlight/languages/sql"
@@ -55,7 +54,7 @@
         case 'svelte':
         {
             displayLang = 'Svelte'
-            lang = html;
+            lang = xml;
             break;
         }
 
@@ -124,6 +123,8 @@
         --padding-right={'.5rem'}/>
     </Highlight>
 </div>
+
+
 
 
 <style>
