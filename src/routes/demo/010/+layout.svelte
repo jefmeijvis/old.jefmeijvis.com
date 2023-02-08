@@ -15,7 +15,7 @@
         let depthFrom = from.split("/").length;
         let depthTo = to.split("/").length;
 
-        if(from > to)
+        if(depthFrom > depthTo)
             $direction = "LEFT"
         else
             $direction = "RIGHT"

@@ -13,6 +13,7 @@ const config = {
 		{
 			entries : [
 				"/api/posts", 
+				"/demo", 
 				"/api/github", 
 				"/post/001-csharp-extension-methods",
 				"/post/002-multiple-teams-instances",
