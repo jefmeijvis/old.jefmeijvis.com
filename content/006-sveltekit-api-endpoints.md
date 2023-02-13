@@ -30,7 +30,7 @@ export function GET({ url } : RequestEvent)
 }
 ```
 
-The function will take a [RequestEvent](https://kit.svelte.dev/docs/types#public-types-requestevent) as input parameter. The type definition can be found at “./$types”. A RequestEvent allows for quering the search parameters, such that a GET call to */api?firstName=Jef&lastName=Meijvis* will return “Hello Jef Meijvis” as a response.
+The function will take a [RequestEvent](https://kit.svelte.dev/docs/types#public-types-requestevent) as input parameter. The type definition can be found at “./$types”. A RequestEvent allows for querying the search parameters, such that a GET call to */api?firstName=Jef&lastName=Meijvis* will return “Hello Jef Meijvis” as a response.
 
 When we omit the search parameters, we will get the default response “Hello Default firstname Default lastname”.
 ### POST
@@ -58,7 +58,7 @@ The only difference with our GET request is that instead of getting request info
 ```
 
 ## Headers
-When returning a response from your endpoint, you might want to return customised headers. We can do this by supplying the [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) constructor shown above with an additional ResponseInit object. This object has a 'headers' property that we can supply with the required headers in key-value format. For example, when we want to cache the API response for 1 hour (3600 seconds) we can do this by adding the following headers:
+When returning a response from your endpoint, you might want to return customized headers. We can do this by supplying the [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) constructor shown above with an additional ResponseInit object. This object has a 'headers' property that we can supply with the required headers in key-value format. For example, when we want to cache the API response for 1 hour (3600 seconds) we can do this by adding the following headers:
 ```typescript
 const responseInit : ResponseInit =
 {
