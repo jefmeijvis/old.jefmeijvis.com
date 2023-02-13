@@ -3,6 +3,8 @@
     export let title : string = ""
     export let text = ''
 
+    // Using /static allows autocomplete in VS code somehow, but breaks the image linking
+    // So I just remove it before applying the href property of the img tag.
     if(href.includes("/static"))
         href = href.replace("/static","");
 
