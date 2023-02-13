@@ -2,7 +2,7 @@
 author: Jef Meijvis
 id : 5
 image : /post/005/logo.png
-title: Create a barebones chat component with Svelte
+title: Create a bare bone chat component with Svelte
 date: 01/10/2022
 description : Sveltekit API endpoints.
 tags : Svelte
@@ -67,7 +67,7 @@ Let's start by creating a container div in our main component file (chatbox.svel
 ```
 
 ### Chat bubble
-Let's continue on the frontend by creating a subcomponent, which we will call a message bubble (bubble.svelte). Use the script tag to expose a message prop. Create a p element containing the user that is available on the message object, and the timestamp converted to the local datetime format. We assign the info element a class based by comparing the username of the message with the username of the current user. If these match, it's our own message and we make it a right alligned chat bubble. If not, we make it a left alligned bubble.
+Let's continue on the frontend by creating a subcomponent, which we will call a message bubble (bubble.svelte). Use the script tag to expose a message prop. Create a p element containing the user that is available on the message object, and the timestamp converted to the local datetime format. We assign the info element a class based by comparing the username of the message with the username of the current user. If these match, it's our own message and we make it a right aligned chat bubble. If not, we make it a left aligned bubble.
 
 ```svelte
 <script>
@@ -139,7 +139,7 @@ Before we can continue, we need to create some mockup data to test our chat bubb
     let messages : any[] = 
     [
         {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!"},
-        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️"},
+        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weather over there? ☁️"},
         {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎"},
         {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋"},
     ];
@@ -174,7 +174,7 @@ By combining all these changes, we get the following result:
 Looking great so far! We are able to render the message, the user and the timestamp in an interactive chat window. Based on which user we specified in code, we can determine which chat bubbles are ours.
 
 ### Control panel
-Let's finish our chatbox by adding a control panel (controls.svelte). As props to this subcomponent we define a user, a send function and a message. We group eveything together in a div with classname controls. The first p element contains a input field that is bound to the 'user' variable. The textarea below is bound to the message variable. Our button contains an on:click event that fires the send method that is provided by the top level chatbox component.
+Let's finish our chatbox by adding a control panel (controls.svelte). As props to this subcomponent we define a user, a send function and a message. We group everything together in a div with classname controls. The first p element contains a input field that is bound to the 'user' variable. The textarea below is bound to the message variable. Our button contains an on:click event that fires the send method that is provided by the top level chatbox component.
 
 ```svelte
 <script>
@@ -244,7 +244,7 @@ First let's add an import statement for our controls component. We also need a v
 
 > Svelte only re-renders it's components when the variable is changed. This means that when we have a component that uses an array, adding or removing an element from the list will not trigger a re-render. We can solve this be reassigning the variable storing the list to itself: messages = messages;
 
-To improve the user experience, the chatbox will scroll to the bottom when a new message is added. We can achieve this by trigering our custom 'scrollToBottom' function whenever the afterUpdate hook fires.
+To improve the user experience, the chatbox will scroll to the bottom when a new message is added. We can achieve this by triggering our custom 'scrollToBottom' function whenever the afterUpdate hook fires.
 
 Finish things of by including the Controls component in our chatbox div, while binding it to the message, user and send props.
 
@@ -259,7 +259,7 @@ Finish things of by including the Controls component in our chatbox div, while b
     let messages : any[] = 
     [
         {id : 1, timestamp : new Date() , user : "Alice" , message : "Hi there, I'm writing a chat message!", likes : 0 },
-        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weater over there? ☁️", likes : 0 },
+        {id : 2, timestamp : new Date() , user : "Bob" , message : "Hi Alice, what's the weather over there? ☁️", likes : 0 },
         {id : 4, timestamp : new Date() , user : "Alice" , message : "It's really sunny over here 🌞😎", likes : 0 },
         {id : 3, timestamp : new Date() , user : "Carol" , message : "Hi guys 👋", likes : 0 },
     ]
