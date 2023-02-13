@@ -6,18 +6,9 @@
 
     export let name : string;
 
-	onMount(()=> themeChange($light))
+	$: themeChange($light)
 
-	function deleteCommentSection()
-	{
-		let utterancesScript = document.getElementsByClassName("utterances-script")[0] ?? undefined;
-		if(utterancesScript)
-			utterancesScript.remove();
-
-		let utterancesDiv = document.getElementsByClassName("utterances")[0] ?? undefined;
-		if(utterancesDiv)
-			utterancesDiv.remove();
-	}
+	onMount(()=> createCommentSection())
 
 	function createCommentSection()
 	{
@@ -40,11 +31,17 @@
 		if(!browser)
 			return;
 
-		deleteCommentSection();
-		createCommentSection();
+		let theme = input ? 'github-light' : 'github-dark'
+		const message = 
+		{
+			type: 'set-theme',
+			theme: theme
+		};
+
+		const utterances = document.querySelector('iframe.utterances-frame') as HTMLFrameElement;
+		utterances?.contentWindow?.postMessage(message, 'https://utteranc.es');
 	}
 
-	$: themeChange($light)
 </script>
 
 <div bind:this={bindingElement} />
