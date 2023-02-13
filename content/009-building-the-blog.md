@@ -11,7 +11,7 @@ published : true
 
 
 ## Content
-This blogging website has gone through quite a few interations before I landed on what you currently see.
+This blogging website has gone through quite a few iterations before I landed on what you currently see.
 I thought why not share the lessons learned, so others might benefit from this!
 
 ![Blogging! [small]](/static/post/009/logo.png)
@@ -23,25 +23,25 @@ I took a lot of inspiration from two other tech related blogging sites:
 - [leerob.io](https://leerob.io/) : Simple but effective webdev blog, took some inspiration from the design. Since writing this blogpost, the design of their site has changed.
 
 ## Frontend framework
-My favourite frontend framework of choice is, as you might have guessed, [Sveltekit](https://kit.svelte.dev/).
+My favorite frontend framework of choice is, as you might have guessed, [Sveltekit](https://kit.svelte.dev/).
 The component based approached, combined with file based routing and general simplicity really makes using Svelte a fun experience. 
 
 ![Svelte [small]](/static/post/009/svelte.png)
 
-So it's probably no suprise that I went with Sveltekit as the frontend framework for this blogging site.
+So it's probably no surprise that I went with Sveltekit as the frontend framework for this blogging site.
 I don't use any fancy external styling solutions. 
 Just plain css written in each component file.
 ## Converting markdown
 
 ### Source of truth
 When iterating over the architecture of this blogging site, the source of truth has changes quite a lot.
-At the start I used a online content managemtent systems (CMS) called [Strapi](https://strapi.io/).
+At the start I used a online content management systems (CMS) called [Strapi](https://strapi.io/).
 While it worked greatly, I wasn't keen on managing yet another external system.
 
 I moved on to storing my content in +page.svelte files in the routes folder.
 I also kept track of all posts and their metadata in a separate JSON file. 
-This meant that I had to keep two systems in sync, and while this isn't really complex, it's just anoying. 
-Storing each blogpost as a sveltekit page gave me great flexibility, as each page was fully customisable and could have a vastly diffent look, feel, or even embed other svelte components in it. However, this also meant that I had to keep maintaining all these things.
+This meant that I had to keep two systems in sync, and while this isn't really complex, it's just annoying. 
+Storing each blogpost as a sveltekit page gave me great flexibility, as each page was fully customizable and could have a vastly different look, feel, or even embed other svelte components in it. However, this also meant that I had to keep maintaining all these things.
 A more general solution that would also work outside of my own environment was needed.
 
 That's when I switched over to markdown files. The [content](https://github.com/jefmeijvis/www.jefmeijvis.com/tree/main/content) folder of my repository now contains a bunch of markdown files which get transformed to html.
@@ -66,7 +66,7 @@ This information is stored in a [Supabase table](https://supabase.com/).
 ![Supabase is used to store viewcounts [small]](/static/post/009/supabase.png)
 
 To prevent constantly needing to fetch this data when I'm developing locally, I implemented a cache.
-Each viewcount fetch first checks if there isn't a local file containg the requested information.
+Each viewcount fetch first checks if there isn't a local file containing the requested information.
 With a cache maximum age set to 1 hour, this greatly reduces the amount of calls I have to make to the supabase database. 
 
 ### Marked
@@ -74,7 +74,7 @@ Next up is generating a hyperlinked table of contents.
 By using [Marked](https://www.npmjs.com/package/marked) I'm able to iterate over all the tokens that my markdown file contains. Whenever I encounter a heading element I add this to a list, and this can then later on be used to generate the table of contents.
 
 ### Svelte markdown
-To acutally render the markdown into html, I use [Svelte Markdown](https://www.npmjs.com/package/svelte-markdown).
+To actually render the markdown into html, I use [Svelte Markdown](https://www.npmjs.com/package/svelte-markdown).
 This library provides a component that accepts a string of markdown, and optional extra renderers to convert this markdown.
 
 For example:
@@ -105,10 +105,10 @@ For example:
     <SvelteMarkdown {source} {renderers} />
 ```
 
-The content of the heading.svelte and code.svelte file overwrites the default rendering behaviour.
-You can have a look at the default renderers on the [Svelte markdown repo](https://github.com/pablo-abc/svelte-markdown/tree/main/src/renderers). I have customised a few of these, which can be found in the [public repo of this blogging site](https://github.com/jefmeijvis/www.jefmeijvis.com/tree/main/src/lib/renderers).
+The content of the heading.svelte and code.svelte file overwrites the default rendering behavior.
+You can have a look at the default renderers on the [Svelte markdown repo](https://github.com/pablo-abc/svelte-markdown/tree/main/src/renderers). I have customized a few of these, which can be found in the [public repo of this blogging site](https://github.com/jefmeijvis/www.jefmeijvis.com/tree/main/src/lib/renderers).
 
-This allows for some nice custom behaviour.
+This allows for some nice custom behavior.
 As an example, I've added some optional styling to [image tags](https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/src/lib/renderers/image.svelte).
 
 An image in markdown format is defined as 
