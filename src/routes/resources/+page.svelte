@@ -10,7 +10,9 @@
         <li><a rel=noreferrer target="_blank" href="https://leerob.io/">Lee Robinson</a> at Vercel has a great blog discussing everything related to web development.</li>
         <li><a rel=noreferrer target="_blank" href="https://www.hanselman.com/">Scott Hanselman</a> at Microsoft blogs about all round and .NET related software topics.</li>
         <li><a rel=noreferrer target="_blank" href="https://martinfowler.com/">Martin Fowler</a> has great technical writeups</li>
+        <li><a rel=noreferrer target="_blank" href="https://geoffrich.net">Geoff Rich</a> is a member of the Svelte core team, and has a great webdev blog.</li>
 
+        
         
     </ul>
 
