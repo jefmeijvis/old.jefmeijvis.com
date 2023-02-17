@@ -270,7 +270,6 @@ All of this of course leads to one single goal: the batman transition.
 The original batman series featured a spinning bat logo and matching sound effect.
 I've recreated this as a Svelte page transition.
 The sound is played by the afterNavigate hook, and a custom transition scales and rotates the logo when the url changes.
-You can view the result live at the [Post 10 batman transition.](/demo/010/batman)
 
 
 ```svelte
@@ -279,9 +278,11 @@ You can view the result live at the [Post 10 batman transition.](/demo/010/batma
 	import { page } from "$app/stores";
 
     afterNavigate(()=> {
-        var audio = new Audio('/post/010/batman.mp3');
+        var audio = new Audio('/batman.mp3');
         audio.play();
     })
+
+    let easingFunction = (t : number) => 2*(-4 * ((t-0.5)*(t-0.5)) + 1);
 
     function batmanTransition(node : any, {delay = 0,duration = 2000}) {
 
@@ -290,51 +291,59 @@ You can view the result live at the [Post 10 batman transition.](/demo/010/batma
         duration,
         css: (t : number,u : number)  => 
         {
-            let rotation = t * 360 * 4; // turn the logo 4 times
-            let scale = 1 - 2 * Math.abs(t - 0.5);
-            return `transform:rotate(${rotation}deg) scale(${scale});`;
+            let scale = easingFunction(t);
+            return `transform:scale(${scale});`;
         }
     };
 }
+
+
+    function fadeTransition(node : any, {delay = 0,duration = 2000}) 
+    {
+        return {
+            delay,
+            duration,
+            css: (t : number,u : number)  => 
+            {
+                let scale = 1 + easingFunction(t);
+                return `transform:rotate(${ t * 720 }deg) scale(${scale});`;
+            }
+        };
+    }
 </script>
 
-<h1>Batman transition</h1>
-
-<div>
-    <slot></slot>
-</div>
-
 {#key $page.url.href}
+    <div in:fadeTransition="{{}}">
+        <slot></slot>
+    </div>
     <div in:batmanTransition="{{}}" class="batman-logo">
-        <img src="/post/010/batman.png" alt="batman logo"/>
+        <img src="/batman-1965.png" alt="batman logo"/>
     </div>
 {/key}
 
 <style>
     .batman-logo
     {
-        width : 100vw;
-        height : 100vh;
-        position: fixed;
-        left : 0;
+        width : 100vh;
+        display: block;
+        left : 25%;
         top : 0;
         pointer-events: none;
         transform: rotate(0deg) scale(0);
-        transform-origin: 50vw 50vh;
+        transform-origin: 50% 50%;
+        transition: all ease .5s;
+        position: fixed;
     }
 
     img
     {
         width : 100%;
         height : 100%;
-    }
+        filter: invert(13%) sepia(94%) saturate(3733%) hue-rotate(354deg) brightness(89%) contrast(120%);    }
 </style>
 ```
 
 ![I have peaked as a web developer](/static/post/010/batman.webp)
-[Live demo](/demo/010/batman)
-
-
 
 ## Accessibility
 As mentioned in [this great blogpost by Geoff Rich](https://geoffrich.net/posts/accessible-svelte-transitions/), we need to make sure that we keep the accessibility of our webpage in mind.
