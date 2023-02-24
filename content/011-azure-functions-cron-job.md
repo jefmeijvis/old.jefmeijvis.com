@@ -80,6 +80,8 @@ We can use the following expression to achieve this:
 We modify our function to be Async, and create a new method that does the required work.
 In my case, this blog is hosted on [Vercel](https://vercel.com/), which allows me to call an HTTP endpoint to manually start the build process. 
 
+Deployment hooks can be created via the Vercel dashboard under `Project > Settings > Git > Deploy Hooks`.
+The actual value of the hook is stored as an environment variable in this case.
 
 ```csharp
     public class DailyDeployment
