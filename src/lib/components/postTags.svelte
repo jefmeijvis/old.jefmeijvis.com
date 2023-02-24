@@ -16,11 +16,16 @@
             $filter += s;
 
     }
+
+    function highlightFirstLetter(input : string)
+    {
+        return input[0].toUpperCase() + input.slice(1, input.length);
+    }
 </script>
 
 <p>
     {#each post.tags as tag}
-        <button on:click={()=>click(event,tag)}>{tag}</button>
+        <button on:click={()=>click(event,tag)}>{highlightFirstLetter(tag)}</button>
     {/each}
 </p>
 
