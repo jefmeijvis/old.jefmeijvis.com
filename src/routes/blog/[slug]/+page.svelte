@@ -26,6 +26,9 @@
     <title>{data.post.title} - Jef Meijvis</title>
     <meta name="image" property="og:image" content={og}>
     <meta name="twitter:image" content={og}>
+    <meta name="twitter:title" content={data.post.title}>
+    <meta name="twitter:text:title" content={data.post.title}>
+    <meta name="twitter:description" content={data.post.description}>
 </svelte:head>
 
 <div>
