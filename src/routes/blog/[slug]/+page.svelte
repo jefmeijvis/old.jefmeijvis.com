@@ -28,7 +28,6 @@
     <meta name="twitter:image" content={og}>
 </svelte:head>
 
-
 <div>
 <a href="/blog">Back to overview</a>
 
