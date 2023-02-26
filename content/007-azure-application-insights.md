@@ -10,13 +10,13 @@ published : true
 ---
 
 ## Azure Application Insights
-Application Insights is an Azure service that allows developers to monitor their applications in a centralised way, all the way from development through production. With the available data, software teams are able to proactively understand how their application is being used. In case of an incident, developers are able to reactively review metrics, logs and traces to find the root cause. 
+Application Insights is an Azure service that allows developers to monitor their applications in a centralized way, all the way from development through production. With the available data, software teams are able to proactively understand how their application is being used. In case of an incident, developers are able to reactively review metrics, logs and traces to find the root cause. 
 ![Azure Application Insights logo[small]](/static/post/007/logo.png)
 
-It is an essential tool to develop distributed applicatons and system at scale.
+It is an essential tool to develop distributed applications and system at scale.
 
 ## OpenTelemetry
-When software teams or organisations manage multiple applications, it might be useful to collect all this data in a single place. Only by doing so we're able to see the entire picture of what's happening across all these systems.
+When software teams or organizations manage multiple applications, it might be useful to collect all this data in a single place. Only by doing so we're able to see the entire picture of what's happening across all these systems.
 Doing so requires that logs, traces and metrics are generated in a standardized data format.
 
 ![OpenTelemetry Logo [medium]](/static/post/007/opentelemetry.png)
@@ -36,7 +36,7 @@ After creating the instance, we can go to the Overview tab and copy the connecti
 
 This connection string is always needed to connect to our instance of Application Insights.
 
-> On March 31, 2025, support for instrumentation key ingestion will end. Instrumentation key ingestion will continue to work, but Microsoft will no longer provide updates or support for the feature. Connection strings will be the prefered way of connecting from now on.
+> On March 31, 2025, support for instrumentation key ingestion will end. Instrumentation key ingestion will continue to work, but Microsoft will no longer provide updates or support for the feature. Connection strings will be the preferred way of connecting from now on.
 
 
 ### Auto instrumentation (agents)
@@ -47,7 +47,7 @@ See the [app insights overview](https://learn.microsoft.com/en-us/azure/azure-mo
 
 ## Logging in DotNET
 If you're writing dotnet code, changes are high you're using a logging library.
-Most commenly used logging libraries provide a way to deterimine multiple targets for you logging data.
+Most commonly used logging libraries provide a way to determine multiple targets for you logging data.
 E.g. you might want to log to both a file on disk and to Azure Insights.
 
 ### Log4net
@@ -132,13 +132,13 @@ properties.add("user-id", 10);
 properties.add("api-endpoint,"/api/v2/users");
 ```
 
-This way we can add our own custom data fields to the logtraces.
+This way we can add our own custom data fields to the log traces.
 
 ## Inspecting the data
 
-We can verify that our data colletion is working by going to the Azure Portal and visiting our instance.
+We can verify that our data collection is working by going to the Azure Portal and visiting our instance.
 We can view the logs under *Monitoring > Logs*.
-The poral allows us to query our data using [KQL, the Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
+The portal allows us to query our data using [KQL, the Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
 
 ![Inspecting the collected logs using the Azure Portal [medium]](/static/post/007/portal3.png)
 
@@ -150,7 +150,7 @@ traces
 ```
 
 Please make note of the | (pipe) symbol used in KQL. 
-If we would like to see which loglines contain a certain string, we could do this by adding a where clause:
+If we would like to see which log lines contain a certain string, we could do this by adding a where clause:
 
 ```kql
 traces
@@ -168,22 +168,22 @@ traces
 
 ## Visualising data using dashboards
 
-While it is beyond the scope of this article, you can visualise the collected data by using dashboards.
+While it is beyond the scope of this article, you can visualize the collected data by using dashboards.
 
 ### Azure Dashboard
 Azure offers a dashboard service on its own.
-This service can also be created through the Azure Poral.
+This service can also be created through the Azure Portal.
 
 ![Azure Dashboard](/static/post/007/portal4.png)
 
 ### 3rd party dashboards
 
-But because we collected our data in a vendor independant format, we can integrate Application Insights with many 3rd party dashboard tools, such as [Grafana](https://grafana.com/)
+But because we collected our data in a vendor independent format, we can integrate Application Insights with many 3rd party dashboard tools, such as [Grafana](https://grafana.com/)
 
 ![Many 3rd party options, such as Grafana, exist](/static/post/007/grafana.png)
 
 ## Summary
-Application Insights provides various ways to intagrate data logging in our existing or new applications.
+Application Insights provides various ways to integrate data logging in our existing or new applications.
 This can be done both by making configuration changes (auto-instrumentation) or by making minor code changes. 
 It allows us to collect metrics, logs and traces in a standard data format, made possible by OpenTelemetry.
 This open data format prevents vendor lock-in, and allows us to integrate our data with many 3rd party tools and systems.
