@@ -5,7 +5,7 @@
 
     function click()
     {
-        goto('/blog/' + post.filename.replace(".md","") + "?ref=most-popular") 
+        goto('/blog/' + post.filename.replace(".md","")) 
     }
 </script>
 
