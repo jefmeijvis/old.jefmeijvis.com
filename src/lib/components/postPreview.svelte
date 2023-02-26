@@ -31,7 +31,7 @@
 
     function getLink() : string
     {
-        return "/blog/" + post.filename.replace(".md","") + "?ref=post-card";
+        return "/blog/" + post.filename.replace(".md","");
     }
 </script>
 
