@@ -11,7 +11,8 @@
     export let data: { id : number, slug : string , post : Post, timestamp : string};
 
     let source = data.post.markdown;
-    let og : string = "post/" + data.post.filename.slice(0,3) + "/opengraph.png";
+    let og : string = "https://www.jefmeijvis.com/post/" + data.post.filename.slice(0,3) + "/opengraph.png";
+    console.log(og);
 
     // Reload the markdown from the pageload data
     afterNavigate(() => DoAfterNavigate());
