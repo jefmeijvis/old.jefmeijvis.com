@@ -261,7 +261,7 @@ method number Median|list of number numbers|
 }
 ```
 
-Well that's looks like an aweful and unwieldy language.
+Well that's looks like an awful and unwieldy language.
 But it is a fun experiment to showcase ChatGPT's transformative capabilities nonetheless.
 
 
