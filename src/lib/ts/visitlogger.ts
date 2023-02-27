@@ -36,9 +36,6 @@ export class VisitLogger
     {
         if(page.includes("localhost"))
             return true;
-
-        if(page.includes("vercel"))
-            return true;
         
         return false;
     }
