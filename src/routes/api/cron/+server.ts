@@ -1,12 +1,12 @@
 export async function GET(req : any) 
 {
   console.dir(process.env)
-    let url : string | undefined = process.env.VERCEL_URL;
+    let url : string | undefined = process.env.VERCEL_HOOK;
 
     if(!url)
     {
-      console.log("Unable to get VERCEL_URL");
-      return new Response('Unable to get VERCEL_URL');
+      console.log("Unable to get VERCEL_HOOK");
+      return new Response('Unable to get VERCEL_HOOK');
     }
 
     let res = await fetch( url, {method : 'GET'});
