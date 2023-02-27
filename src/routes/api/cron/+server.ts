@@ -1,9 +1,6 @@
-/*
-  Vercel specific cron job API endpoint
-*/
-
-export function GET(req : any) {
-    console.log("This is a log line with timestamp "+ new Date().toISOString());
-    console.log(process.env.VERCEL_DEPLOYMENT_URL)
-    return new Response('Hello Cron!');
+export async function GET(req : any) 
+{
+    let res = await fetch(process.env.VERCEL_DEPLOYMENT_URL ?? "", {method : 'GET'});
+    let jsonResponse = await res.json();
+    return new Response(jsonResponse);
   }
