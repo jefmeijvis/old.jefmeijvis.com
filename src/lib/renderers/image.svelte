@@ -56,10 +56,10 @@
         {
             width : 100%;
             border-radius: .5rem;
-            margin-top: 1rem;
+            margin:auto;
+            margin-top: 2rem;
             margin-bottom: 1rem;;
             display: block;
-            margin:auto;
         }
 
         @media (max-aspect-ratio: 1/1) 

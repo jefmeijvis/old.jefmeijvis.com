@@ -1,6 +1,5 @@
 export async function GET(req : any) 
 {
-  console.dir(process.env)
     let url : string | undefined = process.env.VERCEL_HOOK;
 
     if(!url)
