@@ -90,6 +90,8 @@ For the production environment, we can set this variable in the Vercel dashboard
 ```
 
 And there we have it! With this cron job we have a daily deployment of our blogging site at 5 in the morning.
+Vercel cron jobs allow for a really easy and frictionless way of setting up cron jobs, all maintained in the same codebase as the main website.
+I like it!
 
 
 ## Further reading
