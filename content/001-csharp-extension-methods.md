@@ -4,16 +4,16 @@ id : 1
 image : /post/001/logo-csharp.png
 title: CSharp extension methods
 date: 16/10/2021
-description : As a programmer, extension methods are a great tool to have in your toolbelt! They allow you to extend the functionality of an existing type without having to modify the type.
+description : As a programmer, extension methods are a great tool to have in your toolbox! They allow you to extend the functionality of an existing type without having to modify the type.
 tags : CSharp
 published : true
 ---
 
 ## Extension methods?
 
-As a programmer, extension methods are a great tool to have in your toolbelt! They allow you to extend the functionality of an existing type without having to modify the type. This can be usefull in cases were you don't have access to the type, or when you want to increase modularity by keeping some functionality out of the main class.
+As a programmer, extension methods are a great tool to have in your toolbox! They allow you to extend the functionality of an existing type without having to modify the type. This can be useful in cases were you don't have access to the type, or when you want to increase modularity by keeping some functionality out of the main class.
 
-The most well known extension methods are those of the Linq library. These methods add aditional functionality to classes that implement the IEnumerable interface!
+The most well known extension methods are those of the Linq library. These methods add additional functionality to classes that implement the IEnumerable interface!
 
 Lets demonstrate extension methods by expanding the String class For this example we want to see if a string contains the world apple. The regular way of doing this is by creating a method that takes the string as input, and check wether or not it contains the fixed string 'apple'.
 
@@ -45,7 +45,7 @@ public static T GetRandom<T>(this IEnumerable<T> inputEnumerable)
 }
 ```
 
-We implement the folowing generic extension method that selects a random element from the collection. This allows us to hide the random selection logic, and contain it in the Extensions.cs file. We can now use this method by once again including the correct namespace, and invoking the method on, for example, an array of strings:
+We implement the following generic extension method that selects a random element from the collection. This allows us to hide the random selection logic, and contain it in the Extensions.cs file. We can now use this method by once again including the correct namespace, and invoking the method on, for example, an array of strings:
 ```csharp
 using ExtensionMethodsBlogpost;
 
