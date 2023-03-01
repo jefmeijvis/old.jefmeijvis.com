@@ -32,7 +32,7 @@ function generateFilename(input : string) : string
     return 'cache/' + input + '.cache';
 }
 
-function cacheIsOk(path : string, maxage : number) : boolean
+function cacheIsOk(path : string, maximumAge : number) : boolean
 {
 
     let fileExists : boolean = fs.existsSync(path);
@@ -43,7 +43,7 @@ function cacheIsOk(path : string, maxage : number) : boolean
     let stats = fs.statSync(path);
     let diff : number =  getSecondsAge(stats.mtime)// Cache age in seconds
     console.log('Cache age is ' + diff + 's')
-    if(diff > maxage) // Cache maxage is 1 hour
+    if(diff > maximumAge) // Cache maximumAge is 1 hour
         return false;
 
     return true;

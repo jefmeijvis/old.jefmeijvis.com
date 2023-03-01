@@ -5,7 +5,7 @@ export const prerender = true;
 export async function GET({ request } : RequestEvent) 
 {
     let url : string = 'https://api.github.com/repos/jefmeijvis/www.jefmeijvis.com/commits'
-    let rqinit = 
+    let requestInit = 
     {
         method : "GET",
         headers : 
@@ -19,7 +19,7 @@ export async function GET({ request } : RequestEvent)
 
     const func = async () => 
     {
-        let response = await fetch(url,rqinit);
+        let response = await fetch(url,requestInit);
         let json =  response.json();
         return json;
     };
@@ -29,7 +29,5 @@ export async function GET({ request } : RequestEvent)
     let sha = lastCommit.sha;
     let commitSha = sha.slice(0,7);
     let commitUrl = "https://github.com/jefmeijvis/www.jefmeijvis.com/commit/" + sha;
-    console.log("💜 GET api/github: " + commitSha + " - " + commitUrl)
-
     return new Response(JSON.stringify({commit : commitSha, url : commitUrl}));
 }
