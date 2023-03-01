@@ -5,7 +5,7 @@ export class VisitLogger
 {
     public static async LogVisit(page : string)
     {
-        if(this.IsLocal(page))
+        if(this.IsExcludedFromLogging(page))
             return;
 
         // Construct the database row
@@ -19,7 +19,7 @@ export class VisitLogger
 
     public static async LogAction(action : Action, element : Element | string, page : string)
     {
-        let local : boolean = this.IsLocal(page);
+        let local : boolean = this.IsExcludedFromLogging(page);
         console.log("🖱️ LogAction[" + action + ", " + element + ", " + page + "," + (local ? 'local' : 'not local') + "]")
         if(local)
             return;
@@ -32,11 +32,18 @@ export class VisitLogger
         .insert([row]);
     }
 
-    private static IsLocal(page : string)
+    private static IsExcludedFromLogging(page : string)
     {
-        if(page.includes("localhost"))
-            return true;
-        
+        // If a page url contains one of the keywords, it is excluded from logging
+        // This prevents logging of local development and vercel preview urls
+        let excludedKeywords : string[] = [".vercel.app" , "localhost:"]
+        for(let i = 0 ; i < excludedKeywords.length ; i++)
+        {
+            let keyword = excludedKeywords[i];
+            if(page.includes(keyword))
+                return true;
+        }
+
         return false;
     }
 }
