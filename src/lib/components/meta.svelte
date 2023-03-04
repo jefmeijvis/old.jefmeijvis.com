@@ -20,7 +20,7 @@
     {#if !$page.url.pathname.includes("/blog/")}
         <meta name="image" property="og:image" content="/opengraph.png">
         <meta name="twitter:image" content="/opengraph.png">
-        <meta name="twitter:title" content="Software blogging about MSvelte, Security, Microsoft Azure and .NET">
+        <meta name="twitter:title" content="Software blogging about Svelte, Security, Microsoft Azure and .NET">
         <meta name="twitter:description" content="Software blogging about Svelte, Security, Microsoft Azure and .NET">
     {/if}
     <meta name="description" content="Software blogging about Svelte, Security, Microsoft Azure and .NET">
