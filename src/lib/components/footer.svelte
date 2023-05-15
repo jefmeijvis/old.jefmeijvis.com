@@ -41,7 +41,7 @@
                 <li><h3>Recent posts</h3></li>
             {#if posts}
                 {#each posts as post,index}
-                    {#if index < 6}
+                    {#if index < 5}
                         <li>
                             <a href="blog/{post.filename.replace(".md","")}">{post.title.slice(0,20)}...</a>
                         </li>
