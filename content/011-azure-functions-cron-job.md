@@ -106,7 +106,9 @@ The actual value of the hook is stored as an environment variable in this case.
 
 This way, our function will be triggered every morning at 6:00 AM, and will trigger a new build on Vercel!
 
-> For this particular use case, I might make more sense to use the recently released [Vercel cron jobs](https://vercel.com/guides/how-to-setup-cron-jobs-on-vercel). I should write a post about that sometime.
+> For this particular use case, I might make more sense to use the recently released [Vercel cron jobs](https://vercel.com/guides/how-to-setup-cron-jobs-on-vercel).
+
+I wrote [a blogpost](/blog/012-vercel-cron-jobs) about achieving the same result using Vercel cron jobs.
 
 ## Further reading
 - [Microsoft learn documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-csharp#ncrontab-expressions)

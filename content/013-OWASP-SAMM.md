@@ -4,7 +4,7 @@ id : 13
 image : /post/013/logo.png
 title: OWASP SAMM
 date: 29/03/2023
-description : OWASP SAMM
+description : OWASP SAMM is an open framework to help organizations formulate and implement a strategy for software security!
 tags : Security, OWASP
 published : true
 ---
