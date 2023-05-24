@@ -21,7 +21,7 @@ async function getPostForThisPage(slug : string, fetchFunction : Function)
     for(let i = 0 ; i < posts.length ; i++)
     {
         let post : Post = posts[i];
-        if(post.filename.replace(".md","") == slug)
+        if(post.filename.replace(".md","").toLowerCase() == slug.toLowerCase())
             targetPost = post;
     }
 

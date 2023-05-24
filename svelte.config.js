@@ -34,7 +34,7 @@ const config = {
 				"/blog/011-azure-functions-cron-job",
 				"/blog/012-vercel-cron-jobs",
 				"/blog/013-OWASP-SAMM",
-				"/blog/014-OWASP-Cornucopia",
+				"/blog/014-OWASP-cornucopia",
 				"/blog/015-gamify-threat-modeling",
 			]
 		}
