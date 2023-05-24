@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td class="key">Source</td>
-            <td><a href="https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/001-csharp-extension-methods.md">{post.filename}</a></td>
+            <td><a href="{'https://github.com/jefmeijvis/www.jefmeijvis.com/blob/main/content/' + post.filename}">{post.filename}</a></td>
         </tr>
         <tr>
             <td class="key">Render timestamp</td>
