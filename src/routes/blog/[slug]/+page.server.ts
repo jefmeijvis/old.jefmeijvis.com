@@ -9,7 +9,6 @@ export async function load({params,fetch} : any) {
         post : await getPostForThisPage(params.slug,fetch),
         timestamp : getRenderTimestamp(),
         commit : await(await fetch('/api/github',{method : 'GET'})).json(),
-        posts: await (await fetch('/api/posts')).json(),
     };
   }
 

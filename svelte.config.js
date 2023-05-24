@@ -28,6 +28,14 @@ const config = {
 				"/blog/005-creating-a-chat-component-with-svelte",
 				"/blog/006-sveltekit-api-endpoints",
 				"/blog/007-azure-application-insights",
+				"/blog/008-chatgpt-as-a-developer",
+				"/blog/009-building-the-blog",
+				"/blog/010-svelte-transitions",
+				"/blog/011-azure-functions-cron-job",
+				"/blog/012-vercel-cron-jobs",
+				"/blog/013-OWASP-SAMM",
+				"/blog/014-OWASP-Cornucopia",
+				"/blog/015-gamify-threat-modeling",
 			]
 		}
 	}
