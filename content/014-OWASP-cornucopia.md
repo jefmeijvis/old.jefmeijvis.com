@@ -5,7 +5,7 @@ image : /post/014/logo.png
 title: OWASP Cornucopia
 date: 22/04/2023
 description : Gamify threat modeling with the OWASP Cornucopia card game.
-tags : Security,OWASP,Cornucopia
+tags : Security, OWASP, Cornucopia
 published : true
 ---
 
