@@ -51,7 +51,7 @@
             <td class="key">Views</td>
             <td>{post.views}</td>
             <td class="key">Tags</td>
-            <td>{post?.tags?.join(", ") ?? ""}</td>
+            <td>{post.tags.join(", ")}</td>
         </tr>
     </table>
 
