@@ -5,6 +5,20 @@
     let commit = $page.data.commit;
 
     export let timestamp : string;
+
+    function getBlogLink(post : Post) : string
+    {
+        let result : string = "";
+        let base = $page.url.origin
+        result += base + "/blog/";
+        result += post.filename.replace(".md","");
+        return result;
+    }
+
+    function getBlogName(post : Post) : string
+    {
+        return post.title.slice(0,20);
+    }
 </script>
 
 
@@ -44,7 +58,7 @@
                 {#each posts as post,index}
                     {#if index < 5}
                         <li>
-                            <a href="blog/{post.filename.replace(".md","")}">{post.title.slice(0,20)}...</a>
+                            <a href={getBlogLink(post)}>{getBlogName(post)}...</a>
                         </li>
                     {/if}
                 {/each}

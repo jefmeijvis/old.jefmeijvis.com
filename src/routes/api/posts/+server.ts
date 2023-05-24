@@ -7,6 +7,7 @@ export const prerender = true;
 
 export async function GET() 
 {
+  console.log("🔵 GET api/posts")
   const responseInit : ResponseInit =
   {
       headers : 
@@ -25,7 +26,7 @@ export async function GET()
     for(let i = 0 ; i < filenames.length ; i++)
     {
       let filename = filenames[i];
-      console.log("Loading " + filename);
+      console.log("💾 Loading " + filename);
 
       let markdown = fs.readFileSync(filePath + filename, 'utf8');
       let post : Post = {} as Post;
@@ -92,6 +93,7 @@ function splitTags(input : string) : string[]
 
 async function GetPageviews(post : Post) : Promise<number>
 {
+  console.log("GetPageViews")
   let path : string = post.filename.replace(".md","");
 
   let link : string = "https://www.jefmeijvis.com/";

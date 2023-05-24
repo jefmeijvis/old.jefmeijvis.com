@@ -12,7 +12,6 @@
 
     let source = data.post.markdown;
     let og : string = "https://www.jefmeijvis.com/post/" + data.post.filename.slice(0,3) + "/opengraph.png";
-    console.log(og);
 
     // Reload the markdown from the pageload data
     afterNavigate(() => DoAfterNavigate());
