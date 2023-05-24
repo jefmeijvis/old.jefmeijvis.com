@@ -33,6 +33,8 @@
     <meta name="twitter:description" content={data.post.description}>
 </svelte:head>
 
+<p>{JSON.stringify(data.post)}</p>
+
 <div>
 <a href="/blog">Back to overview</a>
 
