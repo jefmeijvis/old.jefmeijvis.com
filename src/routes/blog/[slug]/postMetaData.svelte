@@ -87,7 +87,7 @@
         </tr>
         <tr>
             <td class="key">Tags</td>
-            <td>{post.tags.join(", ")}</td>
+            <td>{post?.tags?.join(", ") ?? ""}</td>
         </tr>
     </table>
 </div>
