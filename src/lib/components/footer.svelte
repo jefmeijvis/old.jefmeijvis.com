@@ -17,7 +17,10 @@
 
     function getBlogName(post : Post) : string
     {
-        return post.title.slice(0,20);
+        if(post && post.title)
+            return post.title.slice(0,20);
+        else
+            return "UNKNOWN"
     }
 </script>
 
