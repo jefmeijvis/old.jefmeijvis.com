@@ -1,7 +1,8 @@
 <script lang="ts">
     import { page } from "$app/stores";
+	import { allPosts } from "$lib/stores";
 	import type { Post } from "src/routes/blog/[slug]/post";
-    let posts : Post[] = $page.data.posts;
+	import { fade } from "svelte/transition";
     let commit = $page.data.commit;
 
     export let timestamp : string;
@@ -57,15 +58,19 @@
         <div class="block">
             <ul>
                 <li><h3>Recent posts</h3></li>
-            {#if posts}
-                {#each posts as post,index}
-                    {#if index < 5}
-                        <li>
-                            <a href={getBlogLink(post)}>{getBlogName(post)}...</a>
-                        </li>
-                    {/if}
-                {/each}
-            {/if}
+                {#await allPosts.init()}
+                    <p>loading...</p>
+                {:then}
+                    {#each $allPosts as post,index}
+                        {#if index < 5}
+                            <li>
+                                <a data-sveltekit-reload in:fade href={getBlogLink(post)}>{getBlogName(post)}...</a>
+                            </li>
+                        {/if}
+                    {/each}
+                {:catch error}
+                    <p>Issue: {JSON.stringify(error)}</p>
+                {/await}
             </ul>
         </div>
     </div>
