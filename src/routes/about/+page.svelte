@@ -1,19 +1,27 @@
+<script>
+	import PictureGrid from "$lib/components/pictureGrid.svelte";
+
+</script>
 <svelte:head><title>About - Jef Meijvis</title></svelte:head>
 
 <img loading="lazy" src="/profile-picture.png" alt="profile"/>
 
 
-<h1>About</h1>
+<h1>About me</h1>
 <p>
-    My name is Jef. I'm a software engineer, focusing mostly on the C# / Dotnet / Azure ecosystem. 
-    I work as a software consultant at <a rel=noreferrer href="https://www.dotnetlab.eu">DotnetLab</a>, a company focussing on Microsoft technologies.
+    My name is Jef. I'm a software security engineer, focusing mostly on the C# / Dotnet / Azure ecosystem. 
+    I work as a consultant at <a rel=noreferrer href="https://www.dotnetlab.eu">DotnetLab</a>, a company focussing on Microsoft technologies.
     This blog will be used to post anything related to Dotnet development and Azure!</p>
   <p>
-    Recently I've been awarded the Microsoft Certified Trainer title!
+    I'm a Microsoft Certified Trainer (MCT) and enjoy giving talks!
   </p>
 
-  <h2>The website</h2>
-  <p>If you want more information about how the website is build, there is <a href="/blog/009-building-the-blog">a blogpost</a> that describes the entire stack of how this site is build.</p>
+  <h1>About the website</h1>
+  <p>If you want more information about how the website and blog are build, there is <a href="/blog/009-building-the-blog">a blogpost</a> that describes the entire stack on which this site is build.</p>
+
+  <h1>Pictures</h1>
+  <PictureGrid></PictureGrid>
+  
 
   <style>
       p
@@ -27,5 +35,10 @@
         margin:auto;
         padding-top: 1rem;
         padding-bottom: 1rem;
+      }
+
+      h1
+      {
+        margin-top: 2rem;
       }
   </style>
