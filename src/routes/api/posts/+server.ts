@@ -12,7 +12,7 @@ export async function GET()
   {
       headers : 
           {
-              'cache-control' : 'public, max-age=36000'
+              'cache-control' : 'public, max-age=10'
           }
   }
 
