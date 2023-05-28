@@ -51,7 +51,9 @@ export async function GET()
       post.published = attributes.published;
 
       if(post.published)
+      {
         postCollection.push(post);
+      }
     }
 
     let sortingFunction = (a : Post,b : Post) => 
@@ -61,7 +63,6 @@ export async function GET()
 
     // Return an array of objects containing this information
     postCollection = postCollection.sort(sortingFunction);
-
     return new Response(JSON.stringify(postCollection),responseInit);
 }
 

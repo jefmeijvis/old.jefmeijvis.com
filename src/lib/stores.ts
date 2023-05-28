@@ -10,18 +10,13 @@ export const allPosts = createAllPostsStore();
 function createAllPostsStore()
 {
 	const { subscribe, set, update } = writable([] as Post[]);
-    let arr : Post[] = [];
-    let post : Post = {} as Post;
-    post.filename = "myfilename";
-    post.slug = "myslug";
-    post.title = "my first post"
-    arr.push(post)
 
     return {
         subscribe,
         init: async () => 
         {
-            let posts = await (await fetch('/api/posts')).json()
+            let posts : Post[] = await (await fetch('/api/posts',{ method : "GET"})).json();
+            console.log("🪷 post store init: " + posts.length);
             set(posts);
         }
     }

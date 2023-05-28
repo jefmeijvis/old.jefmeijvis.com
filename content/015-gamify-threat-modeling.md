@@ -6,7 +6,7 @@ title: Gamify threat modeling
 date: 24/05/2023
 description : At Techorama 2023 I gave a talk about gamifying threat modeling. 
 tags : Security, OWASP, Cornucopia
-published : false
+published : true
 ---
 
 ## Cybersecurity gamification
