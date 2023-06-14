@@ -12,6 +12,8 @@ published : true
 ## What?
 
 Sveltekit routing allows for precise control of the response by creating a “+server.js” file (or .ts). We can export a function for each of the [HTTP verbs such as GET, POST, PUT, PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), etc.. This way, we’re able to create an API. All our code will run server-side, allowing us to access environment variables, the file system, a database, …
+
+![Svelte logo [small]](/static/post/006/svelte.png)
 ## Why?
 Can you create an entire enterprise-grade standalone API using Sveltekit endpoints? Yes! Should you? Probably not. While it’s entirely possible, I feel like a few endpoints bundled together with your front-end code make more sense.
 ## Creating the endpoints
