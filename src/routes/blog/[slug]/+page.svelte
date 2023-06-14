@@ -36,7 +36,7 @@
 
 <h1 id="top">{data.post.title}</h1>
 
-<PostMetaData timestamp={data.timestamp} post={data.post}></PostMetaData>
+<PostMetaData {og} timestamp={data.timestamp} post={data.post}></PostMetaData>
 <TableOfContents tableOfContents={data.post.tableOfContents}></TableOfContents>
 
 <SvelteMarkdown {source} {renderers}/>

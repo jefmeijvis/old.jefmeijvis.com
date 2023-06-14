@@ -5,6 +5,7 @@
 
     export let post : Post;
     export let timestamp : string;
+    export let og : string;
 
     let open : boolean = false;
 
@@ -90,9 +91,16 @@
             <td>{post.tags.join(", ")}</td>
         </tr>
     </table>
+    
+    <img onerror="this.onerror=null;this.src='https://www.jefmeijvis.com/opengraph.png';" src="{og}" alt="opengraph"/>
 </div>
 
 <style>
+    img
+    {
+        width : 100%;
+        border-radius: .5rem;
+    }
     .key
     {
         font-weight: bold;
