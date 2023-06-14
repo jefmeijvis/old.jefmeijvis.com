@@ -36,6 +36,7 @@ const config = {
 				"/blog/013-OWASP-SAMM",
 				"/blog/014-OWASP-cornucopia",
 				"/blog/015-gamify-threat-modeling",
+				"/blog/016-microsoft-threat-modeling-tool.md"
 			]
 		}
 	}
