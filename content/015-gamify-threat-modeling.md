@@ -4,14 +4,14 @@ id : 15
 image : /post/015/logo.png
 title: Techorama, Gamify threat modeling
 date: 24/05/2023
-description : At Techorama 2023 I gave a talk about gamifying threat modeling. 
+description : At Techorama Antwerp 2023 I gave a talk about gamifying threat modeling. 
 tags : Security, OWASP, Cornucopia, Talk
 published : true
 ---
 
 ## Techorama 2023
 
-[Techorama](https://techorama.be/) is a yearly IT-conference that takes place in Belgium.
+[Techorama Antwerp](https://techorama.be/) is a yearly IT-conference that takes place in Belgium.
 It hosts nearly 2000 visitors and 120 speakers from all around the world. 
 With over 150 sessions and multiple workshops spread across 3 days, it's always a pleasure to attend.  
 
