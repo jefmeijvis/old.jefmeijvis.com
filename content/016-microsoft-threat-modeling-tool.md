@@ -3,7 +3,7 @@ author: Jef Meijvis
 id : 16
 image : /post/016/logo.png
 title: Microsoft threat modeling tool
-date: 08/06/2023
+date: 15/06/2023
 description : Making use of the official Microsoft threat modeling tool.
 tags : Security
 published : true
