@@ -76,6 +76,7 @@
     </div>
     <p>© Jef Meijvis 2021 - {new Date().getFullYear()}</p>
     <p>Build on {timestamp}</p>
+    <p>Views and other metrics are updated daily</p>
     {#if commit}
     <p><a href={commit.url}>{commit.commit} on Github</a></p>
     {/if}
