@@ -64,7 +64,7 @@
                     {#each $allPosts as post,index}
                         {#if index < 5}
                             <li>
-                                <a data-sveltekit-reload in:fade href={getBlogLink(post)}>{getBlogName(post)}...</a>
+                                <a data-sveltekit-reload in:fade|global href={getBlogLink(post)}>{getBlogName(post)}...</a>
                             </li>
                         {/if}
                     {/each}

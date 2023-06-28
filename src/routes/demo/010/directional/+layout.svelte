@@ -46,7 +46,7 @@
 
 
 {#key $page.url.href}
-    <div in:fly={getFlyIn(direction)} out:fly={getFlyOut(direction)}>
+    <div in:fly|global={getFlyIn(direction)} out:fly|global={getFlyOut(direction)}>
         <slot></slot>
     </div>
 {/key}

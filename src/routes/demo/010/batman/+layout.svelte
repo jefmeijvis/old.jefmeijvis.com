@@ -29,7 +29,7 @@
 </div>
 
 {#key $page.url.href}
-    <div in:batmanTransition="{{}}" class="batman-logo">
+    <div in:batmanTransition|global="{{}}" class="batman-logo">
         <img src="/post/010/batman.png" alt="batman logo"/>
     </div>
 {/key}

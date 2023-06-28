@@ -21,7 +21,7 @@
 <button title="Support me via Ko-Fi!" on:click={toggle}><img loading="lazy" src='https://storage.ko-fi.com/cdn/cup-border.png' alt="Ko-Fi logo"/>{visible ? 'Hide support' : 'Support me'}</button>
 {#if visible}
     <div>
-        <iframe transition:fly="{{ y: 200, duration: 500 }}" loading='lazy' id='kofiframe' src='https://ko-fi.com/jefmeijvis/?hidefeed=true&widget=true&embed=true&preview=true' height='712' title='jefmeijvis'></iframe>
+        <iframe transition:fly|global="{{ y: 200, duration: 500 }}" loading='lazy' id='kofiframe' src='https://ko-fi.com/jefmeijvis/?hidefeed=true&widget=true&embed=true&preview=true' height='712' title='jefmeijvis'></iframe>
     </div>
 {/if}
 

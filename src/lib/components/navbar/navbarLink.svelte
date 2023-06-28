@@ -48,7 +48,7 @@
         </a>
         {#key $page.url.href}
             {#if hover || isActive()}
-                <div class="selection" in:customTransition="{{}}" out:customTransition="{{}}"/>
+                <div class="selection" in:customTransition|global="{{}}" out:customTransition|global="{{}}"/>
             {/if}
         {/key}
     </div>
