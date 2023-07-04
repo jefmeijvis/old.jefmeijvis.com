@@ -1,8 +1,9 @@
 <div>
     <img alt="Techorama talk" src="/about/talk.jpeg"/>
-    <img alt="Techorama talk" src="/about/talk-2.jpg"/>
-    <img alt="Techorama talk" src="/about/headshot.png"/>
-    <img alt="Techorama talk" src="/about/event.jpg"/>
+    <img alt="Dotnetlab Event Talk" src="/about/talk-2.jpg"/>
+    <img alt="Headshot" src="/about/headshot.png"/>
+    <img alt="Company event 2022" src="/about/event.jpg"/>
+    <img alt="Company event 2023" src="/about/company-event-2023.jpg"/>
 </div>
 
 <style>

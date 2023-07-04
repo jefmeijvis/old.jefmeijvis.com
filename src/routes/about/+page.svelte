@@ -10,8 +10,8 @@
 <h1>About me</h1>
 <p>
     My name is Jef. I'm a software security engineer, focusing mostly on the C# / Dotnet / Azure ecosystem. 
-    I work as a consultant at <a rel=noreferrer href="https://www.dotnetlab.eu">DotnetLab</a>, a company focussing on Microsoft technologies.
-    This blog will be used to post anything related to Dotnet development and Azure!</p>
+    I work as a cybersecurity consultant at <a rel=noreferrer href="https://www.dotnetlab.eu">DotnetLab</a>, a company focussing on Microsoft technologies.
+    This blog will be used to post anything related to Cybersecurity, Dotnet development and Azure!</p>
   <p>
     I'm a Microsoft Certified Trainer (MCT) and enjoy giving talks!
   </p>
