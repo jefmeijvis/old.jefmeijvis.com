@@ -29,7 +29,7 @@
     <table class="table-desktop">
         <tr>
             <td class="key">Author</td>
-            <td>{post.author}</td>
+            <td><a href="/about">{post.author}</a></td>
             <td class="key">Publish date</td>
             <td>{post.date}</td>
         </tr>
