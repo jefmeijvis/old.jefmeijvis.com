@@ -1,3 +1,4 @@
+import { VisitLogger } from "$lib/ts/visitlogger";
 import type { Post } from "../blog/[slug]/post";
 
 // Header options
@@ -19,13 +20,20 @@ let bodyStart = '<?xml version="1.0" encoding="UTF-8" ?>'
 + '<title>Jef Meijvis</title>' 
 + '<link>https://www.jefmeijvis.com</link>' 
 + '<description>Jef Meijvis blog</description>'
-
++ '<image>'
+  + '<url>https://www.jefmeijvis.com/profile-picture.png</url>'
+  + '<title>Jef Meijvis</title>'
+  + '<link>https://www.jefmeijvis.com</link>'
++'</image>'
 
 let bodyEnd = '</channel>' + '</rss>';
 
 
-export async function GET({fetch}) 
+export async function GET({fetch,url}) 
 {
+  let page : string = 'https://www.' + url.host + url.pathname;
+  console.dir(page);
+  VisitLogger.LogVisit(page);
   let response = await fetch('/api/posts');
   let json = await response.json();
   //console.dir(json);
