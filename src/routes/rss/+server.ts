@@ -19,7 +19,8 @@ let bodyStart = '<?xml version="1.0" encoding="UTF-8" ?>'
 + '<atom:link href="https://www.jefmeijvis.com/rss" rel="self" type="application/rss+xml" />' 
 + '<title>Jef Meijvis</title>' 
 + '<link>https://www.jefmeijvis.com</link>' 
-+ '<description>Jef Meijvis blog</description>'
++ '<language>en</language>'
++ '<description>Blogging about general secure software development. Often making use of .NET, Azure and Svelte</description>'
 + '<image>'
   + '<url>https://www.jefmeijvis.com/profile-picture.png</url>'
   + '<title>Jef Meijvis</title>'
@@ -75,6 +76,9 @@ export async function GET({fetch,url})
       body += post.tags[j].trim();
       body += '</category>'
     }
+
+    // Enclosure
+    body += '<enclosure url="http://www.jefmeijvis.com/post/' + post.id.toString().padStart(3,'0') + '/logo.png" length="221004" type="image/png" />'
 
     // PubDate
     body += '<pubDate>'
