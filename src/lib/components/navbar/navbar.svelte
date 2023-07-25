@@ -11,6 +11,7 @@
         <NavbarLink href="/resources">RESOURCES</NavbarLink>
         <NavbarLink href="/about">ABOUT</NavbarLink>
         <NavbarLink href="/contact">CONTACT</NavbarLink>
+        <NavbarLink href="/rss">RSS</NavbarLink>
         <MobileMenuButton></MobileMenuButton>
         <ThemeButton></ThemeButton>
     </div>

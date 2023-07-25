@@ -26,6 +26,9 @@
             <li>        
                 <a on:click="{()=>callback()}" href="/contact">Contact</a>
             </li>
+            <li>        
+                <a on:click="{()=>callback()}" href="/rss">RSS</a>
+            </li>
         </ul>
     </div>
 </div>
