@@ -37,7 +37,10 @@ export async function GET({fetch,url})
   VisitLogger.LogVisit(page);
   let response = await fetch('/api/posts');
   let json = await response.json();
-  //console.dir(json);
+
+  let longDescription : boolean = url.searchParams.get('long') == 'true'
+  console.dir(longDescription);
+
   let body : string = bodyStart;
   for(let i = 0 ; i < json.length ; i++)
   {
@@ -56,7 +59,7 @@ export async function GET({fetch,url})
 
     // Description
     body += '<description>'
-    body += post.description;
+    body += generateDescription(post,longDescription);
     body += '</description>'
 
     // Guid
@@ -90,6 +93,21 @@ export async function GET({fetch,url})
 
   body += bodyEnd;
   return new Response(body,responseInit);
+}
+
+function generateDescription(post : Post, longDescription : boolean)
+{
+  let desc : string =  post.description;
+
+  if(longDescription)
+  {
+    while(desc.length < 300)
+    {
+      desc += ' ' + post.description
+    }
+  }
+  
+  return desc;
 }
 
 function generateDate(post : Post) : string
