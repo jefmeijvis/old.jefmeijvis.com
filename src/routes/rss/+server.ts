@@ -50,19 +50,14 @@ export async function GET({fetch})
     body += post.description;
     body += '</description>'
 
-    // Author
-    body += '<author>'
-    body += post.author;
-    body += '</author>'
-
     // Guid
     body += '<guid isPermaLink="true">'
     body += generateLink(post);
     body += '</guid>'
 
     // Guid
-    body += '<source>'
-    body += 'https://www.jefmeijvis.com/rss'
+    body += '<source url="https://www.jefmeijvis.com/rss">'
+    body += 'Jef Meijvis'
     body += '</source>'
 
     // Category
@@ -101,5 +96,5 @@ function generateDate(post : Post) : string
 
 function generateLink(post : Post) : string
 {
-  return 'www.jefmeijvis.com/blog/' + post.filename.replace('.md','');
+  return 'https://www.jefmeijvis.com/blog/' + post.filename.replace('.md','');
 }
