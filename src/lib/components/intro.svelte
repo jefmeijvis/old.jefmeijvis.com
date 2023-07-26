@@ -4,7 +4,7 @@
     </div>
     <div class="text">
         <h1>Jef Meijvis</h1>
-        <p>Software security engineer and consultant at <a rel="noreferrer" target="_blank" href="https://www.dotnetlab.eu">DotNETlab</a>.</p>
+        <p>Software security consultant at <a rel="noreferrer" target="_blank" href="https://www.dotnetlab.eu">DotNETlab</a>.</p>
         <p>Blogging about secure software development using <a rel="noreferrer" target="_blank" href="https://dotnet.microsoft.com/">.NET</a>, <a rel="noreferrer" target="_blank" href="https://azure.microsoft.com/">Azure</a> and <a rel="noreferrer" target="_blank" href="https://svelte.dev/">Svelte</a></p>
     </div>
 </div>

@@ -34,6 +34,7 @@
     }
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article class="container" on:click="{()=>goto(getLink())}" on:keydown="{()=>goto(getLink())}">
     <div class="image">
         <img alt={post.title} src={post.image}/>
@@ -41,7 +42,6 @@
     <div class="text">
         <h1>{post.title}</h1>
         <p class="info">
-            #{post.id} |
             {views} views |
              {post.date}
         </p>

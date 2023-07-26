@@ -5,7 +5,7 @@ import fm from "front-matter";
 import { Postview } from "$lib/ts/postviews";
 export const prerender = true;
 
-export async function GET() 
+export async function GET({url}) 
 {
   console.log("🔵 GET api/posts")
   const responseInit : ResponseInit =
@@ -50,7 +50,8 @@ export async function GET()
       post.id = attributes.id;
       post.published = attributes.published;
 
-      if(post.published)
+      // On localhost development environment, show all posts
+      if(post.published || url.hostname.includes('localhost'))
       {
         postCollection.push(post);
       }
