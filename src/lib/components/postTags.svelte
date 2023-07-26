@@ -49,7 +49,6 @@
     button:hover
     {
         opacity: 75%;
-        transform: translate(0,-0.25rem);
     }
 
     @media (max-aspect-ratio: 1/1) 
