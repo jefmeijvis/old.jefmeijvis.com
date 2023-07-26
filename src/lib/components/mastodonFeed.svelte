@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { light } from "$lib/stores";
 	import { onMount } from "svelte";
 	import { fade } from "svelte/transition";
     let feed : any;
@@ -14,12 +15,12 @@
 </script>
 
 <div class="container">
-<h2>Mastodon feed</h2>
+    <img class="mastodon" alt="mastodon" src="/mastodon.png"/>
     {#if feed}
         {#each feed as post}
         <div in:fade class="post">
-            <button on:click={()=>goto(post.account.url)} class="profile-information">
-                <img alt="avatar" src={post.account.avatar}/>
+            <button title="Visit Jef Meijvis on mastodon.social" on:click={()=>goto(post.account.url)} class="profile-information">
+                <img class="avatar" alt="avatar" src={post.account.avatar}/>
                 <div class="names">
                     <p><b>{post.account.display_name}</b></p>
                     <p class="faded">{post.account.url.replaceAll("https://","")}</p>
@@ -29,16 +30,44 @@
             <div class="post-body">
                 {@html post.content}
             </div>
+            <button title="Open on mastodon.social" class="post-link" on:click={()=>goto(post.url)}>
+                <img style="{$light ? '' : 'filter:invert();'}" class="image-button" alt="open" src="open.png"/>
+            </button>
         </div>
         {/each}
     {/if}
 </div>
 
 <style>
-    h2
+    .image-button
     {
-        padding: 1rem;
+        width : 1.5rem;
+        opacity: 80%;
     }
+
+    .post-link
+    {
+        margin: 1rem;
+        cursor:pointer;
+        background: none;
+        border:none;
+        transition: all ease .25s;
+        margin-left: 95%;;
+    }
+
+    .post-link:hover
+    {
+        opacity: 50%;;
+    }
+    .mastodon
+    {
+        height : 5rem;
+        display: block;
+        margin:auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
     .post-body
     {
         padding: .5rem;
@@ -69,12 +98,12 @@
     }
     .post
     {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         padding-top: 1rem;
         border-top: 1px rgba(0, 0, 0, 0.15) solid;
     }
 
-    img
+    .avatar
     {
         width: 5rem;
         border-radius: .5rem;
@@ -87,5 +116,14 @@
         border-radius: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         background-color: var(--color-card-background);
+    }
+
+    @media (max-aspect-ratio: 1/1) 
+    {
+        .post-link
+        {
+
+            margin-left: 90%;;
+        }
     }
 </style>
