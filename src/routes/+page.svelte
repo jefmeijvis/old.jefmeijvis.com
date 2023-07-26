@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Blogposts from "$lib/components/blogposts.svelte";
 	import Intro from "$lib/components/intro.svelte";
+	import MastodonFeed from "$lib/components/mastodonFeed.svelte";
 	import MostViewed from "$lib/components/mostViewed.svelte";
 	import type { Post } from "./blog/[slug]/post";
 	export let data : { posts : Post[]}
@@ -14,3 +15,4 @@
 <h2>Most recent:</h2>
 <Blogposts count={5} posts={data.posts}></Blogposts>
 <a href="/blog">See all blogposts</a>
+<MastodonFeed></MastodonFeed>

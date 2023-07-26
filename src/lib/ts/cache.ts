@@ -3,19 +3,22 @@ import fs from 'fs';
 // Cache the result of a given function on the local filesystem
 export async function LocalCache(func : Function, cacheSeconds : number, description : string)
 {
+    let logMessage = "[LocalCache] ";
     let filename : string = generateFilename(description);
-    if(cacheIsOk(filename,cacheSeconds))
+    if(cacheIsOk(filename,cacheSeconds,logMessage))
     {
-        console.log("🟢 Found general request " + description + " in cache.");
+        logMessage += " 🟢 Found general request " + description + " in cache.";
+        console.log(logMessage);
         return JSON.parse(fs.readFileSync(filename).toString()); 
     }
     else
     {
-        console.log("🟠 " + description + " not in cache, got from API");
+        logMessage += " 🟠 " + description + " not in cache, got from API";
         let result = func();
         let response = await Promise.resolve(result)
 
         fs.writeFileSync(filename, JSON.stringify(response));
+        console.log(logMessage);
         return response;
     }
 
@@ -32,7 +35,7 @@ function generateFilename(input : string) : string
     return 'cache/' + input + '.cache';
 }
 
-function cacheIsOk(path : string, maximumAge : number) : boolean
+function cacheIsOk(path : string, maximumAge : number, logMessage : string) : boolean
 {
 
     let fileExists : boolean = fs.existsSync(path);
@@ -42,8 +45,8 @@ function cacheIsOk(path : string, maximumAge : number) : boolean
 
     let stats = fs.statSync(path);
     let diff : number =  getSecondsAge(stats.mtime)// Cache age in seconds
-    console.log('Cache age is ' + diff + 's')
-    if(diff > maximumAge) // Cache maximumAge is 1 hour
+    logMessage += '| Cache age is ' + diff + 's'
+    if(diff > maximumAge)
         return false;
 
     return true;

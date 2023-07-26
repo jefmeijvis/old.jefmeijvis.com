@@ -95,7 +95,6 @@ function splitTags(input : string) : string[]
 
 async function GetPageviews(post : Post) : Promise<number>
 {
-  console.log("GetPageViews")
   let path : string = post.filename.replace(".md","");
 
   let link : string = "https://www.jefmeijvis.com/";
