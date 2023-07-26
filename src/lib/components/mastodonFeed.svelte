@@ -15,7 +15,7 @@
 </script>
 
 <div class="container">
-    <img class="mastodon" alt="mastodon" src="/mastodon.png"/>
+    <img class="mastodon" alt="mastodon" src="{$light ? '/mastodon.png' : '/mastodon-dark.png'}"/>
     {#if feed}
         {#each feed as post}
         <div in:fade class="post">
