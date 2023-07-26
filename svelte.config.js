@@ -15,6 +15,7 @@ const config = {
 				"/api/posts", 
 				"/demo", 
 				"/api/github", 
+				"/api/mastodon", 
 				"/post/001-csharp-extension-methods",
 				"/post/002-multiple-teams-instances",
 				"/post/003-azure-functions-getting-started",
@@ -37,7 +38,7 @@ const config = {
 				"/blog/014-OWASP-cornucopia",
 				"/blog/015-gamify-threat-modeling",
 				"/blog/016-microsoft-threat-modeling-tool",
-				"/blog/017-creating-a-rss-feed"
+				//"/blog/017-creating-a-rss-feed"
 			]
 		}
 	}
