@@ -5,7 +5,7 @@ image : /post/010/logo.png
 title: Svelte transitions
 date: 09/02/2023
 description : Exploring Svelte transitions from the bottom up!
-tags : svelte,sveltekit
+tags : svelte,sveltekit,frontend
 published : true
 ---
 

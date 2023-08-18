@@ -5,7 +5,7 @@ image : /post/005/logo.png
 title: Create a bare bone chat component with Svelte
 date: 01/10/2022
 description : Sveltekit API endpoints.
-tags : Svelte
+tags : Svelte,frontend
 published : true
 ---
 
