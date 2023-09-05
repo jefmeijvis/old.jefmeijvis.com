@@ -38,7 +38,9 @@ const config = {
 				"/blog/014-OWASP-cornucopia",
 				"/blog/015-gamify-threat-modeling",
 				"/blog/016-microsoft-threat-modeling-tool",
-				"/blog/017-creating-a-rss-feed"
+				"/blog/017-creating-a-rss-feed",
+				"/blog/018-getting-started-with-htmx"
+
 			]
 		}
 	}
