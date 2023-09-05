@@ -6,7 +6,7 @@ title: Getting started with HTMX
 date: 21/08/2023
 description : All aboard the hypetrain because new frontend technology just dropped!
 tags : Frontend
-published : false
+published : true
 ---
 
 ## Getting started with HTMX
