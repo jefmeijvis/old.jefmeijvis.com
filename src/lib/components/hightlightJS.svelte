@@ -17,6 +17,7 @@
 
 
 	import { light } from "$lib/stores";
+	import { fade } from "svelte/transition";
 
     // Data provided to the renderer
     export let language : any;
@@ -24,6 +25,7 @@
 
     let lang : any;
     let displayLang : string;
+    let copied : boolean = false;
 
 
     switch(language)
@@ -95,11 +97,18 @@
         }
     }
 
-    function copy()
+    async function copy()
     {
+        copied = true;
         navigator.clipboard.writeText(code);
-        console.log('✍️ Copied code content to clipboard')
+        console.log('✍️ Copied code content to clipboard');
+        await sleep(2000);
+        copied = false;
     }
+
+    function sleep(ms : number) {                                                                                                                                                                                       
+  return new Promise((resolve) => setTimeout(resolve, ms));                                                                                                                                                
+}  
 </script>
 
 {#if $light}
@@ -110,10 +119,14 @@
 
 <div>
     <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
-        Code snippet: {displayLang}    
+        Code snippet: {displayLang}  
         <button title="Copy code snippet" on:click={copy}>
             <img src="/copy.png" alt="copy code snippet"/>
         </button>
+        {#if copied}  
+            <span transition:fade class="message">Copied to clipboard!</span>
+        {/if}
+
     </p>
     <Highlight language={lang} {code} let:highlighted>
         <LineNumbers highlighted={highlighted}     
@@ -128,6 +141,23 @@
 
 
 <style>
+    button
+    {
+        margin-top: .25rem;
+        width : 1.5rem;
+        height : 1.5rem;
+        border:none;
+        float:right;
+        background:none;
+        cursor : pointer;
+    }
+
+    .message
+    {
+        float:right;
+        color: var(--color-text-secondary);
+        font-family: 'NotoMono';
+    }
     img
     {
         width : 1.5rem;
@@ -140,16 +170,7 @@
         opacity: 70%;
     }
 
-    button
-    {
-        margin-top: .25rem;
-        width : 1.5rem;
-        height : 1.5rem;
-        border:none;
-        float:right;
-        background:none;
-        cursor : pointer;
-    }
+
     .title-light
     {
         background-color: var(--color-accent);
