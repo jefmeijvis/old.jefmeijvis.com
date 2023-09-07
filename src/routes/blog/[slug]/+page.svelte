@@ -7,7 +7,7 @@
 	import PostMetaData from './postMetaData.svelte';
     import renderers from './renderers';
 	import TableOfContents from './tableOfContents.svelte';
-	import Share from '$lib/share.svelte';
+	import Share from '$lib/components/share.svelte';
 
     export let data: { id : number, slug : string , post : Post, timestamp : string};
 

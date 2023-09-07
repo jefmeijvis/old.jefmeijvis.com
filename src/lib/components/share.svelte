@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { fade, fly } from "svelte/transition";
-	import { light } from "./stores";
-	import { q } from "svelte-highlight/languages";
 	import { goto } from "$app/navigation";
+	import { light } from "$lib/stores";
+	import type { Post } from "../../routes/blog/[slug]/post";
+	import ExportPdf from "./exportPDF.svelte";
 
     let clicked: boolean = false;
 
-    export let post : import("../routes/blog/[slug]/post").Post
+    export let post : Post
     let text = "I would like to share this post: " + post.title;
     text = text.replaceAll(" ","%20")
     text = "https://twitter.com/intent/tweet?text=" + text;
@@ -37,11 +38,12 @@
     <button on:click={twitter} title="Share this post on x.com"><img class="{$light ? '' : 'dark'}" alt="Share on x.com" src="/x.png"/></button>
     <button on:click={click} title="Copy post url to clipboard">
         {#if !clicked}
-        <img in:fade class="{$light ? '' : 'dark'}" alt="Copy URL to clipboard" src="/link.png"/>
+            <img in:fade class="{$light ? '' : 'dark'}" alt="Copy URL to clipboard" src="/link.png"/>
         {:else}
-        <span in:fade>Link copied to clipboard!</span>
+            <span in:fade>Link copied to clipboard!</span>
         {/if}
     </button>
+    <ExportPdf {post}></ExportPdf>
 </p>
 
 <style>
