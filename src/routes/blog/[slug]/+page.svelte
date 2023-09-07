@@ -7,6 +7,7 @@
 	import PostMetaData from './postMetaData.svelte';
     import renderers from './renderers';
 	import TableOfContents from './tableOfContents.svelte';
+	import Share from '$lib/share.svelte';
 
     export let data: { id : number, slug : string , post : Post, timestamp : string};
 
@@ -38,7 +39,7 @@
 
 <PostMetaData {og} timestamp={data.timestamp} post={data.post}></PostMetaData>
 <TableOfContents tableOfContents={data.post.tableOfContents}></TableOfContents>
-
+<Share post={data.post}></Share>
 <SvelteMarkdown {source} {renderers}/>
 
 <a href="#top">Back to top</a>
