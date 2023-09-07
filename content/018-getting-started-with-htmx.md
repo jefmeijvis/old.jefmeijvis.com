@@ -18,6 +18,11 @@ All aboard the hypetrain because a new frontend framework just dropped!
 
 [HTMX](https://htmx.org/) is a small (14kb) javascript library, that runs client-side in the browser.
 It's main promise is to expand the current existing html tags by adding attributes to them.
+In this way, it expands on the existing HTML capabilities and grants access to AJAX, CSS Transitions, WebSockets and Server Sent Events from your HTML.
+
+
+
+## Frontend
 
 Consider the following index.html file, which is served to the client.
 It contains a script tag which downloads the HTMX library from [UNPKG](https://www.unpkg.com/).
@@ -35,6 +40,7 @@ Next up is a button tag, which includes 2 attributes that are specific to HTMX:
         Click Me
     </button>
 ```
+## Frontend
 
 At the backend we need an api that returns html.
 Multiple backend technologies are possible, but for the sake of demonstration I've set up a [Node Express](https://expressjs.com/) REST API.
