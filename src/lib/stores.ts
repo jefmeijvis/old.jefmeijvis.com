@@ -16,7 +16,6 @@ function createAllPostsStore()
         init: async () => 
         {
             let posts : Post[] = await (await fetch('/api/posts',{ method : "GET"})).json();
-            console.log("🪷 post store init: " + posts.length);
             set(posts);
         }
     }

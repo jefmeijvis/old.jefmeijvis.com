@@ -33,13 +33,11 @@ let bodyEnd = '</channel>' + '</rss>';
 export async function GET({fetch,url}) 
 {
   let page : string = 'https://www.' + url.host + url.pathname;
-  console.dir(page);
-  VisitLogger.LogVisit(page);
+  VisitLogger.LogVisit(page,'','','');
   let response = await fetch('/api/posts');
   let json = await response.json();
 
   let longDescription : boolean = url.searchParams.get('long') == 'true'
-  console.dir(longDescription);
 
   let body : string = bodyStart;
   for(let i = 0 ; i < json.length ; i++)
