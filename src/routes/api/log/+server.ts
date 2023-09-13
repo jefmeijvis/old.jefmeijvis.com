@@ -5,6 +5,9 @@ export async function POST({ request } : RequestEvent)
 {
     const dataobject : any = await request.json();
     let page : string = dataobject.page;
-    await VisitLogger.LogVisit(page);
+    let useragent : string = dataobject.ua;
+    let lang : string = dataobject.lang;
+    let vendor : string = dataobject.vendor;
+    await VisitLogger.LogVisit(page, useragent, lang, vendor);
     return new Response();
 }
