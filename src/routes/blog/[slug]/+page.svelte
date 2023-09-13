@@ -32,7 +32,7 @@
     <meta name="twitter:description" content={data.post.description}>
 </svelte:head>
 
-<div>
+<div id="blogpost-main-content">
 <a href="/blog">Back to overview</a>
 
 <h1 id="top">{data.post.title}</h1>

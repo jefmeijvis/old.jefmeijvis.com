@@ -12,5 +12,6 @@ export enum Element
     BlogpostTableOfContents = "blogpost-table-of-content",
     BlogpostSupportButton = "blogpost-support-button",
     ThemeButton = "theme-button",
+    PDFExportButton = "pdf-export-button",
 }
 
