@@ -1,3 +1,4 @@
+import getBrowserName from "$lib/ts/vendor";
 import { VisitLogger } from "$lib/ts/visitlogger";
 import type { Post } from "../blog/[slug]/post";
 
@@ -30,11 +31,13 @@ let bodyStart = '<?xml version="1.0" encoding="UTF-8" ?>'
 let bodyEnd = '</channel>' + '</rss>';
 
 
-export async function GET({fetch,url} : any) 
+export async function GET({fetch,url,request} : any) 
 {
   let page : string = 'https://www.' + url.host + url.pathname;
-  console.dir(page);
-  VisitLogger.LogVisit(page,'','','');
+  let useragent : string = request.headers.get('user-agent');
+  let lang : string = request.headers.get('accept-language');
+  let vendor : string = getBrowserName(useragent);
+  VisitLogger.LogVisit(page,useragent,lang,vendor);
   let response = await fetch('/api/posts');
   let json = await response.json();
 
