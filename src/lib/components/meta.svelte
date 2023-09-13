@@ -10,6 +10,7 @@
         if(!browser)
             return;
         
+        console.dir(window)
         let lang:string = window.navigator.language;
         let ua : string = window.navigator.userAgent;
         let page : string = nav.to.url.href;
