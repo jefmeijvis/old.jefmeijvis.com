@@ -2,7 +2,6 @@
 	import { light } from "$lib/stores";
 	import { fade } from "svelte/transition";
 	import type { Post } from "../../routes/blog/[slug]/post";
-	import { VisitLogger } from "$lib/ts/visitlogger";
     export let post : Post;
 
     let library : string = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
@@ -10,8 +9,7 @@
     function run() 
     {
         //@ts-ignore
-        VisitLogger.LogAction()
-        html2pdf(document.getElementById('blogpost-main-content'),options);
+        html2pdf(document.body,options);
     }
 
     let options = 
@@ -35,7 +33,7 @@
 }
 </script>
 
-<button title="Export to PDF" in:fade class="{$light ? '' : 'dark'}" on:click={()=>loadScript(library).then(run)}><img alt="PDF icon" src="/pdf.png"/></button>
+<button in:fade class="{$light ? '' : 'dark'}" on:click={()=>loadScript(library).then(run)}><img alt="PDF icon" src="/pdf.png"/></button>
 
 <style>
     .dark

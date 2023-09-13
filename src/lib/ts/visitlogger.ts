@@ -3,17 +3,13 @@ import { supabase } from "./supabase";
 
 export class VisitLogger
 {
-    public static async LogVisit(page : string, useragent : string, lang :string, vendor : string)
+    public static async LogVisit(page : string)
     {
-        let local : boolean = this.IsExcludedFromLogging(page);
-
-        console.log('📃' + " [VisitLog] " + page)
-
-        if(local)
+        if(this.IsExcludedFromLogging(page))
             return;
 
         // Construct the database row
-        let row : any = {page : page , user_agent : useragent, lang : lang , vendor : vendor};
+        let row : { page : string} = {page : page};
 
         // Post to Supabase
         await supabase
