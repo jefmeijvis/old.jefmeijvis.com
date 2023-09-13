@@ -7,11 +7,13 @@ export class VisitLogger
     {
         let local : boolean = this.IsExcludedFromLogging(page);
 
+        console.log('📃' + " [VisitLog] " + page)
+
         if(local)
             return;
 
+        // Construct the database row
         let row : any = {page : page , user_agent : useragent, lang : lang , vendor : vendor};
-
 
         // Post to Supabase
         await supabase
