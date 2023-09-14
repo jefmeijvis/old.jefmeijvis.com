@@ -25,10 +25,11 @@
         } else if (userAgent.includes("Safari")) {
             // "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1"
             return "Apple Safari";
-        } else if (userAgent.includes("FlipboardRSS")) 
+        } else if (userAgent.includes("FlipboardRSS") || userAgent.includes("AhrefsBot")) 
         {
             // Mozilla/5.0 (compatible; FlipboardRSS/1.2; +http://flipboard.com/browserproxy)
-            return "Flipboard RSS Crawler"
+            // Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+            return "Crawler"
         }
         else {
             return "unknown";
