@@ -33,7 +33,7 @@ let bodyEnd = '</channel>' + '</rss>';
 
 export async function GET({fetch,url,request} : any) 
 {
-  let page : string = 'https://www.' + url.host + url.pathname;
+  let page : string = 'https://' + url.host + url.pathname;
   let useragent : string = request.headers.get('user-agent');
   let lang : string = request.headers.get('accept-language');
   let vendor : string = getBrowserName(useragent);
