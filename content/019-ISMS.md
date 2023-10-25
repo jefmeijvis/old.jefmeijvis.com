@@ -6,7 +6,7 @@ title: Maintaining an ISMS
 date: 18/09/2023
 description : Whether you're considering ISO 27001 certification or just beginning to explore NIST, an Information Security Management System (ISMS) is an essential component! 
 tags : Security
-published : false
+published : true
 ---
 
 ## What is an ISMS?
