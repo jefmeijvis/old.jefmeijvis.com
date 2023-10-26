@@ -39,7 +39,7 @@ export class VisitLogger
     {
         // If a page url contains one of the keywords, it is excluded from logging
         // This prevents logging of local development and vercel preview urls
-        let excludedKeywords : string[] = [".vercel.app" , "localhost:"]
+        let excludedKeywords : string[] = [".vercel.app" , "localhost:","127.0.0.1"]
         for(let i = 0 ; i < excludedKeywords.length ; i++)
         {
             let keyword = excludedKeywords[i];
