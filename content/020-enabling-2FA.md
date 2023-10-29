@@ -6,7 +6,7 @@ title: Enabling 2FA for your Microsoft tenant!
 date: 25/10/2023
 description : Enforce a second factor for your users by enabling 2FA in the Microsoft Admin center. 
 tags : Security
-published : true
+published : false
 ---
 
 ## 2FA
