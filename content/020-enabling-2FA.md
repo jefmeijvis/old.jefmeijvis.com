@@ -39,7 +39,7 @@ On the left hand side there will be a blade menu, where we will select the 'Prop
 On the bottom select 'Manage security defaults', and turn on the toggle button.
 This will enable a list of best practice security defaults for your Microsoft environment.
 
-![Enable security defaults [small]](/static/post/020/security-defaults.png)
+![Enable security defaults [medium]](/static/post/020/security-defaults.png)
 
 
 ## What are the security defaults? 
