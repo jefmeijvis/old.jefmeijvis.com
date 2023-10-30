@@ -1,8 +1,8 @@
 <div>
-    <img alt="Techorama talk" src="/about/talk.jpeg"/>
-    <img alt="Dotnetlab Event Talk" src="/about/talk-2.jpg"/>
-    <img alt="Headshot" src="/about/headshot.png"/>
-    <img alt="Company event 2023" src="/about/company-event-2023.jpg"/>
+    <img title="Techorama talk - OWASP Cornucopia 2023" alt="Techorama talk" src="/about/talk.jpeg"/>
+    <img title="DotNETlab Spring 2023 Event Talk" alt="Dotnetlab Event Talk" src="/about/talk-2.jpg"/>
+    <img title="Headshot" alt="Headshot" src="/about/headshot.png"/>
+    <img title="DotNETlab Spring 2023 Event Picture" alt="Company event 2023" src="/about/company-event-2023.jpg"/>
 </div>
 
 <style>
