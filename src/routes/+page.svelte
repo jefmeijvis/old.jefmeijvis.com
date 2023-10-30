@@ -15,4 +15,3 @@
 <h2>Most recent:</h2>
 <Blogposts count={5} posts={data.posts}></Blogposts>
 <a href="/blog">See all blogposts</a>
-<MastodonFeed></MastodonFeed>
