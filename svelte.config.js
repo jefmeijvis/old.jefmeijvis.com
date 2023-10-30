@@ -41,7 +41,7 @@ const config = {
 				"/blog/017-creating-a-rss-feed",
 				"/blog/018-getting-started-with-htmx",
 				"/blog/019-ISMS",
-
+				"/blog/020-enabling-2FA",
 			]
 		}
 	}
