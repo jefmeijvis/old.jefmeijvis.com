@@ -1,4 +1,5 @@
 <div>
+    <img title="Lezing Thomas More Campus Geel - 2023" alt="Lezing Thomas More Campus Geel - 2023" src="/about/talk-3.jpeg"/>
     <img title="Techorama talk - OWASP Cornucopia 2023" alt="Techorama talk" src="/about/talk.jpeg"/>
     <img title="DotNETlab Spring 2023 Event Talk" alt="Dotnetlab Event Talk" src="/about/talk-2.jpg"/>
     <img title="Headshot" alt="Headshot" src="/about/headshot.png"/>
