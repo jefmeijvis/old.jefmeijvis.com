@@ -11,6 +11,9 @@ published : true
 
 ## Teams?
 
+> Update 28 november 2023 | This post was written back in 2021, when Microsoft Teams didn't offer support for multiple accounts. Nowadays, it's possible to use the profile button on the top right to switch between accounts that belong to multiple companies. 
+
+
 For most of us, remote working has become part of our daily life. Collaboration and communication software such as Teams, Zoom, Google Meet, and others are essential to most companies nowadays.
 
 As a software consultant, I’m often part of multiple organizations at the same time. At the moment of writing, I have 3 different MS Teams instances that I need to keep my eye on. Unfortunately, the desktop application doesn’t allow for easy switching between multiple companies. And besides that, I would only receive notifications for the company which I was currently logged in with.
