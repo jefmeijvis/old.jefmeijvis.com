@@ -42,6 +42,7 @@ const config = {
 				"/blog/018-getting-started-with-htmx",
 				"/blog/019-ISMS",
 				"/blog/020-enabling-2FA",
+				"/blog/021-hosting-a-sveltekit-app-on-azure-app-service",
 			]
 		}
 	}
