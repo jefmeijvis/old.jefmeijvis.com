@@ -126,13 +126,13 @@ I've selected the Free hobby tier plan type because this is a demo project.
 As region I've selected West-Europe, as that is where I'm located. 
 Below are the settings that I used:
 
-![Azure App Service logo © Microsoft [medium]](/static/post/021/static-app-1.png)
+![Entering the project details [medium]](/static/post/021/static-app-1.png)
 
 Next up we need to fill in our deployment details.
 I have selected my private demo Azure Devops organization, along with the details of the repository.
 By selecting the *SvelteKit* build preset, I'm provided with the default remaining settings, which work for most simple usecases. 
 
-![Azure App Service logo © Microsoft [medium]](/static/post/021/static-app-2.png)
+![Entering the deployment details [medium]](/static/post/021/static-app-2.png)
 
 Select *Review and Create* at the bottom of the screen, and if all is good and well we will have our Sveltekit app up and running.
 After a minute or so you will be able to open up the newly created resource, and go to the auto-generated URl.
