@@ -121,10 +121,10 @@
     <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
         Code snippet: {displayLang}  
         <button title="Copy code snippet" on:click={copy}>
-            <img src="/copy.png" alt="copy code snippet"/>
+            <img class:button-light="{$light}" src="/copy.png" alt="copy code snippet"/>
         </button>
         {#if copied}  
-            <span transition:fade class="message">Copied to clipboard!</span>
+            <span class:message-light="{$light}" transition:fade class="message">Copied to clipboard!</span>
         {/if}
 
     </p>
@@ -165,16 +165,26 @@
         filter:invert();
     }
 
+    .button-light
+    {
+        filter:none;
+    }
+
     button:hover
     {
         opacity: 70%;
+    }
+    
+    .message-light
+    {
+        color: var(--color-text-primary);
     }
 
 
     .title-light
     {
-        background-color: var(--color-accent);
-        color: var(--color-text-secondary   );
+        background-color: rgb(218, 236, 255);
+        color: var(--color-text-primary);
     }
 
     .title-dark
