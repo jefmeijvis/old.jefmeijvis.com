@@ -119,7 +119,7 @@
 
 <div>
     <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
-        Code snippet: {displayLang}  
+        Code snippet
         <button title="Copy code snippet" on:click={copy}>
             <img class:button-light="{$light}" src="/copy.png" alt="copy code snippet"/>
         </button>
