@@ -117,7 +117,7 @@
     {@html darkTheme}
 {/if}
 
-<div>
+<div class:div-light="{$light}">
     <button title="Copy code snippet" on:click={copy}>
         <img class:button-light="{$light}" src="/copy.png" alt="copy code snippet"/>
     </button>
@@ -189,6 +189,11 @@
         margin-bottom: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         font-family: 'NotoMono' !important;
+        background-color: #1c1b1b ; 
+    }
+
+    .div-light
+    {
         background-color: #f6f6f6 ; 
     }
 </style>
