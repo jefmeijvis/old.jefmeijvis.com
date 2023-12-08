@@ -43,6 +43,7 @@ const config = {
 				"/blog/019-ISMS",
 				"/blog/020-enabling-2FA",
 				"/blog/021-hosting-a-sveltekit-app-on-azure-app-service",
+				"/blog/022-Understanding-sveltekit-load-functions",
 			]
 		}
 	}
