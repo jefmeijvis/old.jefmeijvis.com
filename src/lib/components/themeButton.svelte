@@ -36,7 +36,6 @@
 
       if($light)
       {
-        console.log('☀️ switching to light mode')
         body.classList.remove("dark")
         body.classList.add("light")
 
@@ -44,7 +43,6 @@
 
       if(!$light)
       {
-        console.log('🌙 switching to dark mode')
         body.classList.remove("light")
         body.classList.add("dark")
       }
