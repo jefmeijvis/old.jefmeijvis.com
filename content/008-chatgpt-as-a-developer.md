@@ -13,6 +13,8 @@ published : true
 
 ### ChatGPT
 
+> Update 8/12/2023: The AI landscape has been changing rapidly over the past last year, so this article is wildly outdated nowadays!
+
 ChatGPT is a powerful chatbot developed by [OpenAI](https://openai.com/) that can generate human-like text. It is based upon the [GPT-3 family](https://en.wikipedia.org/wiki/GPT-3) of large language models. As a software developer, you can use ChatGPT to automate repetitive tasks, generate code, and even help with documentation. In this blog post, we'll explore some of the ways ChatGPT can help you as a developer, and how you can get started using it. The practical examples shown here will make use of C# as its programming language. 
 
 ![OpenAI logo [small]](/static/post/008/logo.png)
