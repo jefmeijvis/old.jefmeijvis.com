@@ -13,5 +13,5 @@
 <h2>Most popular:</h2>
 <MostViewed posts={data.posts}></MostViewed>
 <h2>Most recent:</h2>
-<Blogposts count={5} posts={data.posts}></Blogposts>
+<Blogposts count={10} posts={data.posts}></Blogposts>
 <a href="/blog">See all blogposts</a>

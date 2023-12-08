@@ -137,6 +137,10 @@
 
 
 <style>
+    span
+    {
+        margin: .5rem;
+    }
     button
     {
         margin-top: .25rem;
@@ -146,6 +150,7 @@
         float:right;
         background:none;
         cursor : pointer;
+        margin: .5rem;
     }
 
     .message
@@ -184,6 +189,6 @@
         margin-bottom: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         font-family: 'NotoMono' !important;
-        background-color: rgb(250, 235, 100) ; 
+        background-color: #f6f6f6 ; 
     }
 </style>

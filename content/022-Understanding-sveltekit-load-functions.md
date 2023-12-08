@@ -10,7 +10,7 @@ published : true
 ---
 
 ## Abstract
-A sveltekit page is defined by the content in its *+page.svelte* file, along with any *+layout.svelte* files that surround it. 
+A [SvelteKit](https://kit.svelte.dev/) page is defined by the content in its *+page.svelte* file, along with any *+layout.svelte* files that surround it. 
 But before these Svelte files get rendered, data can be provided by load functions. In this article we further explore SvelteKit load functions and how to use them.  
 
 ## Basic usage
