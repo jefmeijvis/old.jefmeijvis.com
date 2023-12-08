@@ -22,7 +22,7 @@
 <h1>Blog</h1>
 
 <p>
-	I've been writing blogposts here since 2021.
+	I've been writing blogposts here since October 2021.
 	So far I have written {data.posts.length} posts. 
 	That means that on average, I write a post every {getPostRate()} days! 
 </p>
