@@ -118,16 +118,12 @@
 {/if}
 
 <div>
-    <p class:title-dark="{!$light}" class:title-light="{$light}" class="title">
-        Code snippet
-        <button title="Copy code snippet" on:click={copy}>
-            <img class:button-light="{$light}" src="/copy.png" alt="copy code snippet"/>
-        </button>
-        {#if copied}  
-            <span class:message-light="{$light}" transition:fade class="message">Copied to clipboard!</span>
-        {/if}
-
-    </p>
+    <button title="Copy code snippet" on:click={copy}>
+        <img class:button-light="{$light}" src="/copy.png" alt="copy code snippet"/>
+    </button>
+    {#if copied}  
+        <span class:message-light="{$light}" transition:fade class="message">Copied to clipboard!</span>
+    {/if}
     <Highlight language={lang} {code} let:highlighted>
         <LineNumbers highlighted={highlighted}     
         --line-number-color="{$light? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.2)'}"
@@ -180,24 +176,6 @@
         color: var(--color-text-primary);
     }
 
-
-    .title-light
-    {
-        background-color: rgb(218, 236, 255);
-        color: var(--color-text-primary);
-    }
-
-    .title-dark
-    {
-        background-color: var(--color-accent);
-    }
-
-    .title
-    {
-        font-family: 'NotoMono';
-        padding: .5rem;
-    }
-
     div
     {
         border-radius: .5rem;
@@ -206,5 +184,6 @@
         margin-bottom: 1rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         font-family: 'NotoMono' !important;
+        background-color: rgb(250, 235, 100) ; 
     }
 </style>
