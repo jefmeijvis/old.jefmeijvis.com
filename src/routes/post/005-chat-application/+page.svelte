@@ -1,11 +1,6 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { onMount } from "svelte";
-
-    onMount(()=>doOnMount())
-
-    function doOnMount()
-    {
-        goto("/blog/005-creating-a-chat-component-with-svelte?ref=redirect");
-    }
+	import Redirect from "$lib/components/redirect.svelte";
 </script>
+
+<Redirect href={"/blog/005-creating-a-chat-component-with-svelte?ref=redirect"}></Redirect>
+

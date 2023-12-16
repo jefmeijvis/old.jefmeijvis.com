@@ -1,11 +1,6 @@
 <script>
-	import { goto } from "$app/navigation";
-	import { onMount } from "svelte";
-
-    onMount(()=>doOnMount())
-
-    function doOnMount()
-    {
-        goto("/blog/006-sveltekit-api-endpoints?ref=redirect");
-    }
+	import Redirect from "$lib/components/redirect.svelte";
 </script>
+
+<Redirect href={"/blog/006-sveltekit-api-endpoints?ref=redirect"}></Redirect>
+
