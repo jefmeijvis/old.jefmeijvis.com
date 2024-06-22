@@ -1,3 +1,6 @@
+> [!NOTE]  
+> This repository is archived. Please refer to [github.com/jefmeijvis/www.jefmeijvis.com](https://github.com/jefmeijvis/www.jefmeijvis.com) for the code behind [www.jefmeijvis.com](https://www.jefmeijvis.com)
+
 # 🙍‍♂️Personal blogging site
 
 This is the public repository containing my personal blogging website.
